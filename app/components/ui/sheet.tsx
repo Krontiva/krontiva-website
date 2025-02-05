@@ -28,37 +28,37 @@ export const Sheet = ({ isOpen, onClose }: SheetProps) => {
           className="fixed inset-0 bg-gray-900 z-[9999]"
           style={{ position: 'fixed', zIndex: 9999 }}
         >
-          <div className="h-full flex">
+          <div className="h-full flex flex-col lg:flex-row">
             {/* Left Side - Navigation */}
-            <div className="w-1/2 p-20">
-              <div className="mb-16">
+            <div className="w-full lg:w-1/2 p-6 lg:p-20">
+              <div className="mb-8 lg:mb-16">
                 <h2 className="text-h4 font-display text-green-500">Menu</h2>
               </div>
-              <nav className="flex flex-col space-y-8">
+              <nav className="flex flex-col space-y-4 lg:space-y-8">
                 <Link
                   href="/about"
-                  className="text-h2 font-display text-white hover:text-green-400 transition-colors"
+                  className="text-h3 lg:text-h2 font-display text-white hover:text-green-400 transition-colors"
                   onClick={onClose}
                 >
                   About
                 </Link>
                 <Link
                   href="/projects"
-                  className="text-h2 font-display text-white hover:text-green-400 transition-colors"
+                  className="text-h3 lg:text-h2 font-display text-white hover:text-green-400 transition-colors"
                   onClick={onClose}
                 >
                   Projects
                 </Link>
                 <Link
                   href="/services"
-                  className="text-h2 font-display text-white hover:text-green-400 transition-colors"
+                  className="text-h3 lg:text-h2 font-display text-white hover:text-green-400 transition-colors"
                   onClick={onClose}
                 >
                   Services
                 </Link>
                 <Link
                   href="/contact"
-                  className="text-h2 font-display text-white hover:text-green-400 transition-colors"
+                  className="text-h3 lg:text-h2 font-display text-white hover:text-green-400 transition-colors"
                   onClick={onClose}
                 >
                   Contact
@@ -67,19 +67,19 @@ export const Sheet = ({ isOpen, onClose }: SheetProps) => {
             </div>
 
             {/* Right Side - Gallery */}
-            <div className="w-1/2 p-20 relative">
+            <div className="w-full lg:w-1/2 p-6 lg:p-20 relative">
               <button
                 onClick={onClose}
-                className="absolute top-8 right-8 text-white hover:text-green-400 transition-colors"
+                className="absolute top-6 right-6 lg:top-8 lg:right-8 text-white hover:text-green-400 transition-colors"
               >
                 <CancelSquareIcon className="w-8 h-8 text-white" />
               </button>
-              <h2 className="text-h4 font-display text-green-500 mb-8">
+              <h2 className="text-h4 font-display text-green-500 mb-6 lg:mb-8">
                 Slideshow of our projects
               </h2>
               <Link 
                 href="/gallery" 
-                className="grid grid-cols-2 gap-4 h-[calc(100%-6rem)]"
+                className="grid grid-cols-2 gap-3 lg:gap-4 h-[calc(100%-6rem)]"
                 onClick={onClose}
               >
                 {galleryImages.map((image, index) => (
@@ -94,7 +94,7 @@ export const Sheet = ({ isOpen, onClose }: SheetProps) => {
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <span className="text-white font-display text-b1">
+                      <span className="text-white font-display text-b2 lg:text-b1">
                         View Project
                       </span>
                     </div>
