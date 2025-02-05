@@ -32,7 +32,7 @@ const Hero = () => {
             className="inline-flex items-center px-6 py-3 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors"
           >
             Explore
-            <ArrowRight className="w-5 h-5 ml-2 text-white font-display" />
+            <ArrowRight className="w-5 h-5 ml-2 text-b2 font-display text-white" />
           </Link>
         </div>
       </div>
