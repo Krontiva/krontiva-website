@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Cookie } from "lucide-react";
 
 export const CookieConsent = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -35,14 +36,20 @@ export const CookieConsent = () => {
         >
           <div className="bg-[#18181B] text-white p-6 md:p-8">
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-              <div className="space-y-3 max-w-2xl">
-                <h3 className="text-h4 font-display font-bold">
-                  This site uses cookies
-                </h3>
-                <p className="text-gray-300 font-display">
-                  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                  when an unknown printer took a galley of type and scrambled it to make a book.
-                </p>
+              <div className="flex items-start gap-4 max-w-2xl">
+                <div className="p-3 bg-white/10 rounded-xl">
+                  <Cookie className="w-6 h-6 text-white" />
+                </div>
+                <div className="space-y-3">
+                  <h3 className="text-h4 font-display font-bold">
+                    This site uses cookies
+                  </h3>
+                  <p className="text-gray-300 font-display">
+                    We use cookies to enhance your browsing experience, serve personalized content, 
+                    and analyze our traffic. By clicking "Accept All", you consent to our use of cookies. 
+                    Read our Cookie Policy to learn more.
+                  </p>
+                </div>
               </div>
               <div className="flex items-center gap-4">
                 <button
