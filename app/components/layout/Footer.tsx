@@ -71,7 +71,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
             {/* Copyright */}
             <p className="text-gray-400 font-display">
-              Copyright Krontiva Africa. 2024
+              Copyright &copy; {new Date().getFullYear()} Krontiva Africa. All rights reserved.
             </p>
 
             {/* Social Links */}
