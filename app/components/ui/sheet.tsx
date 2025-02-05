@@ -25,7 +25,7 @@ export const Sheet = ({ isOpen, onClose }: SheetProps) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-gray-900 z-[9999]"
+          className="fixed inset-0 bg-[#18181B] z-[9999]"
           style={{ position: 'fixed', zIndex: 9999 }}
         >
           <div className="h-full flex flex-col lg:flex-row">
