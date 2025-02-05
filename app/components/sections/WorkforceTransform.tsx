@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const OperationalTransform = () => {
+const WorkforceTransform = () => {
   return (
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
@@ -21,7 +21,7 @@ const OperationalTransform = () => {
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
               <Image
                 src="/customer-transform.jpg"
-                alt="Person using advanced technology"
+                alt="Workforce transformation illustration"
                 fill
                 className="object-cover"
               />
@@ -44,7 +44,7 @@ const OperationalTransform = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
           >
             <h2 className="text-[40px] lg:text-[64px] leading-[1.1] font-display font-bold text-gray-900">
-              <span className="text-green-500">Operational</span>
+              <span className="text-green-500">Workforce</span>
               <br />
               Transformation
             </h2>
@@ -67,7 +67,7 @@ const OperationalTransform = () => {
               transition={{ duration: 0.5, delay: 0.4 }}
             >
               <Link
-                href="/operational-transformation"
+                href="/workforce-transformation"
                 className="inline-flex items-center text-green-500 hover:text-green-600 transition-colors group"
               >
                 <span className="font-display text-b1">Learn more</span>
@@ -81,4 +81,4 @@ const OperationalTransform = () => {
   );
 };
 
-export default OperationalTransform; 
+export default WorkforceTransform; 

@@ -9,21 +9,21 @@ const CustomerTransform = () => {
   return (
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-20 items-center">
           {/* Content Side */}
           <motion.div 
-            className="space-y-8"
+            className="space-y-6 lg:space-y-8"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h2 className="text-[64px] leading-[1.1] font-display font-bold text-gray-900">
-              Customer
+            <h2 className="text-[40px] lg:text-[64px] leading-[1.1] font-display font-bold text-gray-900">
+              <span className="text-green-500">Customer</span>
               <br />
               Transformation
             </h2>
-            <div className="space-y-6">
+            <div className="space-y-4 lg:space-y-6">
               <p className="text-b1 text-gray-600 font-display max-w-lg">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
                 do eiusmod tempor incididunt ut labore et dolore magna 
@@ -53,7 +53,7 @@ const CustomerTransform = () => {
 
           {/* Image Side */}
           <motion.div 
-            className="relative"
+            className="relative order-first lg:order-last"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}

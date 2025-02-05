@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { CookieConsent } from './components/ui/CookieConsent';
+import Footer from './components/layout/Footer';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -28,6 +29,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${jakarta.variable}`}>
         {children}
         <CookieConsent />
+        <Footer />
       </body>
     </html>
   );
