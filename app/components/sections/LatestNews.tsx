@@ -85,7 +85,7 @@ const LatestNews = () => {
               >
                 <Link 
                   href={post.href}
-                  className="block p-6 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors group"
+                  className="block p-6 bg-gray-100 rounded-2xl hover:bg-gray-100 transition-colors group"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-4">
