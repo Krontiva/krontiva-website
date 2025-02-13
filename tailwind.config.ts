@@ -36,6 +36,12 @@ const config: Config = {
         sans: ['var(--font-inter)'],
         display: ['var(--font-jakarta)'],
       },
+      animation: {
+        'pulse': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
     },
   },
   plugins: [],

@@ -1,110 +1,140 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
-import Image from "next/image";
-import CancelSquareIcon from "./icons/cancel-square-stroke-rounded";
+import * as React from "react"
+import * as SheetPrimitive from "@radix-ui/react-dialog"
+import { cva, type VariantProps } from "class-variance-authority"
+import { X } from "lucide-react"
 
-interface SheetProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
+import { cn } from "@/lib/utils"
 
-const galleryImages = [
-  "/gallery/image1.jpeg",
-  "/gallery/image2.jpeg",
-  "/gallery/image3.jpeg",
-  "/gallery/image4.jpeg",
-];
+const Sheet = SheetPrimitive.Root
 
-export const Sheet = ({ isOpen, onClose }: SheetProps) => {
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-[#18181B] z-[9999]"
-          style={{ position: 'fixed', zIndex: 9999 }}
-        >
-          <div className="h-full flex flex-col lg:flex-row">
-            {/* Left Side - Navigation */}
-            <div className="w-full lg:w-1/2 p-6 lg:p-20">
-              <div className="mb-8 lg:mb-16">
-                <h2 className="text-h4 font-display text-green-500">Menu</h2>
-              </div>
-              <nav className="flex flex-col space-y-4 lg:space-y-8">
-                <Link
-                  href="/about"
-                  className="text-h3 lg:text-h2 font-display text-white hover:text-green-400 transition-colors"
-                  onClick={onClose}
-                >
-                  About
-                </Link>
-                <Link
-                  href="/projects"
-                  className="text-h3 lg:text-h2 font-display text-white hover:text-green-400 transition-colors"
-                  onClick={onClose}
-                >
-                  Projects
-                </Link>
-                <Link
-                  href="/services"
-                  className="text-h3 lg:text-h2 font-display text-white hover:text-green-400 transition-colors"
-                  onClick={onClose}
-                >
-                  Services
-                </Link>
-                <Link
-                  href="/contact"
-                  className="text-h3 lg:text-h2 font-display text-white hover:text-green-400 transition-colors"
-                  onClick={onClose}
-                >
-                  Contact
-                </Link>
-              </nav>
-            </div>
+const SheetTrigger = SheetPrimitive.Trigger
 
-            {/* Right Side - Gallery */}
-            <div className="w-full lg:w-1/2 p-6 lg:p-20 relative">
-              <button
-                onClick={onClose}
-                className="absolute top-6 right-6 lg:top-8 lg:right-8 text-white hover:text-green-400 transition-colors"
-              >
-                <CancelSquareIcon className="w-8 h-8 text-white" />
-              </button>
-              <h2 className="text-h4 font-display text-green-500 mb-6 lg:mb-8">
-                Slideshow of our projects
-              </h2>
-              <Link 
-                href="/gallery" 
-                className="grid grid-cols-2 gap-3 lg:gap-4 h-[calc(100%-6rem)]"
-                onClick={onClose}
-              >
-                {galleryImages.map((image, index) => (
-                  <div 
-                    key={index} 
-                    className="relative aspect-square overflow-hidden rounded-lg group"
-                  >
-                    <Image
-                      src={image}
-                      alt={`Gallery image ${index + 1}`}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <span className="text-white font-display text-b2 lg:text-b1">
-                        View Project
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </Link>
-            </div>
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-}; 
+const SheetClose = SheetPrimitive.Close
+
+const SheetPortal = SheetPrimitive.Portal
+
+const SheetOverlay = React.forwardRef<
+  React.ElementRef<typeof SheetPrimitive.Overlay>,
+  React.ComponentPropsWithoutRef<typeof SheetPrimitive.Overlay>
+>(({ className, ...props }, ref) => (
+  <SheetPrimitive.Overlay
+    className={cn(
+      "fixed inset-0 z-50 backdrop-blur-sm bg-black/60 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+      className
+    )}
+    {...props}
+    ref={ref}
+  />
+))
+SheetOverlay.displayName = SheetPrimitive.Overlay.displayName
+
+const sheetVariants = cva(
+  "fixed z-50 gap-4 bg-white p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500 dark:bg-gray-950",
+  {
+    variants: {
+      side: {
+        top: "inset-x-0 top-0 border-b data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top",
+        bottom:
+          "inset-x-0 bottom-0 border-t data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
+        left: "inset-y-0 left-0 h-full w-3/4 border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm",
+        right:
+          "inset-y-0 right-0 h-full w-3/4  border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm",
+      },
+    },
+    defaultVariants: {
+      side: "right",
+    },
+  }
+)
+
+interface SheetContentProps
+  extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>,
+    VariantProps<typeof sheetVariants> {}
+
+const SheetContent = React.forwardRef<
+  React.ElementRef<typeof SheetPrimitive.Content>,
+  SheetContentProps
+>(({ side = "right", className, children, ...props }, ref) => (
+  <SheetPortal>
+    <SheetOverlay />
+    <SheetPrimitive.Content
+      ref={ref}
+      className={cn(sheetVariants({ side }), className)}
+      {...props}
+    >
+      {children}
+      <SheetPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-black transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 disabled:pointer-events-none">
+        <X className="h-4 w-4 text-white" />
+        <span className="sr-only">Close</span>
+      </SheetPrimitive.Close>
+    </SheetPrimitive.Content>
+  </SheetPortal>
+))
+SheetContent.displayName = SheetPrimitive.Content.displayName
+
+const SheetHeader = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
+  <div
+    className={cn(
+      "flex flex-col space-y-2 text-center sm:text-left",
+      className
+    )}
+    {...props}
+  />
+)
+SheetHeader.displayName = "SheetHeader"
+
+const SheetFooter = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
+  <div
+    className={cn(
+      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
+      className
+    )}
+    {...props}
+  />
+)
+SheetFooter.displayName = "SheetFooter"
+
+const SheetTitle = React.forwardRef<
+  React.ElementRef<typeof SheetPrimitive.Title>,
+  React.ComponentPropsWithoutRef<typeof SheetPrimitive.Title>
+>(({ className, ...props }, ref) => (
+  <SheetPrimitive.Title
+    ref={ref}
+    className={cn("text-lg font-semibold text-gray-950 dark:text-gray-50", className)}
+    {...props}
+  />
+))
+SheetTitle.displayName = SheetPrimitive.Title.displayName
+
+const SheetDescription = React.forwardRef<
+  React.ElementRef<typeof SheetPrimitive.Description>,
+  React.ComponentPropsWithoutRef<typeof SheetPrimitive.Description>
+>(({ className, ...props }, ref) => (
+  <SheetPrimitive.Description
+    ref={ref}
+    className={cn("text-sm text-gray-500 dark:text-gray-400", className)}
+    {...props}
+  />
+))
+SheetDescription.displayName = SheetPrimitive.Description.displayName
+
+export {
+  Sheet,
+  SheetPortal,
+  SheetOverlay,
+  SheetTrigger,
+  SheetClose,
+  SheetContent,
+  SheetHeader,
+  SheetFooter,
+  SheetTitle,
+  SheetDescription,
+} 

@@ -1,16 +1,49 @@
+"use client";
+
 import Link from 'next/link';
 import { Eye, Target, ArrowRight, Star, Crown, Lightbulb, TrendingUp } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Innovation = () => {
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-24 bg-white relative overflow-hidden">
+      {/* Grid Background with Vignette */}
+      <div className="absolute inset-0">
+        {/* Base Grid */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:4rem_4rem]">
+          <motion.div 
+            className="absolute inset-0"
+            animate={{
+              backgroundPosition: ["0px 0px", "100px 100px"],
+            }}
+            transition={{
+              duration: 20,
+              ease: "linear",
+              repeat: Infinity,
+            }}
+            style={{
+              background: 'radial-gradient(circle at center, rgba(74, 222, 128, 0.03) 0%, rgba(74, 222, 128, 0.05) 35%, transparent 70%)',
+            }}
+          />
+        </div>
+        
+        {/* Larger Vignette Overlay */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: 'radial-gradient(circle at center, transparent 0%, transparent 30%, rgba(255,255,255,0.95) 100%)',
+            pointerEvents: 'none'
+          }}
+        />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-6">
         {/* Header */}
-        <div className="max-w-2xl mx-auto mb-16 text-center">
-          <h2 className="text-d2 font-display font-bold text-gray-900 mb-4">
+        <div className="max-w-3xl mx-auto mb-16 text-center">
+          <h2 className="text-[56px] md:text-[72px] lg:text-[96px] leading-[1.1] font-display font-bold text-gray-900 mb-6">
             <span className="text-green-500">Krontiva</span> Africa
           </h2>
-          <p className="text-b1 text-gray-600 font-display">
+          <p className="text-xl md:text-2xl text-gray-600 font-display">
             Transform your business with our comprehensive solutions while maintaining full control over your digital assets.
           </p>
         </div>
@@ -18,7 +51,11 @@ const Innovation = () => {
         {/* Cards Grid */}
         <div className="grid md:grid-cols-3 gap-6">
           {/* Vision Card */}
-          <div className="relative bg-green-50 p-8 rounded-2xl">
+          <motion.div 
+            className="relative bg-green-50 p-8 rounded-2xl hover:shadow-lg transition-shadow"
+            whileHover={{ y: -5 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
             {/* Dots Pattern */}
             <div className="absolute top-6 right-6">
               <div className="grid grid-cols-3 gap-2">
@@ -40,10 +77,14 @@ const Innovation = () => {
             <p className="text-b2 text-gray-600 font-display">
             To create a digitally connected Africa where financial and retail services are accessible, affordable, and secure, while empowering the continent's business ecosystem with seamless connectivity and transformative technologies for innovation, inclusivity, and sustainable growth.
             </p>
-          </div>
+          </motion.div>
 
           {/* Mission Card */}
-          <div className="relative bg-green-50 p-8 rounded-2xl">
+          <motion.div 
+            className="relative bg-green-50 p-8 rounded-2xl hover:shadow-lg transition-shadow"
+            whileHover={{ y: -5 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
             {/* Dots Pattern */}
             <div className="absolute top-6 right-6">
               <div className="grid grid-cols-3 gap-2">
@@ -65,10 +106,14 @@ const Innovation = () => {
             <p className="text-b2 text-gray-600 font-display">
               Our mission is to bridge the gaps within Africa's business landscape by providing turn key technology services.
             </p>
-          </div>
+          </motion.div>
 
           {/* Services Card */}
-          <div className="relative bg-green-50 p-8 rounded-2xl">
+          <motion.div 
+            className="relative bg-green-50 p-8 rounded-2xl hover:shadow-lg transition-shadow"
+            whileHover={{ y: -5 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
             {/* Dots Pattern */}
             <div className="absolute top-6 right-6">
               <div className="grid grid-cols-3 gap-2">
@@ -94,11 +139,15 @@ const Innovation = () => {
                 <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Core Values Card */}
-        <div className="relative bg-green-50 p-8 rounded-2xl mt-16">
+        <motion.div 
+          className="relative bg-green-50 p-8 rounded-2xl mt-16 hover:shadow-lg transition-shadow"
+          whileHover={{ y: -5 }}
+          transition={{ type: "spring", stiffness: 300 }}
+        >
           {/* Dots Pattern */}
           <div className="absolute top-6 right-6">
             <div className="grid grid-cols-3 gap-2">
@@ -165,7 +214,7 @@ const Innovation = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>    
     </section>
   );
