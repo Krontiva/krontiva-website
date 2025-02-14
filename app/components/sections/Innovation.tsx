@@ -132,7 +132,7 @@ const Innovation = () => {
                 </p>
               </div>
               <Link
-                href="/services"
+                href="/about"
                 className="inline-flex items-center mt-6 text-green-500 hover:text-green-600 transition-colors group"
               >
                 <span className="font-display">Learn more</span>
