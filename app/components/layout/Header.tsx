@@ -9,19 +9,20 @@ import { Sheet, SheetContent, SheetTitle } from '../ui/sheet';
 import { ChevronDown } from 'lucide-react';
 
 const navigation = [
-  { name: 'Projects', href: '/' },
-  { name: 'Services', href: '#services' },
+  { name: 'Home', href: '/' },
+  { name: 'Projects', href: '/projects' },
+  { name: 'Services', href: '/services' },
   { 
     name: 'About',
     items: [
       { name: 'About Us', href: '/about' },
       { name: 'Jobs', href: '/jobs' },
       { name: 'News', href: '/news' },
-      { name: 'Policy', href: '/policy' },
+      { name: 'Privacy', href: '/privacy' },
       { name: 'Terms', href: '/terms' },
     ]
   },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 const menuItemVariants = {

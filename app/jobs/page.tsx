@@ -2,10 +2,13 @@
 
 import { motion } from "framer-motion";
 import Header from "../components/layout/Header";
-import { ArrowRight, MoveRight, Heart, Eye, Users, BookOpen, Zap, Target, AlertCircle } from "lucide-react";
+import { ArrowRight, MoveRight, Heart, Eye, Users, BookOpen, Zap, Target, AlertCircle, ChevronDown } from "lucide-react";
 import Image from "next/image";
+import { useState } from 'react';
 
 const JobsPage = () => {
+  const [activeTestimonial, setActiveTestimonial] = useState('belinda');
+
   return (
     <main className="bg-white">
       <Header />
@@ -207,6 +210,144 @@ const JobsPage = () => {
               <p className="text-lg text-gray-600 leading-relaxed">
                 At Krontiva Africa, we don't just build businesses—we build lasting relationships, shared experiences, and a culture that inspires growth and impact.
               </p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Testimonials Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-32"
+        >
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-16 text-center">
+            Our Team Stories
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-16 items-start">
+            {/* Testimonials Accordion - Now on Left */}
+            <div className="space-y-4">
+              {[
+                {
+                  name: "Belinda",
+                  role: "Media Specialist",
+                  testimonial: "My time at Krontiva was transformative, enhancing my skills through certified courses and AI tools. I mastered media scheduling, soft skills, and teamwork. Challenges arose, but quick solutions—whether through teamwork or individually—kept work moving. Fun Fridays added a refreshing balance to the experience."
+                },
+                {
+                  name: "Samuel",
+                  role: "Customer Success Manager",
+                  testimonial: "As a Customer Success Manager at Krontiva Africa, I've spent nearly two years helping clients achieve meaningful results. I work with a passionate team, guiding clients toward success while continuously learning and growing. At Krontiva, we build strong relationships and deliver value every step of the way."
+                },
+                {
+                  name: "Mary",
+                  role: "Product Manager",
+                  testimonial: "My journey to Krontiva Africa has been transformative, filled with learning, growth, and innovation. Working with a forward-thinking team has strengthened my adaptability and resilience. While juggling multiple responsibilities has been challenging, it has built my confidence and skills. This bittersweet journey continues to shape my career and future goals."
+                },
+                {
+                  name: "Fabrice",
+                  role: "Team Lead",
+                  testimonial: "As a team lead at Krontiva Africa, I've guided a talented team in bringing innovative projects to life. Streamlining processes and aligning team strengths have been rewarding, and I've gained valuable experience in product design and development. I'm grateful for the growth and impact we've made together."
+                },
+                {
+                  name: "Dzifa",
+                  role: "Chief of Staff",
+                  testimonial: "Krontiva Africa has been a true learning experience—what we call 'Krontiva University'. The God-factor guides us through uncertainty, reminding us to seek wisdom. I've learned that silence is golden, and our diverse team—from Product to BD to OCCS—makes us stand out. No matter our differences, Krontiva is home."
+                }
+              ].map((item) => (
+                <div key={item.name} className="border-b border-gray-200">
+                  <button
+                    onClick={() => setActiveTestimonial(item.name.toLowerCase())}
+                    className="w-full py-6 flex items-center justify-between text-left group"
+                  >
+                    <div>
+                      <h3 className="text-xl font-display font-bold text-gray-900 group-hover:text-green-600 transition-colors">
+                        {item.name}
+                      </h3>
+                      <p className="text-gray-600">{item.role}</p>
+                    </div>
+                    <ChevronDown 
+                      className={`w-5 h-5 text-gray-500 transition-transform ${
+                        activeTestimonial === item.name.toLowerCase() ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+                  
+                  {activeTestimonial === item.name.toLowerCase() && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="pb-6"
+                    >
+                      <p className="text-gray-600 leading-relaxed">
+                        {item.testimonial}
+                      </p>
+                    </motion.div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Image Section - Now on Right */}
+            <div className="relative h-[700px] rounded-2xl overflow-hidden">
+              <Image
+                src={`/team/${activeTestimonial || 'belinda'}.jpg`}
+                alt="Team member"
+                fill
+                className="object-cover object-top transition-all duration-700"
+                priority
+              />
+            </div>
+          </div>
+        </motion.div>
+
+        {/* NSP Testimonial Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-32"
+        >
+          <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-12 md:p-16">
+            <div className="flex flex-col md:flex-row items-center gap-12">
+              {/* Image and Label */}
+              <div className="md:w-1/3">
+                <div className="relative">
+                  <div className="w-64 h-64 rounded-lg overflow-hidden">
+                    <Image
+                      src="/team/ronald.jpg"
+                      alt="Ronald - NSP"
+                      width={256}
+                      height={256}
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="md:w-2/3 text-center md:text-left">
+                <div className="mb-6">
+                  <div className="flex items-center gap-4 mb-2">
+                    <h3 className="text-3xl font-display font-bold">
+                      Ronald
+                    </h3>
+                    <span className="inline-block px-4 py-1.5 bg-green-500 text-white text-sm font-medium rounded-full whitespace-nowrap">
+                      NSP
+                    </span>
+                  </div>
+                  <p className="text-gray-600">Product Team</p>
+                </div>
+                <div className="relative">
+                  <div className="absolute -top-6 -left-8 text-6xl text-green-200">"</div>
+                  <p className="text-xl text-gray-600 leading-relaxed relative z-10">
+                    Working as an NSP at Krontiva Africa has been a fulfilling experience. I was warmly welcomed and supported by my team, especially the product team. The fast-paced learning challenged me to grow both professionally and personally. Krontiva truly feels like a family, built on support, teamwork, and care.
+                  </p>
+                  <div className="absolute -bottom-4 -right-8 text-6xl text-green-200 rotate-180">"</div>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>
