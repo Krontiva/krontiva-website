@@ -125,79 +125,90 @@ const JobsPage = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-32 bg-gradient-to-br from-gray-50 to-white rounded-3xl p-16"
+          className="relative w-screen left-1/2 right-1/2 -mx-[50vw] h-[600px] mb-32 group"
         >
-          <div className="max-w-4xl mx-auto">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center">
-                <Heart className="w-6 h-6 text-green-500" />
-              </div>
-              <h3 className="text-xl font-display uppercase tracking-wider">LEADERSHIP VISION</h3>
-            </div>
-            <p className="text-2xl text-gray-600 leading-relaxed">
-              Our CEO strongly champions empathy and emotional intelligence, ensuring that every team member is seen, heard, and uplifted. This deep sense of connection drives not just our internal operations but also the quality of solutions we create for the public.
-            </p>
-          </div>
-        </motion.div>
-
-        {/* Work Environment Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-32 grid md:grid-cols-2 gap-16 items-center"
-        >
-          <div className="relative h-[600px] rounded-3xl overflow-hidden">
+          <div className="absolute inset-0">
             <Image
-              src="/team-meeting.jpg"
-              alt="Collaborative workspace"
+              src="/ceo-meeting.jpg"
+              alt="Leadership meeting"
               fill
-              className="object-cover"
+              className="object-cover transition-transform duration-700 group-hover:grayscale"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
           </div>
-          <div>
-            <h3 className="text-3xl md:text-4xl font-display font-bold mb-8">
-              A Culture of Growth
-            </h3>
-            <p className="text-xl text-gray-600 leading-relaxed">
-              We believe that a positive and thriving work environment fuels innovation and productivity. Laughter, learning, and collaboration define our daily experiences, making Krontiva a place where creativity flourishes. We are committed to maintaining a healthy and non-toxic workspace, where negativity has no place, and mutual respect is upheld at all times.
-            </p>
-          </div>
-        </motion.div>
-
-        {/* Faith Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-32 text-center"
-        >
-          <div className="max-w-4xl mx-auto">
-            <div className="flex justify-center mb-8">
-              <div className="w-16 h-16 rounded-full bg-red-50 flex items-center justify-center">
-                <Heart className="w-8 h-8 text-red-500" />
+          
+          {/* Content Card */}
+          <div className="absolute bottom-0 right-0 z-10 max-w-2xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="bg-white backdrop-blur-sm p-12"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <h3 className="text-3xl font-display uppercase tracking-wider text-gray-900">
+                  LEADERSHIP VISION
+                </h3>
               </div>
-            </div>
-            <h3 className="text-3xl md:text-4xl font-display font-bold mb-6">
-              Faith at Our Core
-            </h3>
-            <p className="text-xl text-gray-600 leading-relaxed">
-              Above all, faith is at the heart of our journey. As an organization, we believe in God and rely on Him in all our endeavors, drawing strength and guidance to navigate challenges and achieve excellence.
-            </p>
+              <p className="text-xl text-gray-600 leading-relaxed">
+                Our CEO strongly champions empathy and emotional intelligence, ensuring that every team member is seen, heard, and uplifted. This deep sense of connection drives not just our internal operations but also the quality of solutions we create for the public.
+              </p>
+            </motion.div>
           </div>
         </motion.div>
 
-        {/* Closing Statement */}
+        {/* Three Column Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-32 bg-black rounded-3xl p-16 text-center"
+          className="mb-32"
         >
-          <p className="text-3xl md:text-4xl font-display text-white leading-relaxed max-w-4xl mx-auto">
-            At Krontiva Africa, we don't just build businesses—we build lasting relationships, shared experiences, and a culture that inspires growth and impact.
-          </p>
+          <div className="grid md:grid-cols-3 divide-x divide-gray-200">
+            {/* Culture of Growth */}
+            <div className="px-8 first:pl-0 last:pr-0">
+              <div className="mb-8">
+                <div className="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center mb-6">
+                  <Users className="w-6 h-6 text-green-500" />
+                </div>
+                <h3 className="text-2xl md:text-3xl font-display font-bold mb-6">
+                  A Culture of Growth
+                </h3>
+              </div>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                We believe that a positive and thriving work environment fuels innovation and productivity. Laughter, learning, and collaboration define our daily experiences, making Krontiva a place where creativity flourishes. We are committed to maintaining a healthy and non-toxic workspace, where negativity has no place, and mutual respect is upheld at all times.
+              </p>
+            </div>
+
+            {/* Faith at Our Core */}
+            <div className="px-8 first:pl-0 last:pr-0">
+              <div className="mb-8">
+                <div className="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center mb-6">
+                  <Heart className="w-6 h-6 text-red-500" />
+                </div>
+                <h3 className="text-2xl md:text-3xl font-display font-bold mb-6">
+                  Faith at Our Core
+                </h3>
+              </div>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                Above all, faith is at the heart of our journey. As an organization, we believe in God and rely on Him in all our endeavors, drawing strength and guidance to navigate challenges and achieve excellence.
+              </p>
+            </div>
+
+            {/* Building Relationships */}
+            <div className="px-8 first:pl-0 last:pr-0">
+              <div className="mb-8">
+                <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center mb-6">
+                  <Users className="w-6 h-6 text-blue-500" />
+                </div>
+                <h3 className="text-2xl md:text-3xl font-display font-bold mb-6">
+                  Building Relationships
+                </h3>
+              </div>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                At Krontiva Africa, we don't just build businesses—we build lasting relationships, shared experiences, and a culture that inspires growth and impact.
+              </p>
+            </div>
+          </div>
         </motion.div>
 
         {/* Open Positions Section */}
