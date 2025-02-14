@@ -120,6 +120,86 @@ const JobsPage = () => {
           </div>
         </div>
 
+        {/* CEO's Vision Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-32 bg-gradient-to-br from-gray-50 to-white rounded-3xl p-16"
+        >
+          <div className="max-w-4xl mx-auto">
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center">
+                <Heart className="w-6 h-6 text-green-500" />
+              </div>
+              <h3 className="text-xl font-display uppercase tracking-wider">LEADERSHIP VISION</h3>
+            </div>
+            <p className="text-2xl text-gray-600 leading-relaxed">
+              Our CEO strongly champions empathy and emotional intelligence, ensuring that every team member is seen, heard, and uplifted. This deep sense of connection drives not just our internal operations but also the quality of solutions we create for the public.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Work Environment Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-32 grid md:grid-cols-2 gap-16 items-center"
+        >
+          <div className="relative h-[600px] rounded-3xl overflow-hidden">
+            <Image
+              src="/team-meeting.jpg"
+              alt="Collaborative workspace"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+          </div>
+          <div>
+            <h3 className="text-3xl md:text-4xl font-display font-bold mb-8">
+              A Culture of Growth
+            </h3>
+            <p className="text-xl text-gray-600 leading-relaxed">
+              We believe that a positive and thriving work environment fuels innovation and productivity. Laughter, learning, and collaboration define our daily experiences, making Krontiva a place where creativity flourishes. We are committed to maintaining a healthy and non-toxic workspace, where negativity has no place, and mutual respect is upheld at all times.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Faith Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-32 text-center"
+        >
+          <div className="max-w-4xl mx-auto">
+            <div className="flex justify-center mb-8">
+              <div className="w-16 h-16 rounded-full bg-red-50 flex items-center justify-center">
+                <Heart className="w-8 h-8 text-red-500" />
+              </div>
+            </div>
+            <h3 className="text-3xl md:text-4xl font-display font-bold mb-6">
+              Faith at Our Core
+            </h3>
+            <p className="text-xl text-gray-600 leading-relaxed">
+              Above all, faith is at the heart of our journey. As an organization, we believe in God and rely on Him in all our endeavors, drawing strength and guidance to navigate challenges and achieve excellence.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Closing Statement */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-32 bg-black rounded-3xl p-16 text-center"
+        >
+          <p className="text-3xl md:text-4xl font-display text-white leading-relaxed max-w-4xl mx-auto">
+            At Krontiva Africa, we don't just build businesses—we build lasting relationships, shared experiences, and a culture that inspires growth and impact.
+          </p>
+        </motion.div>
+
         {/* Open Positions Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -142,20 +222,14 @@ const JobsPage = () => {
                 Join Our Growing Team
               </h3>
               <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
-                While we don't have any open positions right now, we're always interested in meeting talented people who share our passion for innovation and excellence.
+                At Krontiva Africa, we're building a team of passionate innovators who are committed to transforming businesses across Africa. Keep an eye on this space for future opportunities.
               </p>
-              <div className="flex flex-col items-center gap-6">
-                <button 
-                  onClick={() => window.location.href = 'mailto:careers@krontiva.com'} 
-                  className="inline-flex items-center px-8 py-4 bg-white text-gray-900 rounded-full hover:bg-green-500 hover:text-white transition-colors group"
-                >
-                  Send us your CV <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-                </button>
-                <span className="text-white/60 text-sm">
-                  <AlertCircle className="w-4 h-4 inline-block mr-2" />
-                  No current openings, but we'd love to know you
-                </span>
-              </div>
+              <button 
+                disabled
+                className="inline-flex items-center px-8 py-4 bg-white/20 text-white rounded-full cursor-not-allowed opacity-80"
+              >
+                Coming Soon <ArrowRight className="w-5 h-5 ml-2" />
+              </button>
             </div>
           </div>
         </motion.div>
