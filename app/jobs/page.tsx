@@ -26,7 +26,7 @@ const JobsPage = () => {
               >
                 <br />
                 Work Culture<br />
-                Orientation
+                <span className="text-green-500">Orientation</span>
               </motion.h1>
 
               <motion.p
@@ -385,7 +385,7 @@ const JobsPage = () => {
         >
           <div className="absolute inset-0">
             <Image
-              src="/team-meeting.jpg"
+              src="/team.jpg"
               alt="Team collaboration"
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-110"

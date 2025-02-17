@@ -58,7 +58,7 @@ export default function AboutPage() {
           >
             <div className="relative h-[400px] w-full rounded-2xl overflow-hidden">
               <Image
-                src="/customer-transform.jpg"
+                src="/expertise.jpg"
                 alt="Team collaboration"
                 fill
                 className="object-cover"
@@ -144,7 +144,7 @@ export default function AboutPage() {
               <div className="space-y-4">
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
                   <Image
-                    src="/customer-transform.jpg"
+                    src="/engage.jpg"
                     alt="Innovation"
                     fill
                     className="object-cover"
@@ -152,7 +152,7 @@ export default function AboutPage() {
                 </div>
                 <div className="relative aspect-square rounded-2xl overflow-hidden">
                   <Image
-                    src="/herobg.jpg"
+                    src="/ny-sammy.jpg"
                     alt="Technology"
                     fill
                     className="object-cover"
@@ -162,7 +162,7 @@ export default function AboutPage() {
               <div className="space-y-4 pt-8">
                 <div className="relative aspect-square rounded-2xl overflow-hidden">
                   <Image
-                    src="/hero-bg.jpg"
+                    src="/joe-mettle.jpg"
                     alt="Collaboration"
                     fill
                     className="object-cover"
@@ -170,7 +170,7 @@ export default function AboutPage() {
                 </div>
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
                   <Image
-                    src="/customer-transform.jpg"
+                    src="/engageease.jpg"
                     alt="Impact"
                     fill
                     className="object-cover"
@@ -188,7 +188,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-32"
+            className="text-center mb-16"
           >
             <span className="text-green-600 text-lg font-medium mb-4 block">What we offer</span>
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
@@ -199,36 +199,64 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
+          {/* Services Image */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mb-32"
+          >
+            <div className="relative h-[500px] w-full rounded-2xl overflow-hidden">
+              <Image
+                src="/engage.jpg"
+                alt="Our Services"
+                fill
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+            </div>
+          </motion.div>
+
           {/* Products Section */}
           <div className="mb-32">
-            <div className="grid md:grid-cols-3 gap-12">
+            <div className="grid md:grid-cols-2 gap-12">
               {[
-                {
-                  label: "Commerce",
-                  title: "EngageEase",
-                  description: "A seamless conversational commerce platform that simplifies buying, selling, and deliveries on WhatsApp, enabling businesses to connect with customers effortlessly.",
-                  bgColor: "bg-blue-50",
-                  icon: MessageSquare,
-                  iconColor: "text-blue-600",
-                  borderColor: "border-blue-100"
-                },
                 {
                   label: "Food Tech",
                   title: "Delika",
-                  description: "A food-tech solution designed to enhance restaurant management, improve customer engagement, and optimize food delivery services.",
-                  bgColor: "bg-green-50",
+                  description: "A comprehensive food delivery and restaurant management platform that connects customers with their favorite eateries while streamlining order processing, rider dispatch, and real-time tracking. Delika also offers restaurant owners tools for menu management, analytics, and customer engagement to enhance operational efficiency.",
+                  bgColor: "bg-orange-50",
                   icon: Utensils,
-                  iconColor: "text-green-600",
-                  borderColor: "border-green-100"
+                  iconColor: "text-orange-600",
+                  borderColor: "border-orange-100"
                 },
                 {
                   label: "Ticketing",
                   title: "Tickrfly",
-                  description: "A smart ticketing platform for purchasing event and flight tickets, as well as booking and reservations, ensuring a smooth and hassle-free experience for users.",
-                  bgColor: "bg-purple-50",
+                  description: "A modern ticketing and event management platform designed to simplify ticket sales and access control for event organizers. TikrFly provides secure digital tickets, QR code scanning for seamless check-ins, real-time sales tracking, and marketing tools to boost event reach and engagement",
+                  bgColor: "bg-blue-50",
                   icon: Ticket,
-                  iconColor: "text-purple-600",
-                  borderColor: "border-purple-100"
+                  iconColor: "text-blue-600",
+                  borderColor: "border-blue-100"
+                },
+                {
+                  label: "Commerce",
+                  title: "EngageEase",
+                  description: "A conversational commerce platform that integrates seamlessly with WhatsApp, allowing businesses to manage customer interactions, process orders, and coordinate deliveries in one place. With built-in inventory management, automated messaging, and analytics, EngageEase helps merchants enhance sales and customer service effortlessly.",
+                  bgColor: "bg-orange-50",
+                  icon: MessageSquare,
+                  iconColor: "text-orange-600",
+                  borderColor: "border-orange-100"
+                },
+                {
+                  label: "Manufacturing",
+                  title: "Manutrax",
+                  description: " A manufacturing flow management software designed to optimize production processes by providing real-time insights, process visualization, and inventory tracking. Manutrax empowers managers with data-driven decision-making tools to improve efficiency, reduce waste, and enhance overall operational performance.",
+                  bgColor: "bg-red-50",
+                  icon: Ticket,
+                  iconColor: "text-red-600",
+                  borderColor: "border-red-100"
                 }
               ].map((item, index) => (
                 <motion.div
@@ -267,8 +295,19 @@ export default function AboutPage() {
           </div>
 
           {/* Services Section */}
-          <div className="relative rounded-3xl bg-gradient-to-br from-green-500 to-green-600 overflow-hidden">
-            <div className="absolute inset-0 bg-[linear-gradient(40deg,transparent_25%,rgba(255,255,255,0.1)_50%,transparent_75%)] opacity-20" />
+          <div className="relative rounded-3xl overflow-hidden">
+            {/* Background Image */}
+            <div className="absolute inset-0">
+              <Image
+                src="/services-bg.jpg"
+                alt="Services Background"
+                fill
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-green-900/95 via-green-800/95 to-green-900/90" />
+            </div>
+
             <div className="relative px-8 py-20 md:p-20">
               <div className="flex flex-col lg:flex-row gap-16 items-start">
                 {/* Left Column - Header */}

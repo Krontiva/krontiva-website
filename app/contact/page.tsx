@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Header from "../components/layout/Header";
 import { Mail, Phone, MapPin, ArrowRight, X } from "lucide-react";
 import ContactForm from "../components/forms/ContactForm";
+import FAQ from "../components/sections/FAQ";
 
 const contactInfo = [
   {
@@ -110,6 +111,9 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQ />
 
       {/* Map Section */}
       <section className="h-[400px] w-screen relative">

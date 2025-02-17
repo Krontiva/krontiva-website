@@ -29,7 +29,7 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
             className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[100]"
           />
 
-          {/* Modal Container with Scroll */}
+          {/* Modal Container */}
           <div className="fixed inset-0 overflow-y-auto z-[101]">
             <div className="flex min-h-full items-center justify-center p-4">
               {/* Modal Content */}
@@ -37,7 +37,7 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
                 initial={{ opacity: 0, y: 100 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 100 }}
-                className="w-full max-w-xl bg-white rounded-xl shadow-2xl relative"
+                className="w-full max-w-2xl bg-white rounded-xl shadow-2xl relative"
               >
                 <div className="p-8">
                   <div className="flex justify-between items-center mb-6">
@@ -53,56 +53,64 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
                   </div>
 
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Name
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 
-                        focus:ring-2 focus:ring-green-200 transition-colors"
-                        placeholder="Your full name"
-                      />
+                    {/* Two Column Grid */}
+                    <div className="grid grid-cols-2 gap-6">
+                      {/* Name Field */}
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Name
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 
+                          focus:ring-2 focus:ring-green-200 transition-colors"
+                          placeholder="Your full name"
+                        />
+                      </div>
+
+                      {/* Email Field */}
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Email
+                        </label>
+                        <input
+                          type="email"
+                          required
+                          className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 
+                          focus:ring-2 focus:ring-green-200 transition-colors"
+                          placeholder="you@company.com"
+                        />
+                      </div>
+
+                      {/* Phone Field */}
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Phone
+                        </label>
+                        <input
+                          type="tel"
+                          className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 
+                          focus:ring-2 focus:ring-green-200 transition-colors"
+                          placeholder="+233 (0) XX XXX XXXX"
+                        />
+                      </div>
+
+                      {/* Organisation Field */}
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Organisation
+                        </label>
+                        <input
+                          type="text"
+                          className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 
+                          focus:ring-2 focus:ring-green-200 transition-colors"
+                          placeholder="Your company name"
+                        />
+                      </div>
                     </div>
 
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        required
-                        className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 
-                        focus:ring-2 focus:ring-green-200 transition-colors"
-                        placeholder="you@company.com"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Phone
-                      </label>
-                      <input
-                        type="tel"
-                        className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 
-                        focus:ring-2 focus:ring-green-200 transition-colors"
-                        placeholder="+233 (0) XX XXX XXXX"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Organisation
-                      </label>
-                      <input
-                        type="text"
-                        className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 
-                        focus:ring-2 focus:ring-green-200 transition-colors"
-                        placeholder="Your company name"
-                      />
-                    </div>
-
+                    {/* Message Field - Full Width */}
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         Message
