@@ -132,7 +132,7 @@ const JobsPage = () => {
         >
           <div className="absolute inset-0">
             <Image
-              src="/ceo-meeting.jpg"
+              src="/ceo-vision.jpg"
               alt="Leadership meeting"
               fill
               className="object-cover transition-transform duration-700 group-hover:grayscale"

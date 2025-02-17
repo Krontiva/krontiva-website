@@ -113,7 +113,7 @@ export default function ServicesPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-6xl md:text-7xl lg:text-7xl font-display font-medium text-gray-900 mb-8"
+              className="text-6xl md:text-7xl lg:text-[80px] font-display font-bold text-gray-900 mb-8"
             >
               Transforming businesses<br />
               for the <span className="text-green-500">digital age</span>
@@ -192,7 +192,7 @@ export default function ServicesPage() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-[28px] font-display font-medium text-gray-900 mb-6 leading-tight group-hover:text-green-800 transition-colors">
+                  <h3 className="text-[28px] font-display font-bold text-gray-900 mb-6 leading-tight group-hover:text-green-800 transition-colors">
                     {service.title.line1}<br />
                     {service.title.line2}
                   </h3>
