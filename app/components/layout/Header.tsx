@@ -2,11 +2,12 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Menu02Icon from '../ui/icons/menu-02-stroke-rounded';
 import { Sheet, SheetContent, SheetTitle } from '../ui/sheet';
 import { ChevronDown } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -62,11 +63,14 @@ const dropdownVariants = {
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const pathname = usePathname();
+
+  const isLightPage = ['/privacy', '/terms'].includes(pathname);
 
   return (
-    <header className="absolute top-0 left-0 right-0 z-10 px-6 py-4">
+    <header className="absolute top-0 left-0 right-0 z-50 px-6 py-4">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <div className="w-32">
+        <Link href="/" className="w-32">
           <Image
             src="/logo.png"
             alt="Krontiva Logo"
@@ -74,16 +78,18 @@ const Header = () => {
             height={40}
             priority
           />
-        </div>
+        </Link>
         <button
           onClick={() => setIsOpen(true)}
-          className="text-white hover:text-green-400 transition-colors"
+          className={`hover:text-green-400 transition-colors ${
+            isLightPage ? 'text-gray-900' : 'text-white'
+          }`}
         >
-          <Menu02Icon className="w-8 h-8 text-black" />
+          <Menu02Icon className="w-8 h-8 text-green-500" />
         </button>
       </div>
       <Sheet open={isOpen} onOpenChange={(open) => setIsOpen(open)}>
-        <SheetContent className="backdrop-blur-lg bg-black/95">
+        <SheetContent className="backdrop-blur-lg bg-black/95 z-[100]">
           <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
           <nav className="flex flex-col items-center justify-center h-full gap-8">
             <AnimatePresence mode="wait">

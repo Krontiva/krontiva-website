@@ -111,7 +111,7 @@ export default function Hero() {
             whileTap={{ scale: 0.95 }}
           >
             <Link
-              href="#contact"
+              href="/contact"
               className="group relative flex h-32 w-32 items-center justify-center rounded-full bg-green-500 text-center font-bold text-white transition-all duration-300 hover:shadow-lg md:h-40 md:w-40"
             >
               <motion.div

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Facebook, Instagram, Linkedin } from 'lucide-react';
+import CookieConsent from '../CookieConsent';
 
 const Footer = () => {
   return (
@@ -126,6 +127,9 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
+      {/* Add Cookie Consent */}
+      <CookieConsent />
     </footer>
   );
 };

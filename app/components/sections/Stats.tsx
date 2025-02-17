@@ -19,7 +19,7 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section className="py-24 bg-[#E7CFBA]">
+    <section className="py-24 bg-green-500">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
           {/* Left side - Heading */}
@@ -29,7 +29,7 @@ export default function Stats() {
             transition={{ duration: 0.6 }}
             className="lg:w-1/2"
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 leading-tight">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white leading-tight">
               We provide our
               <br />
               advance level of
@@ -50,13 +50,13 @@ export default function Stats() {
                   className="text-center"
                 >
                   <div className="relative">
-                    <span className="text-5xl md:text-6xl font-display font-bold text-gray-900 mb-2 block">
+                    <span className="text-5xl md:text-6xl font-display font-bold text-white mb-2 block">
                       {stat.number}
                     </span>
                     {/* Decorative line */}
-                    <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-px bg-gray-900/20" />
+                    <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-px bg-white/20" />
                   </div>
-                  <p className="mt-6 text-gray-800 text-lg">
+                  <p className="mt-6 text-white text-lg">
                     {stat.label}
                   </p>
                 </motion.div>
