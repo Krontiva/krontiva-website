@@ -15,25 +15,49 @@ const JobsPage = () => {
       <div className="max-w-7xl mx-auto px-6 pt-32">
         {/* Hero Section */}
         <div className="mb-24">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-5xl md:text-6xl lg:text-[80px] font-display font-bold leading-tight mb-12"
-          >
-            <br />
-            Work Culture at<br />
-            Krontiva Africa
-          </motion.h1>
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            {/* Text Content */}
+            <div className="lg:w-1/2">
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-5xl md:text-6xl lg:text-[80px] font-display font-bold leading-tight mb-12"
+              >
+                <br />
+                Work Culture<br />
+                Orientation
+              </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-xl text-gray-600 max-w-2xl"
-          >
-            At Krontiva Africa, our work culture is built on the foundation of teamwork, empathy, and shared growth. We are more than just colleagues—we are a family. Respect, love, and care are at the core of our interactions, fostering a workplace where everyone feels valued and supported. 
-          </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="text-xl text-gray-600 max-w-2xl"
+              >
+                At Krontiva Africa, our work culture is built on the foundation of teamwork, empathy, and shared growth. We are more than just colleagues—we are a family. Respect, love, and care are at the core of our interactions, fostering a workplace where everyone feels valued and supported. 
+              </motion.p>
+            </div>
+
+            {/* Image */}
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="lg:w-1/2"
+            >
+              <div className="relative h-[300px] w-full rounded-2xl overflow-hidden">
+                <Image
+                  src="/team-culture.jpg"
+                  alt="Team Culture"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+              </div>
+            </motion.div>
+          </div>
         </div>
 
         {/* Culture Values Section */}
@@ -128,7 +152,7 @@ const JobsPage = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="relative w-screen left-1/2 right-1/2 -mx-[50vw] h-[600px] mb-32 group"
+          className="relative w-screen left-1/2 right-1/2 -mx-[50vw] h-[800px] mb-32 group"
         >
           <div className="absolute inset-0">
             <Image

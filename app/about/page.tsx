@@ -56,7 +56,7 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             className="lg:w-1/2"
           >
-            <div className="relative h-[600px] w-full rounded-2xl overflow-hidden">
+            <div className="relative h-[400px] w-full rounded-2xl overflow-hidden">
               <Image
                 src="/customer-transform.jpg"
                 alt="Team collaboration"
@@ -188,28 +188,20 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-20"
+            className="text-center mb-32"
           >
+            <span className="text-green-600 text-lg font-medium mb-4 block">What we offer</span>
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
               Our Products & Services
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              At Krontiva Africa, we are dedicated to providing innovative digital solutions that enhance business operations and customer experiences. Our products are designed to streamline processes, improve efficiency, and drive growth across various industries.
+              At Krontiva Africa, we are dedicated to providing innovative digital solutions that enhance business operations and customer experiences.
             </p>
           </motion.div>
 
           {/* Products Section */}
           <div className="mb-32">
-            <motion.h3
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-3xl font-display font-bold mb-12"
-            >
-              Our Products
-            </motion.h3>
-
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-12">
               {[
                 {
                   label: "Commerce",
@@ -217,7 +209,8 @@ export default function AboutPage() {
                   description: "A seamless conversational commerce platform that simplifies buying, selling, and deliveries on WhatsApp, enabling businesses to connect with customers effortlessly.",
                   bgColor: "bg-blue-50",
                   icon: MessageSquare,
-                  iconColor: "text-blue-600"
+                  iconColor: "text-blue-600",
+                  borderColor: "border-blue-100"
                 },
                 {
                   label: "Food Tech",
@@ -225,7 +218,8 @@ export default function AboutPage() {
                   description: "A food-tech solution designed to enhance restaurant management, improve customer engagement, and optimize food delivery services.",
                   bgColor: "bg-green-50",
                   icon: Utensils,
-                  iconColor: "text-green-600"
+                  iconColor: "text-green-600",
+                  borderColor: "border-green-100"
                 },
                 {
                   label: "Ticketing",
@@ -233,7 +227,8 @@ export default function AboutPage() {
                   description: "A smart ticketing platform for purchasing event and flight tickets, as well as booking and reservations, ensuring a smooth and hassle-free experience for users.",
                   bgColor: "bg-purple-50",
                   icon: Ticket,
-                  iconColor: "text-purple-600"
+                  iconColor: "text-purple-600",
+                  borderColor: "border-purple-100"
                 }
               ].map((item, index) => (
                 <motion.div
@@ -241,23 +236,29 @@ export default function AboutPage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className={`group ${item.bgColor} rounded-2xl p-8 hover:shadow-lg transition-all duration-300`}
+                  className="group"
                 >
-                  <div className="space-y-6">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm font-medium uppercase tracking-wider text-gray-600">
-                        {item.label}
-                      </span>
-                      <item.icon className={`w-6 h-6 ${item.iconColor}`} />
-                    </div>
-                    <div className="h-px bg-gray-200" />
-                    <div className="space-y-4">
-                      <h4 className="text-2xl font-display font-bold text-gray-900">
-                        {item.title}
-                      </h4>
-                      <p className="text-gray-600 leading-relaxed">
-                        {item.description}
-                      </p>
+                  <div className={`${item.bgColor} border ${item.borderColor} rounded-2xl p-8 h-full 
+                    transition-all duration-300 hover:shadow-lg hover:-translate-y-1`}
+                  >
+                    <div className="space-y-6">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium uppercase tracking-wider text-gray-600">
+                          {item.label}
+                        </span>
+                        <div className={`w-12 h-12 rounded-xl bg-white flex items-center justify-center 
+                          shadow-sm group-hover:scale-110 transition-transform duration-300`}>
+                          <item.icon className={`w-6 h-6 ${item.iconColor}`} />
+                        </div>
+                      </div>
+                      <div className="space-y-4">
+                        <h4 className="text-2xl font-display font-bold text-gray-900">
+                          {item.title}
+                        </h4>
+                        <p className="text-gray-600 leading-relaxed">
+                          {item.description}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
@@ -265,14 +266,10 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Services Section - Full Width */}
-          <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="relative w-screen left-1/2 right-1/2 -mx-[50vw] bg-gradient-to-br from-green-300 via-green-400 to-green-600 py-24"
-          >
-            <div className="max-w-7xl mx-auto px-6">
+          {/* Services Section */}
+          <div className="relative rounded-3xl bg-gradient-to-br from-green-500 to-green-600 overflow-hidden">
+            <div className="absolute inset-0 bg-[linear-gradient(40deg,transparent_25%,rgba(255,255,255,0.1)_50%,transparent_75%)] opacity-20" />
+            <div className="relative px-8 py-20 md:p-20">
               <div className="flex flex-col lg:flex-row gap-16 items-start">
                 {/* Left Column - Header */}
                 <motion.div 
@@ -284,59 +281,65 @@ export default function AboutPage() {
                   <h3 className="text-4xl md:text-5xl font-display font-bold mb-6 text-white">
                     Our Services
                   </h3>
-                  <p className="text-xl text-white/80 leading-relaxed">
+                  <p className="text-xl text-white/90 leading-relaxed">
                     We provide comprehensive solutions tailored to meet your business needs, ensuring seamless experiences for both organizers and users.
                   </p>
                 </motion.div>
 
                 {/* Right Column - Services Cards */}
-                <div className="lg:w-2/3 space-y-8">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/20 transition-colors group"
-                  >
-                    <div className="flex items-start gap-6">
-
-                      <div>
-                        <h4 className="text-2xl font-display font-bold mb-4 text-white">
-                          Attendee Registration
-                        </h4>
-                        <p className="text-lg leading-relaxed text-white/80">
-                          Offering seamless event registration and check-in solutions for organizers. Our platform ensures smooth processing and management of attendee data.
-                        </p>
+                <div className="lg:w-2/3 space-y-6">
+                  {[
+                    {
+                      title: "Attendee Registration",
+                      description: "Offering seamless event registration and check-in solutions for organizers. Our platform ensures smooth processing and management of attendee data.",
+                      isComingSoon: false,
+                      icon: UserCheck
+                    },
+                    {
+                      title: "Ticketing & Reservations",
+                      description: "Expanding into ticket booking and reservation services to make event and travel planning more convenient. A comprehensive solution for all your booking needs.",
+                      isComingSoon: true,
+                      icon: Ticket
+                    }
+                  ].map((service, index) => (
+                    <motion.div
+                      key={service.title}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                      className="group"
+                    >
+                      <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 
+                        transition-all duration-300 hover:bg-white/20">
+                        <div className="flex items-start gap-6">
+                          <div className="w-12 h-12 rounded-xl bg-white/20 flex-shrink-0 flex items-center justify-center 
+                            group-hover:scale-110 transition-transform duration-300">
+                            <service.icon className="w-6 h-6 text-white" />
+                          </div>
+                          <div className="flex-1">
+                            {service.isComingSoon && (
+                              <div className="float-right ml-4">
+                                <span className="inline-block px-4 py-2 bg-white/90 text-green-600 
+                                  text-sm font-medium rounded-full shadow-sm">
+                                  Coming Soon
+                                </span>
+                              </div>
+                            )}
+                            <h4 className="text-2xl font-display font-bold mb-4 text-white">
+                              {service.title}
+                            </h4>
+                            <p className="text-lg leading-relaxed text-white/90">
+                              {service.description}
+                            </p>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.1 }}
-                    className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/20 transition-colors group relative"
-                  >
-                    <div className="absolute -top-3 right-4">
-                      <span className="inline-block px-4 py-2 bg-white text-green-600 text-sm font-medium rounded-full">
-                        Coming Soon
-                      </span>
-                    </div>
-                    <div className="flex items-start gap-6">
-
-                      <div>
-                        <h4 className="text-2xl font-display font-bold mb-4 text-white">
-                          Ticketing & Reservations
-                        </h4>
-                        <p className="text-lg leading-relaxed text-white/80">
-                          Expanding into ticket booking and reservation services to make event and travel planning more convenient. A comprehensive solution for all your booking needs.
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
+                    </motion.div>
+                  ))}
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Closing Statement */}
           <motion.p

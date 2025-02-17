@@ -69,12 +69,12 @@ export default function Hero() {
                 We are an
               </motion.span>
             </div>
-            <div className="overflow-hidden">
+            <div className="overflow-hidden py-1">
               <motion.span variants={item} className="block">
                 industry leading
               </motion.span>
             </div>
-            <div className="overflow-hidden">
+            <div className="overflow-hidden py-2">
               <motion.span variants={item} className="block">
                 transformation company
               </motion.span>
