@@ -13,7 +13,7 @@ const services = [
       highlight: "Customer",
       rest: "Transformation"
     },
-    description: "Revolutionize your customer experience with data-driven insights and innovative engagement strategies.",
+    description: "At Krontiva Africa, we empower businesses through innovative technologies and data-driven strategies, we help organizations enhance engagement, build loyalty, and drive sustainable growth—bridging the gap between businesses and their audiences in Africa and beyond.",
     href: "/services/customer-transformation"
   },
   {
@@ -22,7 +22,7 @@ const services = [
       highlight: "Financial",
       rest: "Transformation"
     },
-    description: "Optimize your financial operations and unlock new opportunities for growth and efficiency.",
+    description: "At Krontiva Africa, we don't just adapt to change—we drive it. Our mission is to help businesses streamline and optimize their operations, making them not only more efficient but more resilient in an ever-evolving market.",
     href: "/services/financial-transformation"
   },
   {
@@ -31,7 +31,7 @@ const services = [
       highlight: "Operational",
       rest: "Transformation"
     },
-    description: "Streamline your business processes and enhance operational effectiveness.",
+    description: "Our approach to operational transformation is built on innovation, cutting-edge technology, and a deep understanding of the African business landscape.",
     href: "/services/operational-transformation"
   },
   {
@@ -40,7 +40,7 @@ const services = [
       highlight: "Workforce",
       rest: "Transformation"
     },
-    description: "Empower your team with modern tools and strategies for enhanced productivity.",
+    description: "Our Workforce Transformation services are designed to help businesses build agile, high-performing teams by leveraging digital tools, data-driven insights, and innovative workforce strategies.",
     href: "/services/workforce-transformation"
   }
 ];
