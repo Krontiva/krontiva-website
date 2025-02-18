@@ -22,7 +22,7 @@ const Hero = () => {
       <div className="relative max-w-7xl mx-auto px-6 py-20">
         <div className="max-w-2xl">
           <h1 className="text-d2 font-display font-bold text-white mb-6">
-            We're an industry leading <span className="text-green-500">transformation</span> company
+            We&apos;re an industry leading <span className="text-green-500">transformation</span> company
           </h1>
           <p className="text-b1 font-display text-gray-300 mb-8">
             Drive your business confidently into the future.

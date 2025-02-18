@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Menu02Icon from '../ui/icons/menu-02-stroke-rounded';
 import { Sheet, SheetContent, SheetTitle } from '../ui/sheet';

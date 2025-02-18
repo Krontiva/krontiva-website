@@ -25,21 +25,6 @@ interface Article {
   };
 }
 
-const createSlug = (title: string, id: string) => {
-  // Convert title to slug format
-  const slug = title
-    .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
-    .replace(/\s+/g, '-')         // Replace spaces with hyphens
-    .replace(/-+/g, '-')          // Remove consecutive hyphens
-    .trim();                      // Trim hyphens from start and end
-
-  // Get first 8 characters of the ID
-  const shortId = id.split('-')[0];
-
-  return `${slug}-${shortId}`;
-};
-
 export default function LatestNews() {
   const [news, setNews] = useState<Article[]>([]);
   const [isLoading, setIsLoading] = useState(true);
