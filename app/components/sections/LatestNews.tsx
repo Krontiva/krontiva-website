@@ -1,38 +1,80 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
-const news = [
-  {
-    title: "Latest Audio Gear for Supreme Sound Quality",
-    date: "February 5, 2023",
-    category: "NEWS",
-    author: "Mary Arthur",
-    image: "/customer-transform.jpg",
-    href: "/news/latest-audio-gear"
-  },
-  {
-    title: "AI: Changing Retail Landscape in 2024",
-    date: "July 31, 2023",
-    category: "NEWS",
-    author: "Abigail Bright-Davies",
-    image: "/hero-bg.jpg",
-    href: "/news/ai-retail-landscape"
-  },
-  {
-    title: "Tech Transforming Education in 2024: Revolutionising Learning",
-    date: "July 18, 2023",
-    category: "NEWS",
-    author: "Samuel Quartey",
-    image: "/herobg.jpg",
-    href: "/news/tech-education"
-  }
-];
+interface Article {
+  id: string;
+  title: string;
+  slug: string;
+  date: string;
+  category: string;
+  excerpt: string;
+  authors_id: string;
+  authors?: Array<{
+    id: string;
+    name: string;
+    email: string;
+    created_at: number;
+  }>;
+  image: {
+    url: string;
+  };
+}
+
+const createSlug = (title: string, id: string) => {
+  // Convert title to slug format
+  const slug = title
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
+    .replace(/\s+/g, '-')         // Replace spaces with hyphens
+    .replace(/-+/g, '-')          // Remove consecutive hyphens
+    .trim();                      // Trim hyphens from start and end
+
+  // Get first 8 characters of the ID
+  const shortId = id.split('-')[0];
+
+  return `${slug}-${shortId}`;
+};
 
 export default function LatestNews() {
+  const [news, setNews] = useState<Article[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const response = await fetch('https://api-server.krontiva.africa/api:eUI59reW/krontiva_articles');
+        if (response.ok) {
+          const data = await response.json();
+          console.log('News articles:', data.map((a: Article) => ({ 
+            id: a.id, 
+            slug: a.slug,
+            title: a.title 
+          })));
+          
+          const sortedNews = data.sort((a: Article, b: Article) => 
+            new Date(b.date).getTime() - new Date(a.date).getTime()
+          ).slice(0, 3);
+          setNews(sortedNews);
+        }
+      } catch (error) {
+        console.error('Failed to fetch news:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchNews();
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>; // Add a proper loading state UI
+  }
+
   return (
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
@@ -82,26 +124,27 @@ export default function LatestNews() {
           {/* Right Side - News Cards */}
           <div className="lg:w-2/3">
             <div className="space-y-12">
-              {news.map((item, index) => (
+              {news.map((item) => (
                 <motion.article
-                  key={index}
+                  key={item.id}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.5 }}
                   className="group border-b border-gray-200 pb-12 last:border-0"
                 >
-                  <Link href={item.href} className="flex gap-8">
-                    {/* Image */}
+                  <Link 
+                    href={`/news/${item.id}`}
+                    className="flex gap-8"
+                  >
                     <div className="relative w-48 h-32 flex-shrink-0 overflow-hidden">
                       <Image
-                        src={item.image}
+                        src={item.image.url}
                         alt={item.title}
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
-
-                    {/* Content */}
                     <div className="flex flex-col">
                       <div className="flex items-center gap-2 mb-3">
                         <span className="text-sm text-green-600 font-medium uppercase tracking-wider">
@@ -111,9 +154,12 @@ export default function LatestNews() {
                       <h3 className="text-2xl font-display font-bold text-gray-900 mb-3 group-hover:text-green-500 transition-colors">
                         {item.title}
                       </h3>
+                      <p className="text-gray-600 mb-3 line-clamp-2">
+                        {item.excerpt}
+                      </p>
                       <div className="flex items-center gap-4 text-sm text-gray-500">
-                        <span>by {item.author}</span>
-                        <span>{item.date}</span>
+                        <span>by {item.authors?.[0]?.name || 'Unknown Author'}</span>
+                        <span>{new Date(item.date).toLocaleDateString()}</span>
                       </div>
                     </div>
                   </Link>

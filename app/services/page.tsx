@@ -69,15 +69,15 @@ const services = [
 
 const heroImages = [
   {
-    src: "/hero-bg.jpg",
+    src: "/herobg.jpg",
     alt: "Business Transformation"
   },
   {
-    src: "/herobg.jpg",
+    src: "/hero-bg.jpg",
     alt: "Digital Innovation"
   },
   {
-    src: "/ceo-meeting.jpg",
+    src: "/transform-butterfly.webp",
     alt: "Technology Solutions"
   }
 ];
