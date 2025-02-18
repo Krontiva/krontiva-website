@@ -75,7 +75,7 @@ const Innovation = () => {
 
             {/* Content */}
             <p className="text-b2 text-gray-600 font-display">
-            To create a digitally connected Africa where financial and retail services are accessible, affordable, and secure, while empowering the continent's business ecosystem with seamless connectivity and transformative technologies for innovation, inclusivity, and sustainable growth.
+            To create a digitally connected Africa where financial and retail services are accessible, affordable, and secure, while empowering the continent&apos;s business ecosystem with seamless connectivity and transformative technologies for innovation, inclusivity, and sustainable growth.
             </p>
           </motion.div>
 
@@ -104,7 +104,7 @@ const Innovation = () => {
 
             {/* Content */}
             <p className="text-b2 text-gray-600 font-display">
-              Our mission is to bridge the gaps within Africa's business landscape by providing turn key technology services.
+              Our mission is to bridge the gaps within Africa&apos;s business landscape by providing turn key technology services.
             </p>
           </motion.div>
 
@@ -196,7 +196,7 @@ const Innovation = () => {
               <div>
                 <h4 className="text-h4 font-display font-bold text-gray-900 mb-2">Innovation</h4>
                 <p className="text-b2 text-gray-600 font-display">
-                  Pioneering solutions for tomorrow's challenges
+                  Pioneering solutions for tomorrow&apos;s challenges
                 </p>
               </div>
             </div>

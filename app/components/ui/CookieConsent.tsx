@@ -46,7 +46,7 @@ export const CookieConsent = () => {
                   </h3>
                   <p className="text-gray-300 font-display">
                     We use cookies to enhance your browsing experience, serve personalized content, 
-                    and analyze our traffic. By clicking "Accept All", you consent to our use of cookies. 
+                    and analyze our traffic. By clicking &quot;Accept All&quot;, you consent to our use of cookies. 
                     Read our Cookie Policy to learn more.
                   </p>
                 </div>

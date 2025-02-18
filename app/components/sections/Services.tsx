@@ -91,7 +91,7 @@ export default function Services() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-16"
             >
-              Services we're<br />offering
+              Services we&apos;re<br />offering
             </motion.h2>
 
             {/* Service Cards */}
