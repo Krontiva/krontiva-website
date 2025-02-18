@@ -17,6 +17,11 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "Krontiva Africa",
   description: "We are an industry-leading transformation company",
+  icons: {
+    icon: '/logo-favicon.png',
+    shortcut: '/logo-favicon.png',
+    apple: '/logo-favicon.png',
+  },
 };
 
 export default function RootLayout({
@@ -26,6 +31,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/logo-favicon.png" />
+        <link rel="apple-touch-icon" href="/logo-favicon.png" />
+      </head>
       <body className={`${inter.variable} ${jakarta.variable}`}>
         {children}
         <CookieConsent />
