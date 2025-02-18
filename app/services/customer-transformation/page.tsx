@@ -15,7 +15,7 @@ const features = [
   {
     icon: <ChartBar className="w-6 h-6 stroke-green-500" />,
     title: "A pulse on the present and an eye on the future",
-    description: "Krontiva Africa maintains a pulse on the present and an eye on the future, enabling businesses to stay agile in an ever-evolving marketplace. Our customer transformation services are grounded in understanding current customer behaviors and needs while anticipating future trends. By blending real-time insights with forward-thinking strategies, we empower organizations to adapt, innovate, and create customer experiences that not only meet today's expectations but also set the standard for tomorrow."
+    description: "Krontiva Africa maintains a pulse on the present and an eye on the future, enabling businesses to stay agile in an ever-evolving marketplace. Our customer transformation services are grounded in understanding current customer behaviors and needs while anticipating future trends. By blending real-time insights with forward-thinking strategies, we empower organizations to adapt, innovate, and create customer experiences that not only meet today&apos;s expectations but also set the standard for tomorrow."
   },
   {
     icon: <Target className="w-6 h-6 stroke-green-500" />,
@@ -85,7 +85,7 @@ export default function CustomerTransformationPage() {
               Customer-Centric Transformation: The Heart of Our Mission
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed mb-12">
-              Customer transformation is at the heart of our mission to empower businesses with innovative solutions. We recognize that today's customers are more informed, connected, and demanding than ever. To thrive in this dynamic environment, businesses must reimagine their customer experiences, putting their needs and expectations at the center of every interaction. Our customer transformation services are designed to help organizations adapt to this shift by delivering exceptional, seamless, and personalized experiences that resonate with their target audiences.
+              Customer transformation is at the heart of our mission to empower businesses with innovative solutions. We recognize that today&apos;s customers are more informed, connected, and demanding than ever. To thrive in this dynamic environment, businesses must reimagine their customer experiences, putting their needs and expectations at the center of every interaction. Our customer transformation services are designed to help organizations adapt to this shift by delivering exceptional, seamless, and personalized experiences that resonate with their target audiences.
             </p>
           </div>
         </div>

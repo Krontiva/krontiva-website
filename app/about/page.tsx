@@ -103,7 +103,7 @@ export default function AboutPage() {
                 <span className="text-xl font-display text-white uppercase tracking-wider">OUR APPROACH</span>
               </div>
               <p className="text-xl leading-relaxed text-gray-300 max-w-3xl">
-                What sets us apart is our commitment to excellence, collaboration, and continuous innovation. At Krontiva, we embrace challenges as opportunities and work closely with our clients to develop solutions tailored to their unique needs. Our customer-centric approach ensures that every business we support is equipped to adapt, scale, and succeed in today's dynamic digital landscape.
+                What sets us apart is our commitment to excellence, collaboration, and continuous innovation. At Krontiva, we embrace challenges as opportunities and work closely with our clients to develop solutions tailored to their unique needs. Our customer-centric approach ensures that every business we support is equipped to adapt, scale, and succeed in today&apos;s dynamic digital landscape.
               </p>
             </div>
           </div>
@@ -125,7 +125,7 @@ export default function AboutPage() {
               </div>
               <div className="max-w-xl">
                 <p className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-8">
-                  Driven by a strong work ethic and a belief in creating meaningful change, we continue to push boundaries and redefine what's possible in the digital transformation space.
+                  Driven by a strong work ethic and a belief in creating meaningful change, we continue to push boundaries and redefine what&apos;s possible in the digital transformation space.
                 </p>
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-[1.1]">
                   Welcome to Krontiva Africa—<br />
