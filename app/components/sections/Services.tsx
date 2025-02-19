@@ -1,166 +1,105 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import { ArrowRight } from "lucide-react";
+import Link from 'next/link';
+import Image from 'next/image';
+import { useScroll } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 
 const services = [
   {
-    number: "01",
-    title: {
-      highlight: "Customer",
-      rest: "Transformation"
-    },
-    description: "At Krontiva Africa, we empower businesses through innovative technologies and data-driven strategies, we help organizations enhance engagement, build loyalty, and drive sustainable growth—bridging the gap between businesses and their audiences in Africa and beyond.",
+    title: "Customer Transformation",
+    description: "Enhance your customer experience and engagement through digital solutions.",
+    image: "/customer-transform.jpg",
     href: "/services/customer-transformation"
   },
   {
-    number: "02",
-    title: {
-      highlight: "Financial",
-      rest: "Transformation"
-    },
-    description: "At Krontiva Africa, we don't just adapt to change—we drive it. Our mission is to help businesses streamline and optimize their operations, making them not only more efficient but more resilient in an ever-evolving market.",
-    href: "/services/financial-transformation"
-  },
-  {
-    number: "03",
-    title: {
-      highlight: "Operational",
-      rest: "Transformation"
-    },
-    description: "Our approach to operational transformation is built on innovation, cutting-edge technology, and a deep understanding of the African business landscape.",
+    title: "Operational Transformation",
+    description: "Streamline and optimize your business operations for maximum efficiency.",
+    image: "/operational-transform.jpg",
     href: "/services/operational-transformation"
   },
   {
-    number: "04",
-    title: {
-      highlight: "Workforce",
-      rest: "Transformation"
-    },
-    description: "Our Workforce Transformation services are designed to help businesses build agile, high-performing teams by leveraging digital tools, data-driven insights, and innovative workforce strategies.",
+    title: "Financial Transformation",
+    description: "Modernize your financial processes and payment systems.",
+    image: "/financial-transform.jpg",
+    href: "/services/financial-transformation"
+  },
+  {
+    title: "Workforce Transformation",
+    description: "Build and empower high-performing teams for the digital age.",
+    image: "/workforce-transform.jpg",
     href: "/services/workforce-transformation"
   }
 ];
 
 export default function Services() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
+  // Remove unused variables
+  useScroll();
 
   return (
-    <section ref={containerRef} className="relative min-h-screen bg-white">
-      <div className="flex flex-col lg:flex-row">
-        {/* Left Side - Sticky Image */}
-        <div className="lg:w-1/2 lg:sticky lg:top-0 lg:h-screen">
-          <div className="relative h-full">
-            <Image
-              src="/customer-transform.jpg"
-              alt="Business meeting"
-              fill
-              className="object-cover"
-              priority
-            />
-            {/* Optional overlay */}
-            <div className="absolute inset-0 bg-black/10" />
-          </div>
-        </div>
+    <section className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
+            Our Services
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            We&apos;re here to help you navigate the complexities of digital transformation and build a stronger, more resilient business.
+          </p>
+        </motion.div>
 
-        {/* Right Side - Scrolling Content */}
-        <div className="lg:w-1/2 px-6 lg:px-20 py-24 lg:pl-32">
-          <div className="max-w-xl">
-            {/* Header with Badge */}
+        <div className="grid md:grid-cols-2 gap-8">
+          {services.map((service, index) => (
             <motion.div
+              key={service.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="mb-4"
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group"
             >
-              <span className="inline-flex items-center px-4 py-2 rounded-full bg-green-50 text-green-600 text-sm font-medium">
-                what can we offer
-              </span>
-            </motion.div>
-
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-16"
-            >
-              Services we&apos;re<br />offering
-            </motion.h2>
-
-            {/* Service Cards */}
-            <div className="space-y-16 md:space-y-24">
-              {services.map((service, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group cursor-pointer"
-                >
-                  <div className="flex items-start gap-12">
-                    {/* Large Number */}
-                    <div className="text-6xl md:text-7xl font-display font-bold text-gray-200">
-                      {service.number}
-                    </div>
-                    
-                    {/* Service Content */}
-                    <div>
-                      <motion.h3 
-                        className="text-4xl md:text-5xl font-display font-bold mb-4 leading-tight"
-                        whileHover="hover"
-                      >
-                        <motion.span 
-                          className="text-green-500 block"
-                          variants={{
-                            hover: {
-                              x: 20,
-                              transition: { duration: 0.3, ease: "easeInOut" }
-                            }
-                          }}
-                        >
-                          {service.title.highlight}
-                        </motion.span>
-                        <motion.span 
-                          className="text-gray-900 block"
-                          variants={{
-                            hover: {
-                              x: 20,
-                              transition: { duration: 0.3, delay: 0.1, ease: "easeInOut" }
-                            }
-                          }}
-                        >
-                          {service.title.rest}
-                        </motion.span>
-                      </motion.h3>
-                      <p className="text-gray-600 text-lg mb-4">
-                        {service.description}
-                      </p>
-                      <Link 
-                        href={service.href}
-                        className="inline-flex items-center text-green-500 font-semibold hover:text-green-600 transition-colors group/link"
-                      >
-                        <span className="mr-2">Learn more</span>
-                        <ArrowRight className="w-5 h-5 transition-transform group-hover/link:translate-x-1" />
-                      </Link>
-                    </div>
+              <Link href={service.href}>
+                <div className="relative h-64 mb-6 overflow-hidden rounded-xl">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/60" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="text-2xl font-display font-bold text-white mb-2">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-200">
+                      {service.description}
+                    </p>
                   </div>
-
-                  {/* Divider */}
-                  {index < services.length - 1 && (
-                    <div className="mt-16 md:mt-24 h-px bg-gray-200" />
-                  )}
-                </motion.div>
-              ))}
-            </div>
-          </div>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="text-center mt-12"
+        >
+          <Link
+            href="/services"
+            className="inline-flex items-center text-green-500 font-semibold hover:text-green-600 transition-colors group"
+          >
+            View all services
+            <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );
