@@ -52,7 +52,7 @@ export default function Services() {
     <section ref={containerRef} className="relative min-h-screen bg-white">
       <div className="flex flex-col lg:flex-row">
         {/* Left Side - Sticky Image */}
-        <div className="lg:w-1/2 lg:sticky lg:top-0 lg:h-screen">
+        <div className="lg:w-1/2 h-[300px] lg:h-screen lg:sticky lg:top-0">
           <div className="relative h-full">
             <Image
               src="/customer-transform.jpg"
@@ -67,8 +67,8 @@ export default function Services() {
         </div>
 
         {/* Right Side - Scrolling Content */}
-        <div className="lg:w-1/2 px-6 lg:px-20 py-24 lg:pl-32">
-          <div className="max-w-xl">
+        <div className="lg:w-1/2 px-4 sm:px-6 lg:px-20 py-12 lg:py-24 lg:pl-32">
+          <div className="max-w-xl mx-auto lg:mx-0">
             {/* Header with Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -85,31 +85,31 @@ export default function Services() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-16"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-8 lg:mb-16"
             >
               Services we&apos;re<br />offering
             </motion.h2>
 
             {/* Service Cards */}
-            <div className="space-y-16 md:space-y-24">
+            <div className="space-y-12 sm:space-y-16 md:space-y-20 lg:space-y-24">
               {services.map((service, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group cursor-pointer"
+                  className="group"
                 >
-                  <div className="flex items-start gap-12">
+                  <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-8 lg:gap-12">
                     {/* Large Number */}
-                    <div className="text-6xl md:text-7xl font-display font-bold text-gray-200">
+                    <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-gray-200">
                       {service.number}
                     </div>
                     
                     {/* Service Content */}
-                    <div>
+                    <div className="flex-1">
                       <motion.h3 
-                        className="text-4xl md:text-5xl font-display font-bold mb-4 leading-tight"
+                        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4 leading-tight"
                         whileHover="hover"
                       >
                         <motion.span 
@@ -135,7 +135,7 @@ export default function Services() {
                           {service.title.rest}
                         </motion.span>
                       </motion.h3>
-                      <p className="text-gray-600 text-lg mb-4">
+                      <p className="text-base sm:text-lg text-gray-600 mb-4">
                         {service.description}
                       </p>
                       <Link 
@@ -150,7 +150,7 @@ export default function Services() {
 
                   {/* Divider */}
                   {index < services.length - 1 && (
-                    <div className="mt-16 md:mt-24 h-px bg-gray-200" />
+                    <div className="mt-12 sm:mt-16 md:mt-20 lg:mt-24 h-px bg-gray-200" />
                   )}
                 </motion.div>
               ))}
