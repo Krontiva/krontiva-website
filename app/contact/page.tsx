@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Header from "../components/layout/Header";
-import { Mail, Phone, MapPin, ArrowRight, X } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 import ContactForm from "../components/forms/ContactForm";
 import FAQ from "../components/sections/FAQ";
 
@@ -56,7 +56,7 @@ export default function ContactPage() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-6xl md:text-7xl lg:text-[80px] font-display font-bold text-gray-900 mb-8"
             >
-              Let's start a<br />
+              Let&apos;s start a<br />
               <span className="text-green-500">conversation</span>
             </motion.h1>
             <motion.p
