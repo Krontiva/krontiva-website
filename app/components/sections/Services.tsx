@@ -85,7 +85,7 @@ export default function Services() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-8 lg:mb-16"
+              className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-8 lg:mb-16"
             >
               Services we&apos;re<br />offering
             </motion.h2>
@@ -102,14 +102,14 @@ export default function Services() {
                 >
                   <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-8 lg:gap-12">
                     {/* Large Number */}
-                    <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-gray-200">
+                    <div className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-gray-200">
                       {service.number}
                     </div>
                     
                     {/* Service Content */}
                     <div className="flex-1">
                       <motion.h3 
-                        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4 leading-tight"
+                        className="text-4xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4 leading-tight"
                         whileHover="hover"
                       >
                         <motion.span 
