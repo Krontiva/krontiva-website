@@ -61,7 +61,7 @@ export default function WorkforceTransformationPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-xl text-gray-600 max-w-3xl"
             >
-              At Krontiva Africa, we recognize that a company's greatest asset is its people. Our Workforce Transformation services are designed to help businesses build agile, high-performing teams by leveraging digital tools, data-driven insights, and innovative workforce strategies. As businesses evolve, so do the expectations of employees. Organizations must adopt new ways of working, enhance employee engagement, and create environments that foster productivity and growth.
+              At Krontiva Africa, we recognize that a company&apos;s greatest asset is its people. Our Workforce Transformation services are designed to help businesses build agile, high-performing teams by leveraging digital tools, data-driven insights, and innovative workforce strategies. As businesses evolve, so do the expectations of employees. Organizations must adopt new ways of working, enhance employee engagement, and create environments that foster productivity and growth.
             </motion.p>
           </div>
         </div>

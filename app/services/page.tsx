@@ -125,7 +125,7 @@ export default function ServicesPage() {
               className="text-xl text-gray-600 max-w-2xl"
             >
               We provide comprehensive transformation solutions that help organizations 
-              adapt, innovate, and thrive in today's rapidly evolving business landscape.
+              adapt, innovate, and thrive in today&apos;s rapidly evolving business landscape.
             </motion.p>
           </div>
         </div>
@@ -240,7 +240,7 @@ export default function ServicesPage() {
             Ready to Transform Your Business?
           </h2>
           <p className="text-xl text-white/90 mb-12 max-w-2xl mx-auto">
-            Let's discuss how our transformation services can help your organization thrive in the digital age.
+            Let&apos;s discuss how our transformation services can help your organization thrive in the digital age.
           </p>
           <Link
             href="/contact"

@@ -20,7 +20,7 @@ const features = [
   {
     icon: <Target className="w-6 h-6 stroke-green-500" />,
     title: "Outcome obsessed",
-    description: "Krontiva Africa is outcome-obsessed, ensuring every solution we deliver drives measurable success for our clients. Our customer transformation services are designed with clear objectives in mind, focusing on tangible results such as enhanced customer engagement, improved loyalty, and sustained growth. We collaborate closely with businesses to set ambitious yet achievable goals, leveraging innovative tools and strategies to exceed expectations. For us, success isn't just about the process—it's about delivering outcomes that make a real difference."
+    description: "Krontiva Africa is outcome-obsessed, ensuring every solution we deliver drives measurable success for our clients. Our customer transformation services are designed with clear objectives in mind, focusing on tangible results such as enhanced customer engagement, improved loyalty, and sustained growth. We collaborate closely with businesses to set ambitious yet achievable goals, leveraging innovative tools and strategies to exceed expectations. For us, success isn&apos;t just about the process—it&apos;s about delivering outcomes that make a real difference."
   },
   {
     icon: <Heart className="w-6 h-6 stroke-green-500" />,
@@ -127,7 +127,7 @@ export default function CustomerTransformationPage() {
                 Tailored Strategies for Unique Challenges
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed">
-                Our approach focuses on understanding the unique challenges and opportunities faced by each client. We leverage advanced technologies, data-driven insights, and customer-centric strategies to design solutions that enhance engagement, build loyalty, and drive long-term success. Whether it's streamlining customer service processes, adopting cutting-edge communication tools, or creating immersive digital experiences, we work closely with businesses to ensure that their customers feel valued and understood at every touchpoint.
+                Our approach focuses on understanding the unique challenges and opportunities faced by each client. We leverage advanced technologies, data-driven insights, and customer-centric strategies to design solutions that enhance engagement, build loyalty, and drive long-term success. Whether it&apos;s streamlining customer service processes, adopting cutting-edge communication tools, or creating immersive digital experiences, we work closely with businesses to ensure that their customers feel valued and understood at every touchpoint.
               </p>
             </div>
 

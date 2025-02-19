@@ -61,7 +61,7 @@ export default function OperationalTransformationPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-xl text-gray-600 max-w-3xl"
             >
-              At Krontiva Africa, we don't just adapt to change—we drive it. Our mission is to help businesses streamline and optimize their operations, making them not only more efficient but more resilient in an ever-evolving market. Our approach to operational transformation is built on innovation, cutting-edge technology, and a deep understanding of the African business landscape.
+              At Krontiva Africa, we don&apos;t just adapt to change—we drive it. Our mission is to help businesses streamline and optimize their operations, making them not only more efficient but more resilient in an ever-evolving market. Our approach to operational transformation is built on innovation, cutting-edge technology, and a deep understanding of the African business landscape.
             </motion.p>
           </div>
         </div>
@@ -85,7 +85,7 @@ export default function OperationalTransformationPage() {
               Future-Ready Operations
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed mb-12">
-              At Krontiva Africa, we help businesses reimagine their operations by leveraging cutting-edge technology to drive efficiency, resilience, and long-term value. In today's fast-evolving business landscape, operations teams face challenges that go beyond traditional efficiency goals. Workforce shortages, supply chain disruptions, and the increasing demand for sustainable and socially responsible practices require a new approach to operational strategy.
+              At Krontiva Africa, we help businesses reimagine their operations by leveraging cutting-edge technology to drive efficiency, resilience, and long-term value. In today&apos;s fast-evolving business landscape, operations teams face challenges that go beyond traditional efficiency goals. Workforce shortages, supply chain disruptions, and the increasing demand for sustainable and socially responsible practices require a new approach to operational strategy.
             </p>
           </div>
         </div>
@@ -127,7 +127,7 @@ export default function OperationalTransformationPage() {
                 Enhancing Internal Processes
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed">
-                Whether it's through enhancing internal processes, improving supply chain management, or implementing smart business systems, we are dedicated to empowering businesses to unlock their full potential.
+                Whether it&apos;s through enhancing internal processes, improving supply chain management, or implementing smart business systems, we are dedicated to empowering businesses to unlock their full potential.
               </p>
             </div>
 
@@ -136,7 +136,7 @@ export default function OperationalTransformationPage() {
                 Partnership for Growth
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed">
-                By partnering with Krontiva Africa, businesses can redefine their operational framework, stay ahead of disruptions, and unlock new growth opportunities. Let's transform your operations for a more agile and sustainable future.
+                By partnering with Krontiva Africa, businesses can redefine their operational framework, stay ahead of disruptions, and unlock new growth opportunities. Let&apos;s transform your operations for a more agile and sustainable future.
               </p>
             </div>
           </div>
