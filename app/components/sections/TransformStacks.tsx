@@ -19,6 +19,24 @@ export default function TransformStacks() {
   const imageScale = useTransform(scrollYProgress, [0, 1], [1.2, 1])
   const imageOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.3, 1, 0.3])
 
+  // Create all transforms upfront
+  const translateY0 = useTransform(scrollYProgress, [0, 0.25], [100, 0])
+  const translateY1 = useTransform(scrollYProgress, [0.25, 0.5], [100, 0])
+  const translateY2 = useTransform(scrollYProgress, [0.5, 0.75], [100, 0])
+  const translateY3 = useTransform(scrollYProgress, [0.75, 1], [100, 0])
+
+  const opacity0 = useTransform(scrollYProgress, [0, 0.25], [0, 1])
+  const opacity1 = useTransform(scrollYProgress, [0.25, 0.5], [0, 1])
+  const opacity2 = useTransform(scrollYProgress, [0.5, 0.75], [0, 1])
+  const opacity3 = useTransform(scrollYProgress, [0.75, 1], [0, 1])
+
+  const cardTransforms = [
+    { translateY: translateY0, opacity: opacity0 },
+    { translateY: translateY1, opacity: opacity1 },
+    { translateY: translateY2, opacity: opacity2 },
+    { translateY: translateY3, opacity: opacity3 },
+  ]
+
   const cards = [
     {
       title: "Customer Transform",
@@ -37,20 +55,6 @@ export default function TransformStacks() {
       Component: WorkforceTransform,
     },
   ]
-
-  // Pre-create all transforms outside of the mapping function
-  const cardTransforms = [0, 1, 2, 3].map(index => ({
-    translateY: useTransform(
-      scrollYProgress,
-      [index * 0.25, (index + 1) * 0.25],
-      [100, 0],
-    ),
-    opacity: useTransform(
-      scrollYProgress,
-      [index * 0.25, (index + 1) * 0.25],
-      [0, 1],
-    ),
-  }))
 
   return (
     <section ref={containerRef} className="relative py-24 bg-white overflow-hidden">
