@@ -232,7 +232,7 @@ const JobsPage = () => {
                 </h3>
               </div>
               <p className="text-lg text-gray-600 leading-relaxed">
-                At Krontiva Africa, we don't just build businesses—we build lasting relationships, shared experiences, and a culture that inspires growth and impact.
+                At Krontiva Africa, we don&apos;t just build businesses—we build lasting relationships, shared experiences, and a culture that inspires growth and impact.
               </p>
             </div>
           </div>
@@ -365,11 +365,11 @@ const JobsPage = () => {
                   <p className="text-gray-600">Product Team</p>
                 </div>
                 <div className="relative">
-                  <div className="absolute -top-6 -left-8 text-6xl text-green-200">"</div>
+                  <div className="absolute -top-6 -left-8 text-6xl text-green-200">&quot;</div>
                   <p className="text-xl text-gray-600 leading-relaxed relative z-10">
                     Working as an NSP at Krontiva Africa has been a fulfilling experience. I was warmly welcomed and supported by my team, especially the product team. The fast-paced learning challenged me to grow both professionally and personally. Krontiva truly feels like a family, built on support, teamwork, and care.
                   </p>
-                  <div className="absolute -bottom-4 -right-8 text-6xl text-green-200 rotate-180">"</div>
+                  <div className="absolute -bottom-4 -right-8 text-6xl text-green-200 rotate-180">&quot;</div>
                 </div>
               </div>
             </div>

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Header from "../components/layout/Header";
-import { Sheet, SheetContent, SheetTrigger } from "../components/ui/sheet";
+import { Sheet } from "../components/ui/sheet";
 import Image from "next/image";
 
 const PrivacyPage = () => {
@@ -244,6 +244,10 @@ const PrivacyPage = () => {
                 By using our website and services, you acknowledge that you have read, understood, and agree to this Privacy Policy.
               </p>
             </div>
+
+            <p className="text-gray-600 mb-4">
+              We&apos;ll never share your information with third parties without your consent.
+            </p>
           </div>
         </div>
       </Sheet>
