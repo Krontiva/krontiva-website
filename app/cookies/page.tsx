@@ -5,7 +5,7 @@ import Header from "../components/layout/Header";
 import CookieConsent from "../components/ui/CookieConsent";
 
 export default function CookiesPage() {
-  const [showBanner, setShowBanner] = useState(true);
+  const [showBanner] = useState(true);
 
   return (
     <main className="bg-white">
