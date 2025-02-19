@@ -9,15 +9,15 @@ import { ArrowRight } from "lucide-react";
 
 const projects = [
   {
-    title: "Digital Banking Transformation",
-    category: "Financial Services",
-    description: "Complete digital transformation of a leading African bank's core systems and customer-facing platforms.",
-    image: "/projects/banking.jpg",
-    href: "/projects/digital-banking",
+    title: "Event Registration for Trinity Baptist Church",
+    category: "Event Registration",
+    description: "To streamline attendee registration, eliminate long queues, and enhance data collection for post-event engagement.",
+    image: "/projects/tbc.jpg",
+    href: "/projects/tbc",
     stats: [
-      { label: "Increase in Digital Transactions", value: "200%" },
-      { label: "Customer Satisfaction", value: "98%" },
-      { label: "Cost Reduction", value: "40%" }
+      { label: "Increase in Attendee Registration", value: "200%" },
+      { label: "Eliminate Long Queues", value: "98%" },
+      { label: "Enhanced Data Collection", value: "90%" }
     ]
   },
   {

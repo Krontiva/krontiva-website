@@ -54,7 +54,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-6xl md:text-7xl lg:text-[80px] font-display font-bold text-gray-900 mb-8"
+              className="text-5xl md:text-7xl lg:text-[80px] font-display font-bold text-gray-900 mb-8 dark:text-white"
             >
               Let&apos;s start a<br />
               <span className="text-green-500">conversation</span>
