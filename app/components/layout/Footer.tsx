@@ -79,21 +79,21 @@ const Footer = () => {
               <h3 className="text-h4 font-display font-bold md:hidden">Socials</h3>
               <div className="flex items-center gap-4">
                 <Link 
-                  href="#" 
+                  href="https://www.facebook.com/krontiva" 
                   className="text-gray-400 hover:text-white transition-colors"
                   aria-label="Facebook"
                 >
                   <Facebook className="w-5 h-5" />
                 </Link>
                 <Link 
-                  href="#" 
+                  href="https://www.instagram.com/krontiva/" 
                   className="text-gray-400 hover:text-white transition-colors"
                   aria-label="Instagram"
                 >
                   <Instagram className="w-5 h-5" />
                 </Link>
                 <Link 
-                  href="#" 
+                  href="https://www.linkedin.com/company/krontiva/" 
                   className="text-gray-400 hover:text-white transition-colors"
                   aria-label="LinkedIn"
                 >
