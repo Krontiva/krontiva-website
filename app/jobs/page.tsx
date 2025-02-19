@@ -1,10 +1,10 @@
 "use client";
 
+import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import Header from "../components/layout/Header";
-import { ArrowRight, MoveRight, Heart, Eye, Users, BookOpen, Zap, Target, AlertCircle, ChevronDown } from "lucide-react";
+import { ArrowRight, Heart, Eye, Users, BookOpen, Zap, Target, ChevronDown } from "lucide-react";
 import Image from "next/image";
-import { useState } from 'react';
 
 const JobsPage = () => {
   const [activeTestimonial, setActiveTestimonial] = useState('belinda');
@@ -398,7 +398,7 @@ const JobsPage = () => {
                 Join Our Growing Team
               </h3>
               <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
-                At Krontiva Africa, we're building a team of passionate innovators who are committed to transforming businesses across Africa. Keep an eye on this space for future opportunities.
+                At Krontiva Africa, we&apos;re looking for talented individuals to join our team. We offer a competitive salary, flexible work hours, and the opportunity to grow with us. Let&apos;s grow together!
               </p>
               <button 
                 disabled
