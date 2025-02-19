@@ -69,7 +69,7 @@ export default function CustomerTransformationPage() {
         {/* Full Width Image */}
         <div className="relative h-[300px] md:h-[50vh] lg:h-[70vh] w-full md:w-screen mb-16 md:mb-24">
           <Image
-            src="/customer-transform.jpg"
+            src="/cus-transform.jpg"
             alt="Customer Transformation"
             fill
             className="object-cover"

@@ -50,7 +50,7 @@ export default function OperationalTransformationPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-6xl md:text-7xl lg:text-[80px] font-display font-bold text-gray-900 mb-8"
+              className="text-5xl md:text-7xl lg:text-[80px] font-display font-bold text-gray-900 mb-8"
             >
               Harness Technology to<br />
               <span className="text-green-500">Build Resilient Operations</span>
@@ -67,24 +67,25 @@ export default function OperationalTransformationPage() {
         </div>
 
         {/* Full Width Image */}
-        <div className="relative h-[70vh] w-screen mb-24">
+        <div className="relative h-[300px] md:h-[50vh] lg:h-[70vh] w-full md:w-screen mb-16 md:mb-24">
           <Image
             src="/operational-transform.jpg"
             alt="Operational Transformation"
             fill
             className="object-cover"
             priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/40" />
         </div>
 
         {/* Mission Section */}
-        <div className="max-w-7xl mx-auto px-6 mb-24">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 mb-16 md:mb-24">
           <div className="max-w-3xl">
-            <h2 className="text-3xl font-display font-bold text-gray-900 mb-8">
+            <h2 className="text-2xl md:text-3xl font-display font-bold text-gray-900 mb-6 md:mb-8">
               Future-Ready Operations
             </h2>
-            <p className="text-gray-600 text-lg leading-relaxed mb-12">
+            <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-8 md:mb-12">
               At Krontiva Africa, we help businesses reimagine their operations by leveraging cutting-edge technology to drive efficiency, resilience, and long-term value. In today&apos;s fast-evolving business landscape, operations teams face challenges that go beyond traditional efficiency goals. Workforce shortages, supply chain disruptions, and the increasing demand for sustainable and socially responsible practices require a new approach to operational strategy.
             </p>
           </div>

@@ -50,7 +50,7 @@ export default function FinancialTransformationPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-6xl md:text-7xl lg:text-[80px] font-display font-bold text-gray-900 mb-8"
+              className="text-5xl md:text-7xl lg:text-[80px] font-display font-bold text-gray-900 mb-8"
             >
               Financial<br />
               <span className="text-green-500">Transformation</span>
@@ -67,24 +67,25 @@ export default function FinancialTransformationPage() {
         </div>
 
         {/* Full Width Image */}
-        <div className="relative h-[70vh] w-screen mb-24">
+        <div className="relative h-[300px] md:h-[50vh] lg:h-[70vh] w-full md:w-screen mb-16 md:mb-24">
           <Image
             src="/financial-transform.jpg"
             alt="Financial Transformation"
             fill
             className="object-cover"
             priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/40" />
         </div>
 
         {/* Mission Section */}
-        <div className="max-w-7xl mx-auto px-6 mb-24">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 mb-16 md:mb-24">
           <div className="max-w-3xl">
-            <h2 className="text-3xl font-display font-bold text-gray-900 mb-8">
+            <h2 className="text-2xl md:text-3xl font-display font-bold text-gray-900 mb-6 md:mb-8">
               Digital Payment Solutions
             </h2>
-            <p className="text-gray-600 text-lg leading-relaxed mb-12">
+            <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-8 md:mb-12">
               We provide businesses with integrated digital payment solutions that enable them to accept payments effortlessly across multiple channels. With secure, automated, and user-friendly payment processing, companies can enhance their revenue streams while delivering a smooth experience to customers. Our approach also focuses on financial data insights, allowing businesses to track transactions in real time, optimize cash flow, and make data-driven decisions. By leveraging innovative financial technology, we help organizations improve reconciliation, enhance security, and reduce the complexities of managing digital payments. With our expertise, businesses can transition from traditional financial systems to modern, agile, and customer-friendly solutions—ensuring financial stability, improved transaction experiences, and sustainable business growth.
             </p>
           </div>
