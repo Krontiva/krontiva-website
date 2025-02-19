@@ -15,16 +15,15 @@ const JobsPage = () => {
       <div className="max-w-7xl mx-auto px-6 pt-32">
         {/* Hero Section */}
         <div className="mb-24">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
+          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
             {/* Text Content */}
-            <div className="lg:w-1/2">
+            <div className="lg:w-1/2 w-full">
               <motion.h1 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-5xl md:text-6xl lg:text-[80px] font-display font-bold leading-tight mb-12"
+                className="text-5xl md:text-5xl lg:text-[80px] font-display font-bold leading-tight mb-8 lg:mb-12"
               >
-                <br />
                 Work Culture<br />
                 <span className="text-green-500">Orientation</span>
               </motion.h1>
@@ -44,15 +43,16 @@ const JobsPage = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="lg:w-1/2"
+              className="lg:w-1/2 w-full"
             >
-              <div className="relative h-[300px] w-full rounded-2xl overflow-hidden">
+              <div className="relative h-[250px] md:h-[300px] w-full rounded-2xl overflow-hidden">
                 <Image
                   src="/team-culture.jpg"
                   alt="Team Culture"
                   fill
                   className="object-cover"
                   priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
               </div>
@@ -245,13 +245,13 @@ const JobsPage = () => {
           transition={{ duration: 0.6 }}
           className="mb-32"
         >
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-16 text-center">
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-8 md:mb-16 text-center">
             Our Team Stories
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-16 items-start">
-            {/* Testimonials Accordion - Now on Left */}
-            <div className="space-y-4">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-start">
+            {/* Testimonials Accordion */}
+            <div className="space-y-4 order-2 md:order-1">
               {[
                 {
                   name: "Belinda",
@@ -314,14 +314,15 @@ const JobsPage = () => {
               ))}
             </div>
 
-            {/* Image Section - Now on Right */}
-            <div className="relative h-[700px] rounded-2xl overflow-hidden">
+            {/* Image Section */}
+            <div className="relative h-[400px] md:h-[700px] rounded-2xl overflow-hidden order-1 md:order-2">
               <Image
                 src={`/team/${activeTestimonial || 'belinda'}.jpg`}
                 alt="Team member"
                 fill
                 className="object-cover object-top transition-all duration-700"
                 priority
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
           </div>

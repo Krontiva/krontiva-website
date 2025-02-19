@@ -54,14 +54,15 @@ export default function AboutPage() {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="lg:w-1/2"
+            className="lg:w-1/2 w-full"
           >
-            <div className="relative h-[400px] w-full rounded-2xl overflow-hidden">
+            <div className="relative w-full h-[300px] md:h-[400px] rounded-2xl overflow-hidden">
               <Image
                 src="/expertise.jpg"
                 alt="Team collaboration"
                 fill
                 className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
           </motion.div>
@@ -91,7 +92,7 @@ export default function AboutPage() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-32 relative w-screen left-1/2 right-1/2 -mx-[50vw]"
+          className="mb-32 relative w-full md:w-screen left-0 md:left-1/2 right-0 md:right-1/2 md:-mx-[50vw]"
         >
           <div className="absolute inset-0 bg-black/90" />
           <div className="relative z-10 px-8 py-24 md:py-32">
@@ -111,7 +112,7 @@ export default function AboutPage() {
 
         {/* Mission Section */}
         <div className="mb-24">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -182,7 +183,7 @@ export default function AboutPage() {
         </div>
 
         {/* Products & Services Section */}
-        <div className="py-32 border-t border-gray-100">
+        <div className="py-16 md:py-32 border-t border-gray-100">
           {/* Section Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -204,22 +205,23 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-32"
+            className="mb-16 md:mb-32"
           >
-            <div className="relative h-[500px] w-full rounded-2xl overflow-hidden">
+            <div className="relative h-[300px] md:h-[500px] w-full rounded-2xl overflow-hidden">
               <Image
                 src="/engage.jpg"
                 alt="Our Services"
                 fill
                 className="object-cover"
                 priority
+                sizes="100vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
             </div>
           </motion.div>
 
           {/* Products Section */}
-          <div className="mb-32">
+          <div className="mb-16 md:mb-32">
             <div className="grid md:grid-cols-2 gap-12">
               {[
                 {
@@ -308,8 +310,8 @@ export default function AboutPage() {
               <div className="absolute inset-0 bg-gradient-to-r from-green-900/95 via-green-800/95 to-green-900/90" />
             </div>
 
-            <div className="relative px-8 py-20 md:p-20">
-              <div className="flex flex-col lg:flex-row gap-16 items-start">
+            <div className="relative px-4 md:px-8 py-12 md:py-20">
+              <div className="flex flex-col lg:flex-row gap-8 md:gap-16 items-start">
                 {/* Left Column - Header */}
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
