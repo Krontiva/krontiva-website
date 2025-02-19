@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Header from "../components/layout/Header";
-import { Sheet, SheetContent, SheetTrigger } from "../components/ui/sheet";
+import { Sheet } from "../components/ui/sheet";
 import Image from "next/image";
 
 const TermsPage = () => {

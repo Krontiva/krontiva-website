@@ -95,7 +95,7 @@ const PrivacyPage = () => {
               </ul>
               <div className="bg-gray-50 p-8 rounded-2xl">
                 <p className="text-gray-600">
-                  We may also collect your geographical location based on your device's location settings, with your consent.
+                  We may also collect your geographical location based on your device&apos;s location settings, with your consent.
                 </p>
               </div>
             </div>

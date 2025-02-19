@@ -38,20 +38,19 @@ export default function TransformStacks() {
     },
   ]
 
-  const cardTransforms = cards.map((_, index) => {
-    return {
-      translateY: useTransform(
-        scrollYProgress,
-        [index * 0.25, (index + 1) * 0.25],
-        [100, 0],
-      ),
-      opacity: useTransform(
-        scrollYProgress,
-        [index * 0.25, (index + 1) * 0.25],
-        [0, 1],
-      ),
-    }
-  })
+  // Pre-create all transforms outside of the mapping function
+  const cardTransforms = [0, 1, 2, 3].map(index => ({
+    translateY: useTransform(
+      scrollYProgress,
+      [index * 0.25, (index + 1) * 0.25],
+      [100, 0],
+    ),
+    opacity: useTransform(
+      scrollYProgress,
+      [index * 0.25, (index + 1) * 0.25],
+      [0, 1],
+    ),
+  }))
 
   return (
     <section ref={containerRef} className="relative py-24 bg-white overflow-hidden">
