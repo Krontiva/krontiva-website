@@ -6,13 +6,18 @@ import CustomerTransform from "./CustomerTransform"
 import FinancialTransform from "./FinancialTransform"
 import OperationalTransform from "./OperationalTransform"
 import WorkforceTransform from "./WorkforceTransform"
+import Image from "next/image"
 
 export default function TransformStacks() {
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end end"],
+    offset: ["start end", "end start"],
   })
+
+  // Move useTransform hooks outside of callbacks
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1.2, 1])
+  const imageOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.3, 1, 0.3])
 
   const cards = [
     {
@@ -49,7 +54,42 @@ export default function TransformStacks() {
   })
 
   return (
-    <div ref={containerRef} className="relative min-h-[400vh] w-full">
+    <section ref={containerRef} className="relative py-24 bg-white overflow-hidden">
+      {/* Background Image */}
+      <motion.div 
+        className="absolute inset-0 z-0"
+        style={{
+          scale: imageScale,
+          opacity: imageOpacity
+        }}
+      >
+        <Image
+          src="/transform-bg.jpg"
+          alt="Transform background"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-black/60" />
+      </motion.div>
+
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center"
+        >
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+            Transform Your Business
+          </h2>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Leverage our expertise to navigate digital transformation and build a stronger, 
+            more resilient business for the future.
+          </p>
+        </motion.div>
+      </div>
+
       <div className="sticky top-0">
         {cards.map((card, index) => {
           const { translateY, opacity } = cardTransforms[index]
@@ -72,6 +112,6 @@ export default function TransformStacks() {
           )
         })}
       </div>
-    </div>
+    </section>
   )
 } 
