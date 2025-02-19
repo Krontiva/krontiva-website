@@ -21,27 +21,27 @@ const projects = [
     ]
   },
   {
-    title: "Supply Chain Optimization",
-    category: "Manufacturing",
-    description: "End-to-end supply chain optimization for a major manufacturing company using AI and IoT.",
-    image: "/projects/supply-chain.jpg",
-    href: "/projects/supply-chain",
+    title: "Event Registration for King World Tour (Maverick City)",
+    category: "Event Registration",
+    description: "To streamline attendee registration, eliminate long queues, and enhance data collection for post-event engagement.",
+    image: "/projects/kingworldtour.jpg",
+    href: "/projects/kingworldtour",
     stats: [
-      { label: "Inventory Turnover Improvement", value: "85%" },
-      { label: "Operational Efficiency", value: "60%" },
-      { label: "Cost Savings", value: "45%" }
+      { label: "Increase in Attendee Registration", value: "200%" },
+      { label: "Eliminate Long Queues", value: "98%" },
+      { label: "Enhanced Data Collection", value: "90%" }
     ]
   },
   {
-    title: "Healthcare Analytics Platform",
-    category: "Healthcare",
-    description: "Advanced analytics platform development for healthcare providers to improve patient care.",
-    image: "/projects/healthcare.jpg",
-    href: "/projects/healthcare-analytics",
+    title: "Event Registration for Praise Reloaded (Joe Mettle Concert)",
+    category: "Event Registration",
+    description: "To streamline attendee registration, eliminate long queues, and enhance data collection for post-event engagement.",
+    image: "/projects/praisereload.jpg",
+    href: "/projects/praisereload",
     stats: [
-      { label: "Patient Outcomes Improved", value: "75%" },
-      { label: "Resource Utilization", value: "90%" },
-      { label: "Data Processing Speed", value: "300%" }
+      { label: "Increase in Attendee Registration", value: "200%" },
+      { label: "Eliminate Long Queues", value: "98%" },
+      { label: "Enhanced Data Collection", value: "90%" }
     ]
   }
 ];
@@ -136,7 +136,7 @@ export default function ProjectsPage() {
                     </div>
 
                     <Link
-                      href={project.href}
+                      href={`/projects/${project.href.split('/').pop()}`}
                       className="inline-flex items-center px-6 py-3 bg-green-100 text-green-700 
                       font-medium hover:bg-green-200 transition-all group/link rounded-lg"
                     >
