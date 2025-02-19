@@ -207,7 +207,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
             Project Not Found
           </h1>
           <p className="text-gray-600 mb-8">
-            The project you're looking for doesn't exist or has been moved.
+            The project you&apos;re looking for doesn&apos;t exist or has been moved.
           </p>
           <Link 
             href="/projects"
@@ -347,7 +347,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
             {project.testimonial && (
               <div className="bg-gray-50 p-8 rounded-xl">
                 <blockquote className="text-xl text-gray-600 italic mb-6">
-                  "{project.testimonial.quote}"
+                  &quot;{project.testimonial.quote}&quot;
                 </blockquote>
                 <div>
                   <div className="font-medium text-gray-900">{project.testimonial.author}</div>
