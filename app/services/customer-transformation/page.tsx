@@ -50,7 +50,7 @@ export default function CustomerTransformationPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-6xl md:text-7xl lg:text-[80px] font-display font-bold text-gray-900 mb-8"
+              className="text-5xl md:text-7xl lg:text-[80px] font-display font-bold text-gray-900 mb-8"
             >
               Customer<br />
               <span className="text-green-500">Transformation</span>
@@ -67,32 +67,33 @@ export default function CustomerTransformationPage() {
         </div>
 
         {/* Full Width Image */}
-        <div className="relative h-[70vh] w-screen mb-24">
+        <div className="relative h-[300px] md:h-[50vh] lg:h-[70vh] w-full md:w-screen mb-16 md:mb-24">
           <Image
             src="/customer-transform.jpg"
             alt="Customer Transformation"
             fill
             className="object-cover"
             priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/40" />
         </div>
 
         {/* Mission Section */}
-        <div className="max-w-7xl mx-auto px-6 mb-24">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 mb-16 md:mb-24">
           <div className="max-w-3xl">
-            <h2 className="text-3xl font-display font-bold text-gray-900 mb-8">
+            <h2 className="text-2xl md:text-3xl font-display font-bold text-gray-900 mb-6 md:mb-8">
               Customer-Centric Transformation: The Heart of Our Mission
             </h2>
-            <p className="text-gray-600 text-lg leading-relaxed mb-12">
+            <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-8 md:mb-12">
               Customer transformation is at the heart of our mission to empower businesses with innovative solutions. We recognize that today&apos;s customers are more informed, connected, and demanding than ever. To thrive in this dynamic environment, businesses must reimagine their customer experiences, putting their needs and expectations at the center of every interaction. Our customer transformation services are designed to help organizations adapt to this shift by delivering exceptional, seamless, and personalized experiences that resonate with their target audiences.
             </p>
           </div>
         </div>
 
         {/* Features Grid */}
-        <div className="max-w-7xl mx-auto px-6 mb-24">
-          <div className="grid md:grid-cols-2 gap-12">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 mb-16 md:mb-24">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-12">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
@@ -120,22 +121,22 @@ export default function CustomerTransformationPage() {
         </div>
 
         {/* Additional Content */}
-        <div className="max-w-7xl mx-auto px-6 mb-24">
-          <div className="max-w-3xl space-y-12">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 mb-16 md:mb-24">
+          <div className="max-w-3xl space-y-8 md:space-y-12">
             <div>
-              <h2 className="text-3xl font-display font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl md:text-3xl font-display font-bold text-gray-900 mb-4 md:mb-6">
                 Tailored Strategies for Unique Challenges
               </h2>
-              <p className="text-gray-600 text-lg leading-relaxed">
+              <p className="text-gray-600 text-base md:text-lg leading-relaxed">
                 Our approach focuses on understanding the unique challenges and opportunities faced by each client. We leverage advanced technologies, data-driven insights, and customer-centric strategies to design solutions that enhance engagement, build loyalty, and drive long-term success. Whether it&apos;s streamlining customer service processes, adopting cutting-edge communication tools, or creating immersive digital experiences, we work closely with businesses to ensure that their customers feel valued and understood at every touchpoint.
               </p>
             </div>
 
             <div>
-              <h2 className="text-3xl font-display font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl md:text-3xl font-display font-bold text-gray-900 mb-4 md:mb-6">
                 Transforming Customer Experiences to Drive Growth
               </h2>
-              <p className="text-gray-600 text-lg leading-relaxed">
+              <p className="text-gray-600 text-base md:text-lg leading-relaxed">
                 By prioritizing customer transformation, Krontiva Africa aims to bridge the gap between businesses and their audiences. We believe that putting customers first not only enhances satisfaction but also fuels sustainable growth. Our solutions are not just about meeting expectations; they are about exceeding them, creating meaningful connections that drive lasting impact in Africa and beyond.
               </p>
             </div>
