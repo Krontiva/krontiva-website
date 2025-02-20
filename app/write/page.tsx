@@ -383,7 +383,7 @@ export default function WritePage() {
   return (
     <main className="bg-white min-h-screen">
       <Header />
-      <div className="max-w-7xl mx-auto px-6 pt-32">
+      <div className="max-w-7xl mx-auto px-6 pt-32 mb-16">
         <div className="flex justify-between items-center mb-12">
           <h1 className="text-3xl font-display font-bold">
             Write New Article
