@@ -255,7 +255,7 @@ const JobsPage = () => {
               {[
                 {
                   name: "Belinda",
-                  role: "Media Specialist",
+                  role: "Risk Management Specialist/Accountant",
                   testimonial: "My time at Krontiva was transformative, enhancing my skills through certified courses and AI tools. I mastered media scheduling, soft skills, and teamwork. Challenges arose, but quick solutions—whether through teamwork or individually—kept work moving. Fun Fridays added a refreshing balance to the experience."
                 },
                 {
@@ -265,12 +265,12 @@ const JobsPage = () => {
                 },
                 {
                   name: "Mary",
-                  role: "Product Manager",
+                  role: "Customer Success Manager",
                   testimonial: "My journey to Krontiva Africa has been transformative, filled with learning, growth, and innovation. Working with a forward-thinking team has strengthened my adaptability and resilience. While juggling multiple responsibilities has been challenging, it has built my confidence and skills. This bittersweet journey continues to shape my career and future goals."
                 },
                 {
                   name: "Fabrice",
-                  role: "Team Lead",
+                  role: "Chief Business Officer",
                   testimonial: "As a team lead at Krontiva Africa, I've guided a talented team in bringing innovative projects to life. Streamlining processes and aligning team strengths have been rewarding, and I've gained valuable experience in product design and development. I'm grateful for the growth and impact we've made together."
                 },
                 {
