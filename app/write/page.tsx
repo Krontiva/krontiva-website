@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import Header from "../components/layout/Header";
 import { Lock, Mail, Eye, EyeOff, Pencil, Trash2 } from "lucide-react";
@@ -55,8 +55,9 @@ export default function WritePage() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   const [fetchError, setFetchError] = useState('');
+  const [isEditMode, setIsEditMode] = useState(false);
 
-  const fetchUserDetails = async (token: string) => {
+  const fetchUserDetails = useCallback(async (token: string) => {
     try {
       const response = await fetch('https://api-server.krontiva.africa/api:eUI59reW/auth/me', {
         headers: {
@@ -73,10 +74,9 @@ export default function WritePage() {
       }
     } catch (err) {
       console.error('Failed to fetch user details:', err);
-      // Handle error appropriately
-      handleSignOut(); // Sign out if we can't get user details
+      handleSignOut();
     }
-  };
+  }, []);
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -122,7 +122,7 @@ export default function WritePage() {
       fetchUserDetails(token);
       setIsAuthenticated(true);
     }
-  }, []);
+  }, [fetchUserDetails]);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -139,6 +139,18 @@ export default function WritePage() {
       .trim();                      // Trim hyphens from start and end
   };
 
+  const handleEditArticle = (article: Article) => {
+    setSelectedArticle(article);
+    setTitle(article.title);
+    setSlug(article.slug);
+    setCategory(article.category);
+    setExcerpt(article.excerpt);
+    setContent(article.content);
+    setIsEditMode(true);
+    // Scroll to top of form
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -146,8 +158,6 @@ export default function WritePage() {
 
     try {
       const token = localStorage.getItem('authToken');
-      console.log('Stored token:', token);
-
       if (!token) {
         throw new Error('No authentication token found');
       }
@@ -168,8 +178,15 @@ export default function WritePage() {
         formData.append('photo', image);
       }
 
-      const response = await fetch('https://api-server.krontiva.africa/api:eUI59reW/krontiva_articles', {
-        method: 'POST',
+      // Update URL and method based on edit mode
+      const url = isEditMode && selectedArticle 
+        ? `https://api-server.krontiva.africa/api:eUI59reW/krontiva_articles/${selectedArticle.id}`
+        : 'https://api-server.krontiva.africa/api:eUI59reW/krontiva_articles';
+
+      const method = isEditMode ? 'PATCH' : 'POST';
+
+      const response = await fetch(url, {
+        method,
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -177,36 +194,36 @@ export default function WritePage() {
       });
 
       const responseData = await response.json();
-      console.log('Submission response:', responseData);
 
       if (!response.ok) {
-        throw new Error(responseData.message || 'Failed to publish article');
+        throw new Error(responseData.message || `Failed to ${isEditMode ? 'update' : 'publish'} article`);
       }
 
-      // Reset all form fields
+      // Reset form
       setTitle('');
       setCategory('NEWS');
       setExcerpt('');
       setContent('');
       setImage(null);
-      // Reset the file input
-      const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
-      if (fileInput) {
-        fileInput.value = '';
-      }
-      // Reset the editor content
-      const editor = document.querySelector('.ProseMirror');
-      if (editor) {
-        editor.innerHTML = '';
-      }
+      setSelectedArticle(null);
+      setIsEditMode(false);
 
-      alert('Article published successfully!');
+      // Reset file input and editor
+      const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
+      if (fileInput) fileInput.value = '';
+      
+      const editor = document.querySelector('.ProseMirror');
+      if (editor) editor.innerHTML = '';
+
+      // Refresh articles list
+      await fetchArticles();
+
+      alert(`Article ${isEditMode ? 'updated' : 'published'} successfully!`);
 
     } catch (err) {
       console.error('Submission error:', err);
-      setSubmitError(err instanceof Error ? err.message : 'Failed to publish article');
+      setSubmitError(err instanceof Error ? err.message : `Failed to ${isEditMode ? 'update' : 'publish'} article`);
       
-      // If token is invalid, log out the user
       if (err instanceof Error && err.message.includes('authentication')) {
         handleSignOut();
       }
@@ -386,7 +403,7 @@ export default function WritePage() {
       <div className="max-w-7xl mx-auto px-6 pt-32 mb-16">
         <div className="flex justify-between items-center mb-12">
           <h1 className="text-3xl font-display font-bold">
-            Write New Article
+            {isEditMode ? 'Edit Article' : 'Write New Article'}
           </h1>
           <div className="flex items-center gap-4">
             {userData && (
@@ -521,7 +538,7 @@ export default function WritePage() {
                   className="px-8 py-4 bg-green-500 text-white rounded-lg font-semibold 
                   hover:bg-green-600 transition-colors disabled:bg-green-400 disabled:cursor-not-allowed"
                 >
-                  {isSubmitting ? 'Publishing...' : 'Publish'}
+                  {isSubmitting ? (isEditMode ? 'Updating...' : 'Publishing...') : (isEditMode ? 'Update' : 'Publish')}
                 </button>
               </div>
             </form>
@@ -582,7 +599,7 @@ export default function WritePage() {
                           </h3>
                           <div className="flex items-center gap-2 ml-4">
                             <button
-                              onClick={() => setSelectedArticle(article)}
+                              onClick={() => handleEditArticle(article)}
                               className="p-1.5 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                               title="Edit article"
                             >
