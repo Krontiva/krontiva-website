@@ -3,144 +3,164 @@
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.3,
-      ease: [0.22, 1, 0.36, 1]
-    }
-  }
-};
-
-const item = {
-  hidden: { opacity: 0, y: 100 },
-  show: { 
-    opacity: 1, 
-    y: 0,
-    transition: {
-      type: "spring",
-      damping: 20,
-      stiffness: 100,
-      ease: [0.22, 1, 0.36, 1]
-    }
-  }
-};
-
-export default function Hero() {
+export default function MainHero() {
   return (
-    <section className="relative min-h-screen w-full bg-white flex flex-col justify-between overflow-hidden">
-      {/* Subtle Animated Background */}
-      <div className="absolute inset-0 z-0">
-        {/* Primary gradient */}
+    <section className="relative min-h-screen bg-[#0A0A0A] overflow-hidden">
+      {/* Background Grid with Gradient */}
+      <div className="absolute inset-0">
+        {/* Grid Pattern - Half Height */}
         <div 
-          className="absolute inset-0"
+          className="absolute inset-x-0 top-0 h-[70%] opacity-[0.50]" 
           style={{
-            background: 'linear-gradient(120deg, rgba(74, 222, 128, 0.08) 0%, rgba(134, 239, 172, 0.03) 100%)',
-            animation: 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            backgroundImage: `
+              linear-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 2px),
+              linear-gradient(to right, rgba(255, 255, 255, 0.3) 1px, transparent 2px)
+            `,
+            backgroundSize: '64px 54px',
+            maskImage: 'linear-gradient(to bottom, black 40%, transparent)',
+            WebkitMaskImage: 'linear-gradient(to bottom, black 40%, transparent)'
           }}
         />
         
-        {/* Soft overlay */}
+        {/* Subtle Overlay Gradient */}
         <div 
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0"
           style={{
-            background: 'linear-gradient(45deg, transparent 0%, rgba(74, 222, 128, 0.05) 50%, transparent 100%)',
-            filter: 'blur(30px)',
+            background: 'radial-gradient(circle at 50% 40%, rgba(10, 10, 10, 0) 0%, #0A0A0A 90%)'
           }}
         />
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 mx-auto max-w-[1200px] px-4 py-20 sm:px-6 lg:px-8 flex-grow flex items-center">
-        <div className="mx-auto max-w-5xl text-center">
-          <motion.div
-            variants={container}
-            initial="hidden"
-            animate="show"
-            className="mb-8 text-center font-display text-5xl font-black tracking-tight text-black sm:text-6xl md:text-7xl lg:text-[90px]"
-          >
-            <div className="overflow-hidden">
-              <motion.span variants={item} className="block">
-                We are an
-              </motion.span>
-            </div>
-            <div className="overflow-hidden py-1">
-              <motion.span variants={item} className="block">
-                industry leading
-              </motion.span>
-            </div>
-            <div className="overflow-hidden py-2">
-              <motion.span variants={item} className="block">
-                transformation company
-              </motion.span>
-            </div>
-          </motion.div>
-
-          {/* Description */}
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ 
-              delay: 0.9,
-              duration: 0.8,
-              ease: [0.22, 1, 0.36, 1]
-            }}
-            className="mx-auto max-w-2xl text-lg text-black sm:text-xl font-display"
-          >
-            Drive your business confidently into the future.
-          </motion.p>
-        </div>
-      </div>
-
-      {/* Bottom Section with Image and Button */}
-      <div className="relative">
-        {/* Explore Button */}
-        <motion.div
-          className="absolute bottom-4 right-4 z-10 md:bottom-12 md:right-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Link
-              href="/contact"
-              className="group relative flex h-24 w-24 items-center justify-center rounded-full bg-gray-900 text-center font-bold text-white transition-all duration-300 hover:shadow-lg md:h-24 md:w-24"
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left Column - Content */}
+          <div className="relative z-10">
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-8"
             >
-              <motion.div
-                className="flex items-center gap-2"
-                whileHover={{ gap: '12px' }}
-                transition={{ duration: 0.3 }}
-              >
-                <span className="text-sm font-display">Explore</span>
-                <motion.div
-                  whileHover={{ x: 5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                </motion.div>
-              </motion.div>
-            </Link>
-          </motion.div>
-        </motion.div>
+              <span className="flex h-2 w-2 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
+              <span className="text-sm text-white/80 font-medium">
+              Empowering businesses.
+              </span>
+            </motion.div>
 
-        {/* Bottom Image */}
-        <div className="relative h-[200px] w-full">
-          <Image
-            src="/hero-bg.jpg"
-            alt="People collaborating in office"
-            fill
-            className="object-cover"
-            priority
-          />
+            {/* Heading */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-white mb-8"
+            >
+              We&apos;re an industry
+              <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600">
+                leading transformation company
+              </span>
+            </motion.h1>
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="text-xl text-white/70 max-w-lg mb-12"
+            >
+              Drive your business confidently into the future.
+            </motion.p>
+
+            {/* CTAs */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="flex flex-wrap gap-4 mb-16"
+            >
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 bg-green-500 text-white px-8 py-4 rounded-lg 
+                font-medium hover:bg-green-600 transition-all group"
+              >
+                Start Your Journey
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+              <Link
+                href="/about"
+                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white 
+                px-8 py-4 rounded-lg font-medium hover:bg-white/20 transition-all"
+              >
+                Learn More
+              </Link>
+            </motion.div>
+
+
+          </div>
+
+          {/* Right Column - Visual */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="relative lg:h-[700px] hidden lg:block"
+          >
+            {/* Main Image */}
+            <div className="absolute inset-0 rounded-2xl overflow-hidden">
+              <Image
+                src="/hero-corporate.jpg"
+                alt="Corporate Innovation"
+                fill
+                className="object-cover"
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-black/40 to-transparent" />
+            </div>
+
+            {/* Floating Elements */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="absolute -right-8 top-1/4 bg-white p-6 rounded-xl shadow-xl"
+            >
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                  <Image
+                    src="/logo.png"
+                    alt="Krontiva Logo"
+                    width={32}
+                    height={32}
+                  />
+                </div>
+                <div>
+                  <div className="font-medium">Innovation Partner</div>
+                  <div className="text-sm text-gray-600">Enterprise Solutions</div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Success Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.7 }}
+              className="absolute -left-8 bottom-1/4 bg-green-500 p-6 rounded-xl shadow-xl text-white"
+            >
+              <div className="text-2xl font-bold mb-1">+150%</div>
+              <div className="text-sm opacity-90">Average ROI for Clients</div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>
-  )
+  );
 }
 
