@@ -20,12 +20,12 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/logo-favicon.png',
-        href: '/logo-favicon.png',
+        url: '/favicon.png',
+        href: '/favicon.png',
       },
     ],
-    shortcut: '/logo-favicon.png',
-    apple: '/logo-favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
   },
 };
 
@@ -37,8 +37,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/logo-favicon.png" />
-        <link rel="apple-touch-icon" href="/logo-favicon.png" />
+        <link rel="icon" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
       </head>
       <body className={`${inter.variable} ${jakarta.variable}`}>
         {children}
