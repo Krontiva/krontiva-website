@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Header from "../components/layout/Header";
-import { MessageSquare, Utensils, Ticket, UserCheck } from 'lucide-react';
+import { Ticket, UserCheck } from 'lucide-react';
 
 export default function AboutPage() {
   return (
