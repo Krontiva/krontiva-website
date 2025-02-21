@@ -229,8 +229,6 @@ export default function AboutPage() {
                   title: "Delika",
                   description: "A comprehensive food delivery and restaurant management platform that connects customers with their favorite eateries while streamlining order processing, rider dispatch, and real-time tracking. Delika also offers restaurant owners tools for menu management, analytics, and customer engagement to enhance operational efficiency.",
                   bgColor: "bg-orange-50",
-                  icon: Utensils,
-                  iconColor: "text-orange-600",
                   borderColor: "border-orange-100"
                 },
                 {
@@ -238,8 +236,6 @@ export default function AboutPage() {
                   title: "Tickrfly",
                   description: "A modern ticketing and event management platform designed to simplify ticket sales and access control for event organizers. TikrFly provides secure digital tickets, QR code scanning for seamless check-ins, real-time sales tracking, and marketing tools to boost event reach and engagement",
                   bgColor: "bg-blue-50",
-                  icon: Ticket,
-                  iconColor: "text-blue-600",
                   borderColor: "border-blue-100"
                 },
                 {
@@ -247,8 +243,6 @@ export default function AboutPage() {
                   title: "EngageEase",
                   description: "A conversational commerce platform that integrates seamlessly with WhatsApp, allowing businesses to manage customer interactions, process orders, and coordinate deliveries in one place. With built-in inventory management, automated messaging, and analytics, EngageEase helps merchants enhance sales and customer service effortlessly.",
                   bgColor: "bg-orange-50",
-                  icon: MessageSquare,
-                  iconColor: "text-orange-600",
                   borderColor: "border-orange-100"
                 },
                 {
@@ -256,8 +250,6 @@ export default function AboutPage() {
                   title: "Manutrax",
                   description: " A manufacturing flow management software designed to optimize production processes by providing real-time insights, process visualization, and inventory tracking. Manutrax empowers managers with data-driven decision-making tools to improve efficiency, reduce waste, and enhance overall operational performance.",
                   bgColor: "bg-red-50",
-                  icon: Ticket,
-                  iconColor: "text-red-600",
                   borderColor: "border-red-100"
                 }
               ].map((item, index) => (
@@ -276,10 +268,13 @@ export default function AboutPage() {
                         <span className="text-sm font-medium uppercase tracking-wider text-gray-600">
                           {item.label}
                         </span>
-                        <div className={`w-12 h-12 rounded-xl bg-white flex items-center justify-center 
-                          shadow-sm group-hover:scale-110 transition-transform duration-300`}>
-                          <item.icon className={`w-6 h-6 ${item.iconColor}`} />
-                        </div>
+                        <Image
+                          src={`/${item.title}-Logo.png`}
+                          alt={`${item.title} Logo`}
+                          width={48}
+                          height={48}
+                          className="w-12 h-12 group-hover:scale-110 transition-transform duration-300"
+                        />
                       </div>
                       <div className="space-y-4">
                         <h4 className="text-2xl font-display font-bold text-gray-900">
