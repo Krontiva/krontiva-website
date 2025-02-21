@@ -124,6 +124,29 @@ export default function MainHero() {
               <div className="absolute inset-0 bg-gradient-to-tr from-black/40 to-transparent" />
             </div>
 
+            {/* Floating Secondary Image */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ 
+                duration: 0.8,
+                delay: 0.3,
+              }}
+              className="absolute -bottom-8 -right-8 w-72 h-48 rounded-xl overflow-hidden shadow-2xl"
+              style={{
+                animation: 'float 6s ease-in-out infinite',
+              }}
+            >
+              <Image
+                src="/hero-secondary.jpg"
+                alt="Innovation in Action"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 288px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+            </motion.div>
+
             {/* Floating Elements */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -141,7 +164,7 @@ export default function MainHero() {
                   />
                 </div>
                 <div>
-                  <div className="font-medium">Innovation Partner</div>
+                  <div className="font-medium">Krontiva Africa</div>
                   <div className="text-sm text-gray-600">Enterprise Solutions</div>
                 </div>
               </div>
@@ -154,8 +177,8 @@ export default function MainHero() {
               transition={{ duration: 0.5, delay: 0.7 }}
               className="absolute -left-8 bottom-1/4 bg-green-500 p-6 rounded-xl shadow-xl text-white"
             >
-              <div className="text-2xl font-bold mb-1">+150%</div>
-              <div className="text-sm opacity-90">Average ROI for Clients</div>
+              <div className="text-2xl font-bold mb-1">100%</div>
+              <div className="text-sm opacity-90">Success Rate</div>
             </motion.div>
           </motion.div>
         </div>
