@@ -18,7 +18,12 @@ export const metadata: Metadata = {
   title: "Krontiva Africa",
   description: "We are an industry-leading transformation company",
   icons: {
-    icon: '/logo-favicon.png',
+    icon: [
+      {
+        url: '/logo-favicon.png',
+        href: '/logo-favicon.png',
+      },
+    ],
     shortcut: '/logo-favicon.png',
     apple: '/logo-favicon.png',
   },

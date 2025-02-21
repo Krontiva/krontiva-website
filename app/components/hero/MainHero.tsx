@@ -134,7 +134,7 @@ export default function Hero() {
         {/* Bottom Image */}
         <div className="relative h-[200px] w-full">
           <Image
-            src="/herobg.jpg"
+            src="/hero-bg.jpg"
             alt="People collaborating in office"
             fill
             className="object-cover"
