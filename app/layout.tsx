@@ -42,7 +42,6 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} ${jakarta.variable}`}>
         {children}
-        <CookieConsent />
         <Footer />
       </body>
     </html>
