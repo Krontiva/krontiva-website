@@ -3,7 +3,6 @@
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 
 const container = {
   hidden: { opacity: 0 },
@@ -101,7 +100,7 @@ export default function Hero() {
       <div className="relative">
         {/* Explore Button */}
         <motion.div
-          className="absolute bottom-8 right-8 z-10 md:bottom-12 md:right-12"
+          className="absolute bottom-4 right-4 z-10 md:bottom-12 md:right-12"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -112,19 +111,18 @@ export default function Hero() {
           >
             <Link
               href="/contact"
-              className="group relative flex h-32 w-32 items-center justify-center rounded-full bg-green-500 text-center font-bold text-white transition-all duration-300 hover:shadow-lg md:h-40 md:w-40"
+              className="group relative flex h-24 w-24 items-center justify-center rounded-full bg-gray-900 text-center font-bold text-white transition-all duration-300 hover:shadow-lg md:h-24 md:w-24"
             >
               <motion.div
                 className="flex items-center gap-2"
                 whileHover={{ gap: '12px' }}
                 transition={{ duration: 0.3 }}
               >
-                <span className="text-lg font-display">Explore</span>
+                <span className="text-sm font-display">Explore</span>
                 <motion.div
                   whileHover={{ x: 5 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <ArrowRight className="h-5 w-5" />
                 </motion.div>
               </motion.div>
             </Link>
