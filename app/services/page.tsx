@@ -6,7 +6,6 @@ import Header from "../components/layout/Header";
 import Link from "next/link";
 import { Box, LineChart, Settings, Users, ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 const services = [
   {
@@ -67,32 +66,7 @@ const services = [
   }
 ];
 
-const heroImages = [
-  {
-    src: "/herobg.jpg",
-    alt: "Business Transformation"
-  },
-  {
-    src: "/hero-bg.jpg",
-    alt: "Digital Innovation"
-  },
-  {
-    src: "/transform-butterfly.webp",
-    alt: "Technology Solutions"
-  }
-];
-
 export default function ServicesPage() {
-  const [currentImage, setCurrentImage] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % heroImages.length);
-    }, 5000);
-
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <main className="bg-white">
       <Header />
@@ -130,44 +104,23 @@ export default function ServicesPage() {
           </div>
         </div>
 
-        {/* Full Width Hero Image Slider */}
+        {/* Single Hero Image */}
         <div className="relative h-[70vh] w-screen mb-24">
-          {heroImages.map((image, index) => (
-            <motion.div
-              key={image.src}
-              initial={{ opacity: 0 }}
-              animate={{ 
-                opacity: currentImage === index ? 1 : 0,
-                scale: currentImage === index ? 1 : 1.1
-              }}
-              transition={{ duration: 0.7 }}
-              className="absolute inset-0"
-            >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                className="object-cover"
-                priority={index === 0}
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/40" />
-            </motion.div>
-          ))}
-
-          {/* Slider Indicators */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-10">
-            {heroImages.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentImage(index)}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  currentImage === index 
-                    ? 'bg-white w-8' 
-                    : 'bg-white/50 hover:bg-white/75'
-                }`}
-              />
-            ))}
-          </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7 }}
+            className="absolute inset-0"
+          >
+            <Image
+              src="/transform-butterfly.webp"
+              alt="Digital Transformation"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/40" />
+          </motion.div>
         </div>
 
         {/* Services Grid */}
