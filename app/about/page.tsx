@@ -58,7 +58,7 @@ export default function AboutPage() {
           >
             <div className="relative w-full h-[300px] md:h-[400px] rounded-2xl overflow-hidden">
               <Image
-                src="/expertise.jpg"
+                src="/emma.jpg"
                 alt="Team collaboration"
                 fill
                 className="object-cover"
@@ -145,7 +145,7 @@ export default function AboutPage() {
               <div className="space-y-4">
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
                   <Image
-                    src="/engage.jpg"
+                    src="/engagenana.jpg"
                     alt="Innovation"
                     fill
                     className="object-cover"
