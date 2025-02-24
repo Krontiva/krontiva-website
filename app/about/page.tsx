@@ -145,7 +145,7 @@ export default function AboutPage() {
               <div className="space-y-4">
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
                   <Image
-                    src="/engagenana.jpg"
+                    src="/nanaengage.jpg"
                     alt="Innovation"
                     fill
                     className="object-cover"
@@ -163,7 +163,7 @@ export default function AboutPage() {
               <div className="space-y-4 pt-8">
                 <div className="relative aspect-square rounded-2xl overflow-hidden">
                   <Image
-                    src="/joe-mettle.jpg"
+                    src="/joe-mettle-praise.jpg"
                     alt="Collaboration"
                     fill
                     className="object-cover"
@@ -171,7 +171,7 @@ export default function AboutPage() {
                 </div>
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
                   <Image
-                    src="/engageease.jpg"
+                    src="/engageeaseglobal.jpg"
                     alt="Impact"
                     fill
                     className="object-cover"
@@ -209,7 +209,7 @@ export default function AboutPage() {
           >
             <div className="relative h-[300px] md:h-[500px] w-full rounded-2xl overflow-hidden">
               <Image
-                src="/engage.jpg"
+                src="/nanaengage.jpg"
                 alt="Our Services"
                 fill
                 className="object-cover"
