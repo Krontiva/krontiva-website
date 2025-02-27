@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from "framer-motion";
 import Header from "../../components/layout/Header";
 import Image from "next/image";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Target, Check, AlertTriangle, AlertCircle } from "lucide-react";
 import Link from "next/link";
 
 // Project case study data
@@ -261,39 +261,53 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
           />
         </motion.div>
 
-        {/* Content Grid */}
-        <div className="grid md:grid-cols-3 gap-16">
-          {/* Sidebar */}
-          <div className="md:col-span-1 space-y-12">
+        {/* Content Layout */}
+        <div className="space-y-16">
+          {/* Objectives and Challenges - Two Column Layout */}
+          <div className="grid md:grid-cols-2 gap-8">
             {/* Objective */}
-            <div>
-              <h2 className="text-xl font-display font-bold mb-4">Objective</h2>
-              <ul className="space-y-3">
+            <div className="bg-green-50 rounded-xl p-8 border border-green-100 h-full">
+              <h3 className="text-2xl font-display font-bold text-gray-900 mb-6 flex items-center">
+                <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mr-4">
+                  <Target className="w-5 h-5 text-green-600" />
+                </div>
+                Project Objectives
+              </h3>
+              <ul className="space-y-4">
                 {project.objective.map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <div className="w-1.5 h-1.5 rounded-full bg-green-500 mt-2.5" />
-                    <span className="text-gray-600">{item}</span>
+                  <li key={i} className="flex items-start gap-4">
+                    <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Check className="w-4 h-4 text-green-600" />
+                    </div>
+                    <span className="text-gray-700">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             {/* Challenges */}
-            <div>
-              <h2 className="text-xl font-display font-bold mb-4">Challenges</h2>
-              <ul className="space-y-3">
+            <div className="bg-amber-50 rounded-xl p-8 border border-amber-100 h-full">
+              <h3 className="text-2xl font-display font-bold text-gray-900 mb-6 flex items-center">
+                <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center mr-4">
+                  <AlertTriangle className="w-5 h-5 text-amber-600" />
+                </div>
+                Challenges
+              </h3>
+              <ul className="space-y-4">
                 {project.challenges.map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <div className="w-1.5 h-1.5 rounded-full bg-red-500 mt-2.5" />
-                    <span className="text-gray-600">{item}</span>
+                  <li key={i} className="flex items-start gap-4">
+                    <div className="w-6 h-6 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <AlertCircle className="w-4 h-4 text-amber-600" />
+                    </div>
+                    <span className="text-gray-700">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
 
-          {/* Main Content */}
-          <div className="md:col-span-2 space-y-16">
+          {/* Implementation and Impact - Two Column Layout */}
+          <div className="grid md:grid-cols-2 gap-8 mb-16">
             {/* Implementation */}
             <div>
               <h2 className="text-2xl font-display font-bold mb-8">Implementation</h2>
@@ -307,22 +321,6 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
                       <h3 className="text-xl font-display font-bold mb-2">{item.title}</h3>
                       <p className="text-gray-600">{item.description}</p>
                     </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Results */}
-            <div>
-              <h2 className="text-2xl font-display font-bold mb-8">Results</h2>
-              <div className="grid sm:grid-cols-2 gap-8">
-                {project.results.map((result, i) => (
-                  <div key={i} className="bg-gray-50 rounded-lg p-6">
-                    <div className="text-3xl font-display font-bold text-green-500 mb-2">
-                      {result.value}
-                    </div>
-                    <div className="font-medium text-gray-900 mb-2">{result.metric}</div>
-                    <p className="text-gray-600">{result.description}</p>
                   </div>
                 ))}
               </div>
@@ -342,20 +340,36 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
                 ))}
               </ul>
             </div>
-
-            {/* Testimonial */}
-            {project.testimonial && (
-              <div className="bg-gray-50 p-8 rounded-xl">
-                <blockquote className="text-xl text-gray-600 italic mb-6">
-                  &quot;{project.testimonial.quote}&quot;
-                </blockquote>
-                <div>
-                  <div className="font-medium text-gray-900">{project.testimonial.author}</div>
-                  <div className="text-gray-600">{project.testimonial.role}</div>
-                </div>
-              </div>
-            )}
           </div>
+
+          {/* Results - Full Width */}
+          <div className="mb-16">
+            <h2 className="text-2xl font-display font-bold mb-8">Results</h2>
+            <div className="grid sm:grid-cols-3 gap-8">
+              {project.results.map((result, i) => (
+                <div key={i} className="bg-gray-50 rounded-lg p-6">
+                  <div className="text-3xl font-display font-bold text-green-500 mb-2">
+                    {result.value}
+                  </div>
+                  <div className="font-medium text-gray-900 mb-2">{result.metric}</div>
+                  <p className="text-gray-600">{result.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Testimonial */}
+          {project.testimonial && (
+            <div className="bg-gray-50 p-8 rounded-xl">
+              <blockquote className="text-xl text-gray-600 italic mb-6">
+                &quot;{project.testimonial.quote}&quot;
+              </blockquote>
+              <div>
+                <div className="font-medium text-gray-900">{project.testimonial.author}</div>
+                <div className="text-gray-600">{project.testimonial.role}</div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </main>

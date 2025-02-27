@@ -3,8 +3,7 @@
 import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import Header from "../components/layout/Header";
-import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
-import ContactForm from "../components/forms/ContactForm";
+import { Mail, Phone, MapPin } from "lucide-react";
 import FAQ from "../components/sections/FAQ";
 
 const contactInfo = [
@@ -27,13 +26,11 @@ const contactInfo = [
     title: "Office",
     details: "The Octagon, Accra, Ghana",
     description: "Come say hello at our office",
-    href: "https://maps.google.com"
+    href: "https://www.google.com/maps/place/The+Octagon/@5.5760374,-0.1972479,17z/data=!3m1!4b1!4m6!3m5!1s0xfdf9a5f12e8b5d1:0x6b25433ef94c5f7f!8m2!3d5.5760374!4d-0.1946676!16s%2Fg%2F11c1z4_4m9?entry=ttu"
   }
 ];
 
 export default function ContactPage() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   return (
     <main className="bg-white">
       <Header />
@@ -54,7 +51,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-5xl md:text-7xl lg:text-[80px] font-display font-bold text-gray-900 mb-8 dark:text-white"
+              className="text-5xl md:text-7xl lg:text-[80px] font-display font-bold text-gray-900 mb-8"
             >
               Let&apos;s start a<br />
               <span className="text-green-500">conversation</span>
@@ -65,49 +62,115 @@ export default function ContactPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-xl text-gray-600 max-w-2xl"
             >
-              Hello there! We value your feedback, inquiries, and any concerns you may have. Feel free to reach out to us using the contact details below. Whether you have a question, need assistance, or wish to explore partnership opportunities, we are here to help. Let us connect!.
+              Have a question or want to discuss a project? We'd love to hear from you. 
+              Get in touch with us using any of the methods below.
             </motion.p>
           </div>
 
-          {/* Contact Form Modal */}
-          <ContactForm 
-            isOpen={isModalOpen}
-            onClose={() => setIsModalOpen(false)}
-          />
+          {/* Contact Section - Two Column Layout */}
+          <div className="grid lg:grid-cols-2 gap-12 mb-24">
+            {/* Left Column - Contact Info */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="space-y-8"
+            >
+              {/* Email and Phone in one row */}
+              <div className="grid grid-cols-2 gap-6">
+                {contactInfo.slice(0, 2).map((info) => (
+                  <a
+                    key={info.title}
+                    href={info.href}
+                    className="group block p-8 border border-gray-100 rounded-lg bg-gradient-to-b from-white to-gray-50/50 
+                    hover:border-green-100 hover:from-green-50/50 hover:to-white transition-colors"
+                  >
+                    <div className="mb-6 p-3 rounded-lg bg-green-50 group-hover:bg-green-100 transition-colors 
+                    shadow-sm inline-block">
+                      {info.icon}
+                    </div>
+                    <h3 className="text-xl font-display font-bold text-gray-900 mb-2">
+                      {info.title}
+                    </h3>
+                    <p className="text-green-600 font-medium mb-2">
+                      {info.details}
+                    </p>
+                    <p className="text-gray-600 text-sm">
+                      {info.description}
+                    </p>
+                  </a>
+                ))}
+              </div>
 
-          {/* Contact Grid */}
-          <div className="grid md:grid-cols-3 gap-8 mb-24">
-            {contactInfo.map((info, index) => (
-              <motion.div
-                key={info.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group p-8 border border-gray-100 rounded-lg bg-gradient-to-b from-white to-gray-50/50 
+              {/* Office card full width */}
+              <a
+                href={contactInfo[2].href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block p-8 border border-gray-100 rounded-lg bg-gradient-to-b from-white to-gray-50/50 
                 hover:border-green-100 hover:from-green-50/50 hover:to-white transition-colors"
               >
                 <div className="mb-6 p-3 rounded-lg bg-green-50 group-hover:bg-green-100 transition-colors 
                 shadow-sm inline-block">
-                  {info.icon}
+                  {contactInfo[2].icon}
                 </div>
                 <h3 className="text-xl font-display font-bold text-gray-900 mb-2">
-                  {info.title}
+                  {contactInfo[2].title}
                 </h3>
                 <p className="text-green-600 font-medium mb-2">
-                  {info.details}
+                  {contactInfo[2].details}
                 </p>
-                <p className="text-gray-600 text-sm mb-4">
-                  {info.description}
+                <p className="text-gray-600 text-sm">
+                  {contactInfo[2].description}
                 </p>
+              </a>
+            </motion.div>
+
+            {/* Right Column - Contact Form */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="bg-white rounded-xl p-8"
+            >
+              <h2 className="text-2xl font-display font-bold text-gray-900 mb-8">
+                Send us a message
+              </h2>
+              <form className="space-y-6">
+                <div className="grid grid-cols-2 gap-6">
+                  <input
+                    type="text"
+                    placeholder="Your name"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-colors"
+                    required
+                  />
+                  <input
+                    type="email"
+                    placeholder="Your email"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-colors"
+                    required
+                  />
+                </div>
+                <input
+                  type="text"
+                  placeholder="Subject"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-colors"
+                  required
+                />
+                <textarea
+                  placeholder="Your message"
+                  rows={6}
+                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-colors resize-none"
+                  required
+                />
                 <button
-                  onClick={() => setIsModalOpen(true)}
-                  className="flex items-center text-green-600 font-medium group-hover:text-green-700"
+                  type="submit"
+                  className="w-full px-8 py-4 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition-colors"
                 >
-                  <span className="mr-2">Contact us</span>
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  Send Message
                 </button>
-              </motion.div>
-            ))}
+              </form>
+            </motion.div>
           </div>
         </div>
       </section>

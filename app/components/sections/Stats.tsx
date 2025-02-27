@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 
 const stats = [
   {
-    number: "1.3K+",
+    number: "76+",
     label: "Projects completed successfully"
   },
   {
-    number: "55+",
+    number: "23+",
     label: "Industry experts & consultants"
   },
   {
@@ -30,11 +30,11 @@ export default function Stats() {
             className="lg:w-1/2"
           >
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white leading-tight">
-              We provide our
+              Delivering
               <br />
-              advance level of
+              transformative
               <br />
-              transformation support
+              business solutions
             </h2>
           </motion.div>
 

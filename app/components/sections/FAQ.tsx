@@ -28,37 +28,37 @@ const faqs = [
   {
     id: 5,
     question: "What services does Krontiva Africa offer?",
-    answer: "We specialize in: Customer Transformation, Operational Transformation, Financial Transformation, and Workforce Development."
+    answer: "Krontiva Africa offers a range of digital transformation services including customer engagement solutions, financial transformation, operational efficiency improvements, and workforce development tools. Our flagship products include EngageEase for event management, Delika for food delivery, and Tickrfly for ticketing solutions."
   },
   {
     id: 6,
     question: "Does Krontiva Africa provide customized solutions?",
-    answer: "Yes, we tailor our solutions to meet your specific needs. Our team closely works with you to design strategies and tools that align with your goals."
+    answer: "Yes, we tailor Krontiva solutions to meet specific needs. Our team closely works with clients to design strategies and tools that align with their goals."
   },
   {
     id: 7,
-    question: "How can Krontiva Africa help my business grow?",
-    answer: "EngageEase is one of our flagship products, a conversational commerce platform that helps with selling, ordering, and delivery operations. It simplifies customer engagement and boosts business efficiency."
+    question: "How can Krontiva help my business grow?",
+    answer: "We help businesses grow by implementing innovative digital solutions that streamline operations, enhance customer experiences, and drive efficiency. Our team works closely with clients to understand their unique challenges and develop tailored strategies that deliver measurable results and sustainable growth."
   },
   {
     id: 8,
     question: "Can Krontiva assist with digital transformation?",
-    answer: "Absolutely! We offer comprehensive digital transformation services to help modernize your business processes, optimize workflows, and stay competitive in a fast-moving market."
+    answer: "Absolutely! We offer comprehensive digital transformation services to help modernize business processes, optimize workflows, and help clients stay competitive in a fast-moving market."
   },
   {
     id: 9,
-    question: "How can I reach your Customer Success team?",
+    question: "How can I reach Krontiva Customer Success team?",
     answer: "You can contact our Customer Success Management directly through the service provider. They're available to assist with any concerns."
   },
   {
     id: 10,
-    question: "What are your hours of operation?",
+    question: "What are Krontiva's hours of operation?",
     answer: "Our standard business hours are 8:30am to 5:00pm GMT, Monday to Friday. We also work on weekends for selected client needs."
   },
   {
     id: 11,
-    question: "What kind of support does your team provide?",
-    answer: "Our Customer Success team provides technical support, product training, and ongoing guidance to ensure you get the most out of our solutions."
+    question: "What kind of support does Krontiva's team provide?",
+    answer: "Our Krontiva Customer Success team provides technical support, product training, and ongoing guidance to ensure clients get the most out of our solutions."
   },
   {
     id: 12,
@@ -77,23 +77,23 @@ const faqs = [
   },
   {
     id: 15,
-    question: "How much do your services cost?",
-    answer: "Our pricing depends on the type of service and the scale of your project. Contact us for a customized quote based on your business needs."
+    question: "How much do Krontiva's services cost?",
+    answer: "Krontiva's pricing depends on the type of service and the scale of the project. Contact us for a customized quote based on specific business needs."
   },
   {
     id: 16,
-    question: "Are there free trials for your products?",
-    answer: "Some of our products offer free trial periods. Contact us to learn more about trial options for your specific needs."
+    question: "Are there free trials for Krontiva's products?",
+    answer: "Some of Krontiva's products offer free trial periods. Contact us to learn more about trial options for specific needs."
   },
   {
     id: 17,
     question: "How secure are your solutions?",
-    answer: "We prioritize the security of your data. All our products and solutions are designed with robust security features to protect your information."
+    answer: "We prioritize the security of client data. All Krontiva products and solutions are designed with robust security features to protect information."
   },
   {
     id: 18,
     question: "Can you assist with reconciliation and financial tracking?",
-    answer: "Yes, our financial reconciliation services include products like ManuPro and Delika, which help streamline accounting and financial management."
+    answer: "Yes, our financial reconciliation services include products like ManuPro and Delika, which help streamline accounting and financial management for businesses of all sizes."
   },
   {
     id: 19,

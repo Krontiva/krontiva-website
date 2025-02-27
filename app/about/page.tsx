@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Header from "../components/layout/Header";
-import { Ticket, UserCheck } from 'lucide-react';
+import { Ticket, UserCheck, LineChart, Settings, Users, ArrowRight } from 'lucide-react';
+import Link from "next/link";
 
 export default function AboutPage() {
   return (
@@ -58,7 +59,7 @@ export default function AboutPage() {
           >
             <div className="relative w-full h-[300px] md:h-[400px] rounded-2xl overflow-hidden">
               <Image
-                src="/emma.jpg"
+                src="/ron.jpg"
                 alt="Team collaboration"
                 fill
                 className="object-cover"
@@ -94,7 +95,17 @@ export default function AboutPage() {
           transition={{ duration: 0.6 }}
           className="mb-32 relative w-full md:w-screen left-0 md:left-1/2 right-0 md:right-1/2 md:-mx-[50vw]"
         >
-          <div className="absolute inset-0 bg-black/90" />
+          {/* Background Image */}
+          <div className="absolute inset-0">
+            <Image
+              src="/hero-bg.jpg"
+              alt="Our approach"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-black/80" />
+          </div>
+          
           <div className="relative z-10 px-8 py-24 md:py-32">
             <div className="max-w-7xl mx-auto">
               <div className="flex items-center gap-4 mb-12">
@@ -103,9 +114,23 @@ export default function AboutPage() {
                 </div>
                 <span className="text-xl font-display text-white uppercase tracking-wider">OUR APPROACH</span>
               </div>
-              <p className="text-xl leading-relaxed text-gray-300 max-w-3xl">
-                What sets us apart is our commitment to excellence, collaboration, and continuous innovation. At Krontiva, we embrace challenges as opportunities and work closely with our clients to develop solutions tailored to their unique needs. Our customer-centric approach ensures that every business we support is equipped to adapt, scale, and succeed in today&apos;s dynamic digital landscape.
-              </p>
+              
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                  <p className="text-xl leading-relaxed text-gray-300">
+                    What sets us apart is our commitment to excellence, collaboration, and continuous innovation. At Krontiva, we embrace challenges as opportunities and work closely with our clients to develop solutions tailored to their unique needs. Our customer-centric approach ensures that every business we support is equipped to adapt, scale, and succeed in today&apos;s dynamic digital landscape.
+                  </p>
+                </div>
+                
+                <div className="relative h-[300px] rounded-xl overflow-hidden">
+                  <Image
+                    src="/team-collaboration.jpg"
+                    alt="Team collaboration"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -183,7 +208,7 @@ export default function AboutPage() {
         </div>
 
         {/* Products & Services Section */}
-        <div className="py-16 md:py-32 border-t border-gray-100">
+        <div className="py-16 md:pt-32 pb-0 border-t border-gray-100">
           {/* Section Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -222,14 +247,15 @@ export default function AboutPage() {
 
           {/* Products Section */}
           <div className="mb-16 md:mb-32">
-            <div className="grid md:grid-cols-2 gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {[
                 {
-                  label: "Food Tech",
                   title: "Delika",
+                  label: "Food Tech",
                   description: "A comprehensive food delivery and restaurant management platform that connects customers with their favorite eateries while streamlining order processing, rider dispatch, and real-time tracking. Delika also offers restaurant owners tools for menu management, analytics, and customer engagement to enhance operational efficiency.",
                   bgColor: "bg-orange-50",
-                  borderColor: "border-orange-100"
+                  borderColor: "border-orange-100",
+                  websiteUrl: "https://delika.app"
                 },
                 {
                   label: "Ticketing",
@@ -283,6 +309,20 @@ export default function AboutPage() {
                         <p className="text-gray-600 leading-relaxed">
                           {item.description}
                         </p>
+                        
+                        {item.websiteUrl && (
+                          <div className="pt-4">
+                            <a 
+                              href={item.websiteUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center text-red-600 font-medium hover:text-red-700"
+                            >
+                              <span>Visit Website</span>
+                              <ArrowRight className="w-4 h-4 ml-2" />
+                            </a>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -291,12 +331,17 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Services Section */}
-          <div className="relative rounded-3xl overflow-hidden">
+          {/* Services Section - Full Width */}
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="relative w-full md:w-screen left-0 md:left-1/2 right-0 md:right-1/2 md:-mx-[50vw]"
+          >
             {/* Background Image */}
             <div className="absolute inset-0">
               <Image
-                src="/services-bg.jpg"
+                src="/transform-services.jpg"
                 alt="Services Background"
                 fill
                 className="object-cover"
@@ -305,37 +350,49 @@ export default function AboutPage() {
               <div className="absolute inset-0 bg-gradient-to-r from-green-900/95 via-green-800/95 to-green-900/90" />
             </div>
 
-            <div className="relative px-4 md:px-8 py-12 md:py-20">
-              <div className="flex flex-col lg:flex-row gap-8 md:gap-16 items-start">
-                {/* Left Column - Header */}
+            <div className="relative z-10 px-8 py-24 md:py-32">
+              <div className="max-w-7xl mx-auto">
+                {/* Header */}
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="lg:w-1/3"
+                  className="mb-16"
                 >
-                  <h3 className="text-4xl md:text-5xl font-display font-bold mb-6 text-white">
-                    Our Services
+                  <h3 className="text-4xl md:text-5xl font-display font-bold mb-6 text-white text-center">
+                    Our Transformation Services
                   </h3>
-                  <p className="text-xl text-white/90 leading-relaxed">
-                    We provide comprehensive solutions tailored to meet your business needs, ensuring seamless experiences for both organizers and users.
+                  <p className="text-xl text-white/90 leading-relaxed text-center max-w-3xl mx-auto">
+                    We provide comprehensive transformation solutions tailored to meet your business needs, ensuring seamless experiences and sustainable growth.
                   </p>
                 </motion.div>
 
-                {/* Right Column - Services Cards */}
-                <div className="lg:w-2/3 space-y-6">
+                {/* Services Cards Grid */}
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
                   {[
                     {
-                      title: "Attendee Registration",
-                      description: "Offering seamless event registration and check-in solutions for organizers. Our platform ensures smooth processing and management of attendee data.",
-                      isComingSoon: false,
-                      icon: UserCheck
+                      title: "Customer Transformation",
+                      description: "Enhance customer experiences and engagement through digital solutions and data-driven insights.",
+                      icon: "users",
+                      href: "/services/customer-transformation"
                     },
                     {
-                      title: "Ticketing & Reservations",
-                      description: "Expanding into ticket booking and reservation services to make event and travel planning more convenient. A comprehensive solution for all your booking needs.",
-                      isComingSoon: true,
-                      icon: Ticket
+                      title: "Financial Transformation",
+                      description: "Optimize financial processes and systems to improve efficiency and decision-making.",
+                      icon: "chart",
+                      href: "/services/financial-transformation"
+                    },
+                    {
+                      title: "Operational Transformation",
+                      description: "Streamline operations and processes to increase productivity and reduce costs.",
+                      icon: "settings",
+                      href: "/services/operational-transformation"
+                    },
+                    {
+                      title: "Workforce Transformation",
+                      description: "Empower your workforce with digital tools and skills for the future.",
+                      icon: "people",
+                      href: "/services/workforce-transformation"
                     }
                   ].map((service, index) => (
                     <motion.div
@@ -343,49 +400,49 @@ export default function AboutPage() {
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
-                      className="group"
                     >
-                      <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 
-                        transition-all duration-300 hover:bg-white/20">
-                        <div className="flex items-start gap-6">
+                      <Link 
+                        href={service.href}
+                        className="block h-full group"
+                      >
+                        <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 h-full
+                          transition-all duration-300 hover:bg-white/20 flex flex-col">
                           <div className="w-12 h-12 rounded-xl bg-white/20 flex-shrink-0 flex items-center justify-center 
-                            group-hover:scale-110 transition-transform duration-300">
-                            <service.icon className="w-6 h-6 text-white" />
+                            group-hover:scale-110 transition-transform duration-300 mb-6">
+                            {service.icon === "users" && <UserCheck className="w-6 h-6 text-white" />}
+                            {service.icon === "chart" && <LineChart className="w-6 h-6 text-white" />}
+                            {service.icon === "settings" && <Settings className="w-6 h-6 text-white" />}
+                            {service.icon === "people" && <Users className="w-6 h-6 text-white" />}
                           </div>
-                          <div className="flex-1">
-                            {service.isComingSoon && (
-                              <div className="float-right ml-4">
-                                <span className="inline-block px-4 py-2 bg-white/90 text-green-600 
-                                  text-sm font-medium rounded-full shadow-sm">
-                                  Coming Soon
-                                </span>
-                              </div>
-                            )}
-                            <h4 className="text-2xl font-display font-bold mb-4 text-white">
-                              {service.title}
-                            </h4>
-                            <p className="text-lg leading-relaxed text-white/90">
-                              {service.description}
-                            </p>
+                          
+                          <h4 className="text-2xl font-display font-bold mb-4 text-white">
+                            {service.title}
+                          </h4>
+                          <p className="text-lg leading-relaxed text-white/90 mb-6">
+                            {service.description}
+                          </p>
+                          <div className="mt-auto flex items-center text-white font-medium">
+                            <span>Learn more</span>
+                            <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
                           </div>
                         </div>
-                      </div>
+                      </Link>
                     </motion.div>
                   ))}
                 </div>
+                
+                {/* Closing Statement - Inside Services Section */}
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="text-xl text-white/90 max-w-3xl mx-auto text-center mt-16 pt-16 border-t border-white/20"
+                >
+                  At Krontiva Africa, we are committed to innovation, efficiency, and customer satisfaction. Our goal is to simplify complex processes and create solutions that make everyday transactions effortless.
+                </motion.p>
               </div>
             </div>
-          </div>
-
-          {/* Closing Statement */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-xl text-gray-600 max-w-3xl mx-auto text-center mt-20"
-          >
-            At Krontiva Africa, we are committed to innovation, efficiency, and customer satisfaction. Our goal is to simplify complex processes and create solutions that make everyday transactions effortless.
-          </motion.p>
+          </motion.div>
         </div>
       </div>
     </main>

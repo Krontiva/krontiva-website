@@ -113,7 +113,7 @@ export default function ServicesPage() {
             className="absolute inset-0"
           >
             <Image
-              src="/transform-butterfly.webp"
+              src="/butterfly.jpg"
               alt="Digital Transformation"
               fill
               className="object-cover"
