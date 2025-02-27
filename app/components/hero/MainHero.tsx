@@ -147,26 +147,17 @@ export default function MainHero() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
             </motion.div>
 
-            {/* Floating Elements */}
+            {/* Floating Company Name */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 0 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              className="absolute -right-8 top-1/4 bg-white p-6 rounded-xl shadow-xl"
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="absolute top-2/3 md:top-1/2 right-8 md:right-16 bg-white/10 backdrop-blur-md 
+                px-6 py-4 rounded-xl border border-white/20 shadow-xl"
             >
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                  <Image
-                    src="/logo.png"
-                    alt="Krontiva Logo"
-                    width={32}
-                    height={32}
-                  />
-                </div>
-                <div>
-                  <div className="font-medium">Krontiva Africa</div>
-                  <div className="text-sm text-gray-600">Enterprise Solutions</div>
-                </div>
+              <div className="text-white">
+                <div className="font-display font-bold text-xl md:text-2xl mb-1">Krontiva Africa</div>
+                <div className="text-sm md:text-base text-white/80">Enterprise Solutions</div>
               </div>
             </motion.div>
 
