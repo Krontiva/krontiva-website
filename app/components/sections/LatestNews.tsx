@@ -81,7 +81,7 @@ export default function LatestNews() {
               className="text-5xl sm:text-4xl md:text-5xl font-display font-bold text-gray-900 mb-4 sm:mb-6"
             >
               News & <br />
-              Insights
+              Updates
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
