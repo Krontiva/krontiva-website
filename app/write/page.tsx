@@ -44,7 +44,7 @@ export default function WritePage() {
   const [userData, setUserData] = useState<UserData | null>(null);
   const [showPassword, setShowPassword] = useState(false);
   const [title, setTitle] = useState('');
-  const [category, setCategory] = useState('NEWS');
+  const [category, setCategory] = useState('UPDATES');
   const [excerpt, setExcerpt] = useState('');
   const [content, setContent] = useState('');
   const [image, setImage] = useState<File | null>(null);
@@ -201,7 +201,7 @@ export default function WritePage() {
 
       // Reset form
       setTitle('');
-      setCategory('NEWS');
+      setCategory('UPDATES');
       setExcerpt('');
       setContent('');
       setImage(null);
@@ -477,7 +477,7 @@ export default function WritePage() {
                   className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 
                   focus:ring-green-200 focus:border-green-500 transition-colors"
                 >
-                  <option value="NEWS">News</option>
+                  <option value="UPDATES">Updates</option>
                   <option value="INSIGHTS">Insights</option>
                   <option value="ANALYSIS">Analysis</option>
                   <option value="SECURITY">Security</option>
