@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Header from "../components/layout/Header";
-import { Ticket, UserCheck, LineChart, Settings, Users, ArrowRight } from 'lucide-react';
+import { UserCheck, LineChart, Settings, Users, ArrowRight } from 'lucide-react';
 import Link from "next/link";
 
 export default function AboutPage() {

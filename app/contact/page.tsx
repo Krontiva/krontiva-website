@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from "framer-motion";
 import Header from "../components/layout/Header";
 import { Mail, Phone, MapPin } from "lucide-react";
@@ -62,7 +62,7 @@ export default function ContactPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-xl text-gray-600 max-w-2xl"
             >
-              Have a question or want to discuss a project? We'd love to hear from you. 
+              Have a question or want to discuss a project? We&apos;d love to hear from you. 
               Get in touch with us using any of the methods below.
             </motion.p>
           </div>
