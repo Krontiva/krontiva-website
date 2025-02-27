@@ -6,6 +6,7 @@ import Header from "../components/layout/Header";
 import { Lock, Mail, Eye, EyeOff, Pencil, Trash2 } from "lucide-react";
 import ArticleEditor from '../components/editor/ArticleEditor';
 import Image from "next/image";
+import { useParams } from 'next/navigation';
 
 // Update the Article interface to match the API response
 interface Article {
@@ -56,6 +57,7 @@ export default function WritePage() {
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   const [fetchError, setFetchError] = useState('');
   const [isEditMode, setIsEditMode] = useState(false);
+  const params = useParams();
 
   const fetchUserDetails = useCallback(async (token: string) => {
     try {
