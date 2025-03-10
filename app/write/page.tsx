@@ -479,8 +479,7 @@ export default function WritePage() {
                 >
                   <option value="UPDATES">Updates</option>
                   <option value="INSIGHTS">Insights</option>
-                  <option value="ANALYSIS">Analysis</option>
-                  <option value="SECURITY">Security</option>
+                  <option value="NEWS">News</option>
                 </select>
               </div>
 
