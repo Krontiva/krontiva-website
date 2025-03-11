@@ -54,7 +54,7 @@ const Footer = () => {
             <h3 className="text-h4 font-display font-bold">Map</h3>
             <div className="aspect-video w-full rounded-2xl overflow-hidden bg-gray-800">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.988761888557!2d-0.19967!3d5.5461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf9a01071a1d35%3A0xba37dfc2c1ae2a3c!2sThe%20Octagon%2C%20Accra%20Central%2C%20Ghana!5e0!3m2!1sen!2sus!4v1699123456789!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.8232833713984!2d-0.2033131!3d5.5522203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf90985855a833%3A0x2aac35e3ca429cf1!2sThe%20Octagon%2C%20Accra%20Central!5e0!3m2!1sen!2sgh!4v1707321092992!5m2!1sen!2sgh"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
