@@ -207,129 +207,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Products & Services Section */}
-        <div className="py-16 md:pt-32 pb-0 border-t border-gray-100">
-          {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <span className="text-green-600 text-lg font-medium mb-4 block">What we offer</span>
-            <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
-              Our Products & Services
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              At Krontiva Africa, we are dedicated to providing innovative digital solutions that enhance business operations and customer experiences.
-            </p>
-          </motion.div>
 
-          {/* Services Image */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-16 md:mb-32"
-          >
-            <div className="relative h-[300px] md:h-[500px] w-full rounded-2xl overflow-hidden">
-              <Image
-                src="/nanaengage.jpg"
-                alt="Our Services"
-                fill
-                className="object-cover"
-                priority
-                sizes="100vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-            </div>
-          </motion.div>
-
-          {/* Products Section */}
-          <div className="mb-16 md:mb-32">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {[
-                {
-                  title: "Delika",
-                  label: "Food Tech",
-                  description: "A comprehensive food delivery and restaurant management platform that connects customers with their favorite eateries while streamlining order processing, rider dispatch, and real-time tracking. Delika also offers restaurant owners tools for menu management, analytics, and customer engagement to enhance operational efficiency.",
-                  bgColor: "bg-orange-50",
-                  borderColor: "border-orange-100",
-                  websiteUrl: "https://delika.app"
-                },
-                {
-                  label: "Ticketing",
-                  title: "Tickrfly",
-                  description: "A modern ticketing and event management platform designed to simplify ticket sales and access control for event organizers. TikrFly provides secure digital tickets, QR code scanning for seamless check-ins, real-time sales tracking, and marketing tools to boost event reach and engagement",
-                  bgColor: "bg-blue-50",
-                  borderColor: "border-blue-100"
-                },
-                {
-                  label: "Commerce",
-                  title: "EngageEase",
-                  description: "A conversational commerce platform that integrates seamlessly with WhatsApp, allowing businesses to manage customer interactions, process orders, and coordinate deliveries in one place. With built-in inventory management, automated messaging, and analytics, EngageEase helps merchants enhance sales and customer service effortlessly.",
-                  bgColor: "bg-orange-50",
-                  borderColor: "border-orange-100"
-                },
-                {
-                  label: "Manufacturing",
-                  title: "Manutrax",
-                  description: " A manufacturing flow management software designed to optimize production processes by providing real-time insights, process visualization, and inventory tracking. Manutrax empowers managers with data-driven decision-making tools to improve efficiency, reduce waste, and enhance overall operational performance.",
-                  bgColor: "bg-red-50",
-                  borderColor: "border-red-100"
-                }
-              ].map((item, index) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="group"
-                >
-                  <div className={`${item.bgColor} border ${item.borderColor} rounded-2xl p-8 h-full 
-                    transition-all duration-300 hover:shadow-lg hover:-translate-y-1`}
-                  >
-                    <div className="space-y-6">
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium uppercase tracking-wider text-gray-600">
-                          {item.label}
-                        </span>
-                        <Image
-                          src={`/${item.title}-Logo.png`}
-                          alt={`${item.title} Logo`}
-                          width={48}
-                          height={48}
-                          className="w-12 h-12 group-hover:scale-110 transition-transform duration-300"
-                        />
-                      </div>
-                      <div className="space-y-4">
-                        <h4 className="text-2xl font-display font-bold text-gray-900">
-                          {item.title}
-                        </h4>
-                        <p className="text-gray-600 leading-relaxed">
-                          {item.description}
-                        </p>
-                        
-                        {item.websiteUrl && (
-                          <div className="pt-4">
-                            <a 
-                              href={item.websiteUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center text-red-600 font-medium hover:text-red-700"
-                            >
-                              <span>Visit Website</span>
-                              <ArrowRight className="w-4 h-4 ml-2" />
-                            </a>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
 
           {/* Services Section - Full Width */}
           <motion.div 
@@ -431,20 +309,11 @@ export default function AboutPage() {
                   ))}
                 </div>
                 
-                {/* Closing Statement - Inside Services Section */}
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  className="text-xl text-white/90 max-w-3xl mx-auto text-center mt-16 pt-16 border-t border-white/20"
-                >
-                  At Krontiva Africa, we are committed to innovation, efficiency, and customer satisfaction. Our goal is to simplify complex processes and create solutions that make everyday transactions effortless.
-                </motion.p>
+              
               </div>
             </div>
           </motion.div>
         </div>
-      </div>
     </main>
   );
 } 
