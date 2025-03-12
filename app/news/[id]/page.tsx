@@ -37,14 +37,14 @@ export default function NewsDetail() {
       if (!params.id) return;
       
       try {
-        const response = await fetch(`https://api-server.krontiva.africa/api:eUI59reW/krontiva_articles/${params.id}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/krontiva_articles/${params.id}`);
         
         if (response.ok) {
           const data = await response.json();
           setArticle(data);
           
           // Fetch more articles
-          const allArticlesResponse = await fetch('https://api-server.krontiva.africa/api:eUI59reW/krontiva_articles');
+          const allArticlesResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/krontiva_articles`);
           if (allArticlesResponse.ok) {
             const allArticles = await allArticlesResponse.json();
             const otherArticles = allArticles

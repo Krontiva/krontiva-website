@@ -59,7 +59,7 @@ export default function WritePage() {
 
   const fetchUserDetails = useCallback(async (token: string) => {
     try {
-      const response = await fetch('https://api-server.krontiva.africa/api:eUI59reW/auth/me', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/me`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -84,7 +84,7 @@ export default function WritePage() {
     setError("");
 
     try {
-      const response = await fetch('https://api-server.krontiva.africa/api:eUI59reW/auth/login', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -180,8 +180,8 @@ export default function WritePage() {
 
       // Update URL and method based on edit mode
       const url = isEditMode && selectedArticle 
-        ? `https://api-server.krontiva.africa/api:eUI59reW/krontiva_articles/${selectedArticle.id}`
-        : 'https://api-server.krontiva.africa/api:eUI59reW/krontiva_articles';
+        ? `${process.env.NEXT_PUBLIC_API_URL}/krontiva_articles/${selectedArticle.id}`
+        : `${process.env.NEXT_PUBLIC_API_URL}/krontiva_articles`;
 
       const method = isEditMode ? 'PATCH' : 'POST';
 
@@ -238,7 +238,7 @@ export default function WritePage() {
     setFetchError('');
     try {
       const token = localStorage.getItem('authToken');
-      const response = await fetch('https://api-server.krontiva.africa/api:eUI59reW/krontiva_articles', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/krontiva_articles`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -272,7 +272,7 @@ export default function WritePage() {
     setIsDeleting(true);
     try {
       const token = localStorage.getItem('authToken');
-      const response = await fetch(`https://api-server.krontiva.africa/api:eUI59reW/krontiva_articles/${id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/krontiva_articles/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
