@@ -299,8 +299,9 @@ export default function WritePage() {
       } else {
         throw new Error('Failed to delete article');
       }
-    } catch {
+    } catch (error) {
       setSubmitError('Failed to delete article. Please try again.');
+      console.error('Error deleting article:', error);
     } finally {
       setIsDeleting(false);
     }
