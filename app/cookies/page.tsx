@@ -25,7 +25,7 @@ export default function CookiesPage() {
             <div className="p-6 border border-gray-100 rounded-xl">
               <h3 className="text-xl font-display font-bold mb-4">Essential Cookies</h3>
               <p className="text-gray-600 mb-4">
-                These cookies are necessary for the website to function and cannot be switched off.
+                These cookies are needed for the website to function and cannot be switched off.
               </p>
               <div className="flex items-center">
                 <input 
