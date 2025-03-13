@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import { type NextRequest } from 'next/server';
-import { type NextApiRequest } from 'next/types';
 
 interface RouteParams {
   params: { id: string };
