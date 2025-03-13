@@ -61,7 +61,6 @@ export default function NewsDetail() {
           throw new Error('Article not found');
         }
       } catch (error) {
-        console.error('Error fetching article:', error);
         setArticle(null);
         setMoreArticles([]);
       } finally {

@@ -100,10 +100,12 @@ export default function WritePage() {
         await fetchUserDetails(data.authToken);
         setIsAuthenticated(true);
       } else {
-        setError(data.message || 'Invalid credentials');
+        // Generic error message for invalid credentials
+        setError('Invalid email or password');
       }
     } catch {
-      setError('Failed to connect to the server. Please try again.');
+      // Generic error message for server/network issues
+      setError('Unable to sign in at this time. Please try again later.');
     } finally {
       setIsLoading(false);
     }

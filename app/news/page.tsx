@@ -45,7 +45,6 @@ export default function NewsPage() {
           throw new Error('Failed to fetch articles');
         }
       } catch (error) {
-        console.error('Error fetching news:', error);
         setError('Unable to load articles at this time');
         setNews([]);
       } finally {
