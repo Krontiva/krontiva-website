@@ -1,14 +1,9 @@
 import { NextResponse } from 'next/server';
 import { type NextRequest } from 'next/server';
 
-interface RouteParams {
-  params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-}
-
 export async function GET(
   request: NextRequest,
-  { params }: RouteParams
+  { params }: { params: { id: string } }
 ) {
   try {
     const response = await fetch(`${process.env.API_URL}/krontiva_articles/${params.id}`);
@@ -36,7 +31,7 @@ export async function GET(
 
 export async function PATCH(
   request: NextRequest,
-  { params }: RouteParams
+  { params }: { params: { id: string } }
 ) {
   try {
     const token = request.headers.get('Authorization');
@@ -79,7 +74,7 @@ export async function PATCH(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: RouteParams
+  { params }: { params: { id: string } }
 ) {
   try {
     const token = request.headers.get('Authorization');
