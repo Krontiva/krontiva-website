@@ -74,7 +74,7 @@ export default function WritePage() {
       } else {
         throw new Error('Failed to fetch user details');
       }
-    } catch (_err) {
+    } catch {
       handleSignOut();
     }
   }, []);
@@ -102,7 +102,7 @@ export default function WritePage() {
       } else {
         setError(data.message || 'Invalid credentials');
       }
-    } catch (_err) {
+    } catch {
       setError('Failed to connect to the server. Please try again.');
     } finally {
       setIsLoading(false);
@@ -239,10 +239,10 @@ export default function WritePage() {
 
       alert(`Article ${isEditMode ? 'updated' : 'published'} successfully!`);
 
-    } catch (_err) {
-      setSubmitError(_err instanceof Error ? _err.message : `Failed to ${isEditMode ? 'update' : 'publish'} article`);
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : `Failed to ${isEditMode ? 'update' : 'publish'} article`);
       
-      if (_err instanceof Error && _err.message.includes('authentication')) {
+      if (err instanceof Error && err.message.includes('authentication')) {
         handleSignOut();
       }
     } finally {
@@ -272,7 +272,7 @@ export default function WritePage() {
       } else {
         throw new Error('Failed to fetch articles');
       }
-    } catch (err) {
+    } catch (_err) {
       setFetchError('Failed to load articles');
       setArticles([]);
     } finally {
@@ -298,7 +298,7 @@ export default function WritePage() {
       } else {
         throw new Error('Failed to delete article');
       }
-    } catch (_err) {
+    } catch {
       setSubmitError('Failed to delete article. Please try again.');
     } finally {
       setIsDeleting(false);
