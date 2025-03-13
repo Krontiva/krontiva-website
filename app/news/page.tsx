@@ -45,6 +45,10 @@ export default function NewsPage() {
           throw new Error('Failed to fetch articles');
         }
       } catch (error) {
+        // Log error only in development
+        if (process.env.NODE_ENV === 'development') {
+          console.error('Development mode - News fetch error:', error);
+        }
         setError('Unable to load articles at this time');
         setNews([]);
       } finally {

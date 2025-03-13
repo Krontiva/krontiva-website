@@ -61,6 +61,10 @@ export default function NewsDetail() {
           throw new Error('Article not found');
         }
       } catch (error) {
+        // Log error only in development
+        if (process.env.NODE_ENV === 'development') {
+          console.error('Development mode - Article fetch error:', error);
+        }
         setArticle(null);
         setMoreArticles([]);
       } finally {
