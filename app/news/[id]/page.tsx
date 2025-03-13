@@ -54,10 +54,15 @@ export default function NewsDetail() {
               )
               .slice(0, 3);
             setMoreArticles(otherArticles);
+          } else {
+            setMoreArticles([]);
           }
+        } else {
+          throw new Error('Article not found');
         }
       } catch (error) {
-        console.error('Failed to fetch article:', error);
+        setArticle(null);
+        setMoreArticles([]);
       } finally {
         setIsLoading(false);
       }

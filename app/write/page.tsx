@@ -16,6 +16,7 @@ interface Article {
   slug: string;
   excerpt: string;
   content: string;
+  tags: Array<{ tag: string }>;
   image: {
     url: string;
     name: string;
@@ -47,6 +48,8 @@ export default function WritePage() {
   const [category, setCategory] = useState('UPDATES');
   const [excerpt, setExcerpt] = useState('');
   const [content, setContent] = useState('');
+  const [tags, setTags] = useState<string[]>([]);
+  const [tagInput, setTagInput] = useState('');
   const [image, setImage] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
@@ -68,12 +71,10 @@ export default function WritePage() {
       if (response.ok) {
         const data = await response.json();
         setUserData(data);
-        console.log('User data:', data);
       } else {
         throw new Error('Failed to fetch user details');
       }
     } catch (err) {
-      console.error('Failed to fetch user details:', err);
       handleSignOut();
     }
   }, []);
@@ -93,7 +94,6 @@ export default function WritePage() {
       });
 
       const data = await response.json();
-      console.log('Login response:', data);
 
       if (response.ok && data.authToken) {
         localStorage.setItem('authToken', data.authToken);
@@ -103,7 +103,6 @@ export default function WritePage() {
         setError(data.message || 'Invalid credentials');
       }
     } catch (err) {
-      console.error('Login error:', err);
       setError('Failed to connect to the server. Please try again.');
     } finally {
       setIsLoading(false);
@@ -146,9 +145,24 @@ export default function WritePage() {
     setCategory(article.category);
     setExcerpt(article.excerpt);
     setContent(article.content);
+    setTags(article.tags ? article.tags.map(t => t.tag) : []);
     setIsEditMode(true);
-    // Scroll to top of form
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleAddTag = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' || e.key === ',') {
+      e.preventDefault();
+      const tag = tagInput.trim();
+      if (tag && !tags.includes(tag)) {
+        setTags([...tags, tag]);
+        setTagInput('');
+      }
+    }
+  };
+
+  const handleRemoveTag = (tagToRemove: string) => {
+    setTags(tags.filter(tag => tag !== tagToRemove));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -162,6 +176,9 @@ export default function WritePage() {
         throw new Error('No authentication token found');
       }
 
+      // Format tags as objects
+      const formattedTags = tags.map(tag => ({ tag }));
+
       const formData = new FormData();
       formData.append('title', title);
       formData.append('slug', slug);
@@ -169,6 +186,7 @@ export default function WritePage() {
       formData.append('excerpt', excerpt);
       formData.append('content', content);
       formData.append('date', new Date().toISOString());
+      formData.append('tags', JSON.stringify(formattedTags));
       
       if (userData?.id) {
         formData.append('authors_id', userData.id.toString());
@@ -178,7 +196,6 @@ export default function WritePage() {
         formData.append('photo', image);
       }
 
-      // Update URL and method based on edit mode
       const url = isEditMode && selectedArticle 
         ? `${process.env.NEXT_PUBLIC_API_URL}/krontiva_articles/${selectedArticle.id}`
         : `${process.env.NEXT_PUBLIC_API_URL}/krontiva_articles`;
@@ -204,6 +221,8 @@ export default function WritePage() {
       setCategory('UPDATES');
       setExcerpt('');
       setContent('');
+      setTags([]);
+      setTagInput('');
       setImage(null);
       setSelectedArticle(null);
       setIsEditMode(false);
@@ -221,7 +240,6 @@ export default function WritePage() {
       alert(`Article ${isEditMode ? 'updated' : 'published'} successfully!`);
 
     } catch (err) {
-      console.error('Submission error:', err);
       setSubmitError(err instanceof Error ? err.message : `Failed to ${isEditMode ? 'update' : 'publish'} article`);
       
       if (err instanceof Error && err.message.includes('authentication')) {
@@ -246,27 +264,23 @@ export default function WritePage() {
       
       if (response.ok) {
         const data = await response.json();
-        // Check if data exists and has the expected structure
         if (data && Array.isArray(data)) {
           setArticles(data);
         } else {
-          setArticles([]); // Set empty array if no data
-          console.warn('Unexpected API response structure:', data);
+          setArticles([]);
         }
       } else {
         throw new Error('Failed to fetch articles');
       }
     } catch (err) {
-      console.error('Failed to fetch articles:', err);
       setFetchError('Failed to load articles');
-      setArticles([]); // Set empty array on error
+      setArticles([]);
     } finally {
       setIsLoading(false);
     }
   };
 
-  // Update the delete handler to use string ID
-  const handleDeleteArticle = async (id: string) => {  // Changed from number to string
+  const handleDeleteArticle = async (id: string) => {
     if (!window.confirm('Are you sure you want to delete this article?')) return;
     
     setIsDeleting(true);
@@ -281,9 +295,11 @@ export default function WritePage() {
 
       if (response.ok) {
         await fetchArticles();
+      } else {
+        throw new Error('Failed to delete article');
       }
     } catch (err) {
-      console.error('Failed to delete article:', err);
+      setSubmitError('Failed to delete article. Please try again.');
     } finally {
       setIsDeleting(false);
     }
@@ -520,6 +536,43 @@ export default function WritePage() {
                   className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 
                   focus:ring-green-200 focus:border-green-500 transition-colors"
                 />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Tags
+                </label>
+                <div className="space-y-2">
+                  <div className="flex flex-wrap gap-2 mb-2">
+                    {tags.map((tag, index) => (
+                      <span
+                        key={index}
+                        className="inline-flex items-center px-3 py-1 rounded-full bg-green-50 text-green-600"
+                      >
+                        {tag}
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveTag(tag)}
+                          className="ml-2 text-green-500 hover:text-green-700"
+                        >
+                          ×
+                        </button>
+                      </span>
+                    ))}
+                  </div>
+                  <input
+                    type="text"
+                    value={tagInput}
+                    onChange={(e) => setTagInput(e.target.value)}
+                    onKeyDown={handleAddTag}
+                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 
+                    focus:ring-green-200 focus:border-green-500 transition-colors"
+                    placeholder="Add tags (press Enter or comma to add)"
+                  />
+                  <p className="mt-1 text-sm text-gray-500">
+                    Press Enter or comma (,) to add a tag
+                  </p>
+                </div>
               </div>
 
               <div className="flex justify-end gap-4">
