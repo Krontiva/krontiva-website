@@ -62,7 +62,7 @@ export default function WritePage() {
 
   const fetchUserDetails = useCallback(async (token: string) => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/me`, {
+      const response = await fetch('/api/auth/me', {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -85,7 +85,7 @@ export default function WritePage() {
     setError("");
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
+      const response = await fetch('/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -100,11 +100,9 @@ export default function WritePage() {
         await fetchUserDetails(data.authToken);
         setIsAuthenticated(true);
       } else {
-        // Generic error message for invalid credentials
-        setError('Invalid email or password');
+        setError(data.message || 'Invalid email or password');
       }
     } catch {
-      // Generic error message for server/network issues
       setError('Unable to sign in at this time. Please try again later.');
     } finally {
       setIsLoading(false);
@@ -199,8 +197,8 @@ export default function WritePage() {
       }
 
       const url = isEditMode && selectedArticle 
-        ? `${process.env.NEXT_PUBLIC_API_URL}/krontiva_articles/${selectedArticle.id}`
-        : `${process.env.NEXT_PUBLIC_API_URL}/krontiva_articles`;
+        ? `/api/articles/${selectedArticle.id}`
+        : '/api/articles';
 
       const method = isEditMode ? 'PATCH' : 'POST';
 
@@ -252,13 +250,12 @@ export default function WritePage() {
     }
   };
 
-  // Update the fetch articles function
   const fetchArticles = async () => {
     setIsLoading(true);
     setFetchError('');
     try {
       const token = localStorage.getItem('authToken');
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/krontiva_articles`, {
+      const response = await fetch('/api/articles', {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -272,12 +269,16 @@ export default function WritePage() {
           setArticles([]);
         }
       } else {
-        throw new Error('Failed to fetch articles');
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to fetch articles');
       }
     } catch (error) {
       setFetchError('Failed to load articles');
       setArticles([]);
-      console.error('Error fetching articles:', error);
+      // Log error only in development
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Development mode - Error fetching articles:', error);
+      }
     } finally {
       setIsLoading(false);
     }
@@ -289,7 +290,7 @@ export default function WritePage() {
     setIsDeleting(true);
     try {
       const token = localStorage.getItem('authToken');
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/krontiva_articles/${id}`, {
+      const response = await fetch(`/api/articles/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -299,11 +300,15 @@ export default function WritePage() {
       if (response.ok) {
         await fetchArticles();
       } else {
-        throw new Error('Failed to delete article');
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to delete article');
       }
     } catch (error) {
       setSubmitError('Failed to delete article. Please try again.');
-      console.error('Error deleting article:', error);
+      // Log error only in development
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Development mode - Error deleting article:', error);
+      }
     } finally {
       setIsDeleting(false);
     }

@@ -33,7 +33,7 @@ export default function NewsPage() {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/krontiva_articles`);
+        const response = await fetch('/api/articles');
         if (response.ok) {
           const data = await response.json();
           const sortedNews = data.sort((a: Article, b: Article) => 
@@ -42,7 +42,8 @@ export default function NewsPage() {
           setNews(sortedNews);
           setError(null);
         } else {
-          throw new Error('Failed to fetch articles');
+          const errorData = await response.json();
+          throw new Error(errorData.message || 'Failed to fetch articles');
         }
       } catch (error) {
         // Log error only in development

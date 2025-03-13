@@ -37,14 +37,14 @@ export default function NewsDetail() {
       if (!params.id) return;
       
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/krontiva_articles/${params.id}`);
+        const response = await fetch(`/api/articles/${params.id}`);
         
         if (response.ok) {
           const data = await response.json();
           setArticle(data);
           
           // Fetch more articles
-          const allArticlesResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/krontiva_articles`);
+          const allArticlesResponse = await fetch('/api/articles');
           if (allArticlesResponse.ok) {
             const allArticles = await allArticlesResponse.json();
             const otherArticles = allArticles
@@ -55,10 +55,13 @@ export default function NewsDetail() {
               .slice(0, 3);
             setMoreArticles(otherArticles);
           } else {
+            const errorData = await allArticlesResponse.json();
+            console.warn('Failed to fetch more articles:', errorData.message);
             setMoreArticles([]);
           }
         } else {
-          throw new Error('Article not found');
+          const errorData = await response.json();
+          throw new Error(errorData.message || 'Article not found');
         }
       } catch (error) {
         // Log error only in development
