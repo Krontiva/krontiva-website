@@ -272,9 +272,10 @@ export default function WritePage() {
       } else {
         throw new Error('Failed to fetch articles');
       }
-    } catch (_err) {
+    } catch (error) {
       setFetchError('Failed to load articles');
       setArticles([]);
+      console.error('Error fetching articles:', error);
     } finally {
       setIsLoading(false);
     }
