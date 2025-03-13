@@ -26,6 +26,10 @@ export async function GET(request: Request) {
     const userData = await response.json();
     return NextResponse.json(userData);
   } catch (error) {
+    // Log error details in development
+    if (process.env.NODE_ENV === 'development') {
+      console.error('[Dev] User details fetch error:', error);
+    }
     return NextResponse.json(
       { message: 'Unable to fetch user details at this time' },
       { status: 500 }

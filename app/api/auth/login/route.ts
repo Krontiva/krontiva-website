@@ -23,6 +23,10 @@ export async function POST(request: Request) {
 
     return NextResponse.json(responseData);
   } catch (error) {
+    // Log error details in development
+    if (process.env.NODE_ENV === 'development') {
+      console.error('[Dev] Authentication error:', error);
+    }
     return NextResponse.json(
       { message: 'An error occurred during authentication' },
       { status: 500 }

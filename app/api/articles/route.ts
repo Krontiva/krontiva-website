@@ -14,6 +14,10 @@ export async function GET() {
     const articles = await response.json();
     return NextResponse.json(articles);
   } catch (error) {
+    // Log error details in development
+    if (process.env.NODE_ENV === 'development') {
+      console.error('[Dev] Articles fetch error:', error);
+    }
     return NextResponse.json(
       { message: 'Unable to load articles at this time' },
       { status: 500 }
@@ -50,6 +54,10 @@ export async function POST(request: Request) {
 
     return NextResponse.json(responseData);
   } catch (error) {
+    // Log error details in development
+    if (process.env.NODE_ENV === 'development') {
+      console.error('[Dev] Article creation error:', error);
+    }
     return NextResponse.json(
       { message: 'Unable to publish article at this time' },
       { status: 500 }

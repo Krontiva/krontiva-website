@@ -17,6 +17,10 @@ export async function GET(
     const article = await response.json();
     return NextResponse.json(article);
   } catch (error) {
+    // Log error details in development
+    if (process.env.NODE_ENV === 'development') {
+      console.error('[Dev] Article fetch error:', error);
+    }
     return NextResponse.json(
       { message: 'Unable to load article at this time' },
       { status: 500 }
@@ -56,6 +60,10 @@ export async function PATCH(
     const responseData = await response.json();
     return NextResponse.json(responseData);
   } catch (error) {
+    // Log error details in development
+    if (process.env.NODE_ENV === 'development') {
+      console.error('[Dev] Article update error:', error);
+    }
     return NextResponse.json(
       { message: 'Unable to update article at this time' },
       { status: 500 }
@@ -92,6 +100,10 @@ export async function DELETE(
 
     return NextResponse.json({ message: 'Article deleted successfully' });
   } catch (error) {
+    // Log error details in development
+    if (process.env.NODE_ENV === 'development') {
+      console.error('[Dev] Article deletion error:', error);
+    }
     return NextResponse.json(
       { message: 'Unable to delete article at this time' },
       { status: 500 }
