@@ -1,18 +1,12 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-interface RequestContext {
-  params: {
-    id: string;
-  };
-}
-
 export async function GET(
-  _request: NextRequest,
-  context: RequestContext
-): Promise<Response> {
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
   try {
-    const response = await fetch(`${process.env.API_URL}/krontiva_articles/${context.params.id}`);
+    const response = await fetch(`${process.env.API_URL}/krontiva_articles/${params.id}`);
     
     if (!response.ok) {
       return NextResponse.json(
@@ -37,8 +31,8 @@ export async function GET(
 
 export async function PATCH(
   request: NextRequest,
-  context: RequestContext
-): Promise<Response> {
+  { params }: { params: { id: string } }
+) {
   try {
     const token = request.headers.get('Authorization');
     if (!token) {
@@ -48,7 +42,7 @@ export async function PATCH(
       );
     }
 
-    const response = await fetch(`${process.env.API_URL}/krontiva_articles/${context.params.id}`, {
+    const response = await fetch(`${process.env.API_URL}/krontiva_articles/${params.id}`, {
       method: 'PATCH',
       headers: {
         'Authorization': token,
@@ -80,8 +74,8 @@ export async function PATCH(
 
 export async function DELETE(
   request: NextRequest,
-  context: RequestContext
-): Promise<Response> {
+  { params }: { params: { id: string } }
+) {
   try {
     const token = request.headers.get('Authorization');
     if (!token) {
@@ -91,7 +85,7 @@ export async function DELETE(
       );
     }
 
-    const response = await fetch(`${process.env.API_URL}/krontiva_articles/${context.params.id}`, {
+    const response = await fetch(`${process.env.API_URL}/krontiva_articles/${params.id}`, {
       method: 'DELETE',
       headers: {
         'Authorization': token
