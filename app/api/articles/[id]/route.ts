@@ -1,11 +1,12 @@
 import { NextResponse } from 'next/server';
 
-// Using the exact types from Next.js documentation
+// Next.js 15 route handler with correct types
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
+    const params = await context.params;
     const { id } = params;
     const response = await fetch(`${process.env.API_URL}/krontiva_articles/${id}`);
     
@@ -32,9 +33,10 @@ export async function GET(
 
 export async function PATCH(
   request: Request,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
+    const params = await context.params;
     const { id } = params;
     const token = request.headers.get('Authorization');
     if (!token) {
@@ -76,9 +78,10 @@ export async function PATCH(
 
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
+    const params = await context.params;
     const { id } = params;
     const token = request.headers.get('Authorization');
     if (!token) {
