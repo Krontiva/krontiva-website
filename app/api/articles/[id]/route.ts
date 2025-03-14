@@ -1,13 +1,17 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-type Params = { params: { id: string } };
+interface RouteParams {
+  params: {
+    id: string;
+  };
+}
 
 export async function GET(
-  request: Request,
-  context: Params
+  request: NextRequest,
+  { params }: RouteParams
 ) {
   try {
-    const { id } = context.params;
+    const { id } = params;
     const response = await fetch(`${process.env.API_URL}/krontiva_articles/${id}`);
     
     if (!response.ok) {
@@ -32,11 +36,11 @@ export async function GET(
 }
 
 export async function PATCH(
-  request: Request,
-  context: Params
+  request: NextRequest,
+  { params }: RouteParams
 ) {
   try {
-    const { id } = context.params;
+    const { id } = params;
     const token = request.headers.get('Authorization');
     if (!token) {
       return NextResponse.json(
@@ -76,11 +80,11 @@ export async function PATCH(
 }
 
 export async function DELETE(
-  request: Request,
-  context: Params
+  request: NextRequest,
+  { params }: RouteParams
 ) {
   try {
-    const { id } = context.params;
+    const { id } = params;
     const token = request.headers.get('Authorization');
     if (!token) {
       return NextResponse.json(
