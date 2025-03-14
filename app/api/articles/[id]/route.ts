@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
 
-type Params = { id: string };
+type Params = { params: { id: string } };
 
 export async function GET(
   request: Request,
-  context: { params: Params }
+  context: Params
 ) {
   try {
     const { id } = context.params;
@@ -33,7 +33,7 @@ export async function GET(
 
 export async function PATCH(
   request: Request,
-  context: { params: Params }
+  context: Params
 ) {
   try {
     const { id } = context.params;
@@ -77,7 +77,7 @@ export async function PATCH(
 
 export async function DELETE(
   request: Request,
-  context: { params: Params }
+  context: Params
 ) {
   try {
     const { id } = context.params;
@@ -114,4 +114,4 @@ export async function DELETE(
       { status: 500 }
     );
   }
-} 
+}
