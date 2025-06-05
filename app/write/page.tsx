@@ -218,15 +218,19 @@ export default function WritePage() {
         formData.append('tags', JSON.stringify([]));
       }
       
+      // Handle image file
       if (image) {
-        formData.append('image', image);
+        formData.append('image', image, image.name);
+      } else {
+        // If no image is selected, send an empty object to meet the API requirement
+        formData.append('image', JSON.stringify({ url: '', name: '' }));
       }
 
       // Log FormData contents in development
       if (process.env.NODE_ENV === 'development') {
         console.log('FormData contents:');
         for (const [key, value] of formData.entries()) {
-          console.log(`${key}:`, value);
+          console.log(`${key}:`, value instanceof File ? `File: ${value.name}` : value);
         }
       }
 
@@ -571,10 +575,12 @@ export default function WritePage() {
                   type="file"
                   accept="image/*"
                   onChange={handleImageChange}
-                  required
                   className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 
                   focus:ring-green-200 focus:border-green-500 transition-colors"
                 />
+                <p className="mt-1 text-sm text-gray-500">
+                  {image ? `Selected file: ${image.name}` : 'No file selected'}
+                </p>
               </div>
 
               <div>

@@ -44,7 +44,7 @@ export async function POST(request: Request) {
     if (process.env.NODE_ENV === 'development') {
       console.log('API Route - FormData contents:');
       for (const [key, value] of formData.entries()) {
-        console.log(`${key}:`, value);
+        console.log(`${key}:`, value instanceof File ? `File: ${value.name}` : value);
       }
     }
 
@@ -54,6 +54,27 @@ export async function POST(request: Request) {
       if (!formData.get(field)) {
         return NextResponse.json(
           { message: `Missing required field: ${field}` },
+          { status: 400 }
+        );
+      }
+    }
+
+    // Check if image is provided
+    const image = formData.get('image');
+    if (!image) {
+      return NextResponse.json(
+        { message: 'Image is required' },
+        { status: 400 }
+      );
+    }
+
+    // If image is a string (JSON), parse it to ensure it's valid
+    if (typeof image === 'string') {
+      try {
+        JSON.parse(image);
+      } catch (e) {
+        return NextResponse.json(
+          { message: 'Invalid image data' },
           { status: 400 }
         );
       }
