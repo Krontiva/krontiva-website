@@ -72,7 +72,7 @@ export async function POST(request: Request) {
     if (typeof image === 'string') {
       try {
         JSON.parse(image);
-      } catch (e) {
+      } catch {
         return NextResponse.json(
           { message: 'Invalid image data' },
           { status: 400 }
