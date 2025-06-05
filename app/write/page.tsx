@@ -221,7 +221,7 @@ export default function WritePage() {
       // Handle image file
       if (image) {
         formData.append('image', image, image.name);
-      } else {
+      } else {  
         // If no image is selected, send an empty object to meet the API requirement
         formData.append('image', JSON.stringify({ url: '', name: '' }));
       }

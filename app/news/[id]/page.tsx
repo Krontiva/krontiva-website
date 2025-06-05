@@ -21,8 +21,15 @@ interface Article {
     email: string;
     created_at: number;
   }>;
-  image: {
+  images: {
     url: string;
+    meta?: { width: number; height: number };
+    mime?: string;
+    name?: string;
+    path?: string;
+    size?: number;
+    type?: string;
+    access?: string;
   };
 }
 
@@ -103,10 +110,10 @@ export default function NewsDetail() {
           </div>
         </div>
 
-        {article.image && (
+        {article.images && (
           <div className="relative w-full h-[400px] mb-12 rounded-xl overflow-hidden">
             <Image
-              src={article.image.url}
+              src={article.images.url}
               alt={article.title}
               fill
               className="object-cover"
@@ -139,7 +146,7 @@ export default function NewsDetail() {
                 <Link href={`/news/${article.id}`}>
                   <div className="relative h-48 mb-6 overflow-hidden rounded-xl">
                     <Image
-                      src={article.image.url}
+                      src={article.images.url}
                       alt={article.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

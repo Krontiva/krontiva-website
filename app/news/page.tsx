@@ -20,7 +20,7 @@ interface Article {
     email: string;
     created_at: number;
   }>;
-  image: {
+  images: {
     url: string;
   };
 }
@@ -131,7 +131,7 @@ export default function NewsPage() {
                 <Link href={`/news/${article.id}`}>
                   <div className="relative h-64 mb-6 overflow-hidden rounded-xl">
                     <Image
-                      src={article.image.url}
+                      src={article.images.url}
                       alt={article.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

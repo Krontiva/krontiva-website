@@ -20,7 +20,7 @@ interface Article {
     email: string;
     created_at: number;
   }>;
-  image: {
+  images: {
     url: string;
   };
 }
@@ -123,7 +123,7 @@ export default function LatestNews() {
                   >
                     <div className="relative w-full sm:w-48 h-48 sm:h-32 flex-shrink-0 overflow-hidden">
                       <Image
-                        src={item.image.url}
+                        src={item.images.url}
                         alt={item.title}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
