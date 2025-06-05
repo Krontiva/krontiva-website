@@ -179,10 +179,18 @@ export default function WritePage() {
       // Create FormData
       const formData = new FormData();
       formData.append('title', title);
+      formData.append('slug', generateSlug(title));
       formData.append('category', category);
       formData.append('excerpt', excerpt);
       formData.append('content', content);
+      formData.append('date', new Date().toISOString());
       formData.append('tags', JSON.stringify(tags.map(tag => ({ tag }))));
+      
+      // Add author ID if available
+      const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+      if (userData?.id) {
+        formData.append('authors_id', userData.id);
+      }
       
       if (image) {
         formData.append('image', image);
