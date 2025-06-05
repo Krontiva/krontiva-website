@@ -35,18 +35,41 @@ export async function POST(request: Request) {
       );
     }
 
-    // Forward the request body as is
+    // Get the FormData
+    const formData = await request.formData();
+
+    // Log FormData contents in development
+    if (process.env.NODE_ENV === 'development') {
+      console.log('API Route - FormData contents:');
+      for (const [key, value] of formData.entries()) {
+        console.log(`${key}:`, value);
+      }
+    }
+
+    // Validate required fields
+    const requiredFields = ['title', 'slug', 'category', 'excerpt', 'content', 'date', 'authors_id'];
+    for (const field of requiredFields) {
+      if (!formData.get(field)) {
+        return NextResponse.json(
+          { message: `Missing required field: ${field}` },
+          { status: 400 }
+        );
+      }
+    }
+
+    // Forward the request to the external API
     const response = await fetch(`${process.env.API_URL}/krontiva_articles`, {
       method: 'POST',
       headers: {
         'Authorization': token,
       },
-      body: await request.formData()
+      body: formData
     });
 
     if (!response.ok) {
+      const errorData = await response.json();
       return NextResponse.json(
-        { message: 'Failed to create article' },
+        { message: errorData.message || 'Failed to create article' },
         { status: response.status }
       );
     }

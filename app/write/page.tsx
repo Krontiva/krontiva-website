@@ -176,24 +176,43 @@ export default function WritePage() {
         throw new Error('Authentication required');
       }
 
-      // Create FormData
+      // Get user data
+      const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+      if (!userData?.id) {
+        throw new Error('User data not found');
+      }
+
+      // Create FormData with all required fields
       const formData = new FormData();
+      const slug = generateSlug(title);
+      const currentDate = new Date().toISOString();
+
+      // Required fields
       formData.append('title', title);
-      formData.append('slug', generateSlug(title));
+      formData.append('slug', slug);
       formData.append('category', category);
       formData.append('excerpt', excerpt);
       formData.append('content', content);
-      formData.append('date', new Date().toISOString());
-      formData.append('tags', JSON.stringify(tags.map(tag => ({ tag }))));
-      
-      // Add author ID if available
-      const userData = JSON.parse(localStorage.getItem('userData') || '{}');
-      if (userData?.id) {
-        formData.append('authors_id', userData.id);
+      formData.append('date', currentDate);
+      formData.append('authors_id', userData.id);
+
+      // Optional fields
+      if (tags.length > 0) {
+        formData.append('tags', JSON.stringify(tags.map(tag => ({ tag }))));
+      } else {
+        formData.append('tags', JSON.stringify([]));
       }
       
       if (image) {
         formData.append('image', image);
+      }
+
+      // Log FormData contents in development
+      if (process.env.NODE_ENV === 'development') {
+        console.log('FormData contents:');
+        for (const [key, value] of formData.entries()) {
+          console.log(`${key}:`, value);
+        }
       }
 
       const url = isEditMode && selectedArticle
