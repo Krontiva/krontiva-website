@@ -2,7 +2,9 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
-    const response = await fetch(`${process.env.API_URL}/krontiva_articles`);
+    // Remove trailing slash from API_URL if it exists
+    const apiUrl = process.env.API_URL?.replace(/\/$/, '');
+    const response = await fetch(`${apiUrl}/krontiva_articles`);
     
     if (!response.ok) {
       return NextResponse.json(
@@ -57,17 +59,21 @@ export async function POST(request: Request) {
       }
     }
 
+    // Remove trailing slash from API_URL if it exists
+    const apiUrl = process.env.API_URL?.replace(/\/$/, '');
+
     // Forward the request to the external API
-    const response = await fetch(`${process.env.API_URL}/krontiva_articles`, {
+    const response = await fetch(`${apiUrl}/krontiva_articles`, {
       method: 'POST',
       headers: {
-        'Authorization': token,
+        'Authorization': token, // Don't add 'Bearer ' prefix - the token should already be in the correct format
       },
       body: formData
     });
 
     if (!response.ok) {
-      const errorData = await response.json();
+      const errorData = await response.json().catch(() => ({ message: 'Failed to create article' }));
+      console.error('API Error:', errorData); // Log the error details
       return NextResponse.json(
         { message: errorData.message || 'Failed to create article' },
         { status: response.status }
@@ -80,6 +86,9 @@ export async function POST(request: Request) {
     // Log error details in development
     if (process.env.NODE_ENV === 'development') {
       console.error('[Dev] Article creation error:', error);
+      if (error instanceof Error) {
+        console.error('Error details:', error.message);
+      }
     }
     return NextResponse.json(
       { message: 'Unable to create article at this time' },

@@ -96,14 +96,30 @@ export default function WritePage() {
       const data = await response.json();
 
       if (response.ok && data.authToken) {
+        // Store the auth token
         localStorage.setItem('authToken', data.authToken);
-        await fetchUserDetails(data.authToken);
-        setIsAuthenticated(true);
+
+        // Fetch and store user data
+        const userResponse = await fetch('/api/auth/me', {
+          headers: {
+            'Authorization': `Bearer ${data.authToken}`,
+          },
+        });
+
+        if (userResponse.ok) {
+          const userData = await userResponse.json();
+          localStorage.setItem('userData', JSON.stringify(userData));
+          setUserData(userData);
+          setIsAuthenticated(true);
+        } else {
+          throw new Error('Failed to fetch user data');
+        }
       } else {
         setError(data.message || 'Invalid email or password');
       }
-    } catch {
+    } catch (error) {
       setError('Unable to sign in at this time. Please try again later.');
+      console.error('Sign in error:', error);
     } finally {
       setIsLoading(false);
     }
@@ -176,20 +192,19 @@ export default function WritePage() {
         throw new Error('Authentication required');
       }
 
-      // Get user data
-      const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+      // Validate user data
       if (!userData?.id) {
         throw new Error('User data not found');
       }
 
       // Create FormData with all required fields
       const formData = new FormData();
-      const slug = generateSlug(title);
+      const generatedSlug = generateSlug(title);
       const currentDate = new Date().toISOString();
 
       // Required fields
       formData.append('title', title);
-      formData.append('slug', slug);
+      formData.append('slug', generatedSlug);
       formData.append('category', category);
       formData.append('excerpt', excerpt);
       formData.append('content', content);
@@ -230,8 +245,8 @@ export default function WritePage() {
       });
 
       if (!response.ok) {
-        const responseData = await response.json();
-        throw new Error(responseData.message || `Failed to ${isEditMode ? 'update' : 'publish'} article`);
+        const errorData = await response.json().catch(() => ({ message: 'Failed to process request' }));
+        throw new Error(errorData.message || `Failed to ${isEditMode ? 'update' : 'publish'} article`);
       }
 
       // Reset form
@@ -248,9 +263,6 @@ export default function WritePage() {
       // Reset file input and editor
       const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
       if (fileInput) fileInput.value = '';
-      
-      const editor = document.querySelector('.ProseMirror');
-      if (editor) editor.innerHTML = '';
 
       // Refresh articles list
       await fetchArticles();
