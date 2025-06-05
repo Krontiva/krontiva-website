@@ -176,20 +176,19 @@ export default function WritePage() {
         throw new Error('Authentication required');
       }
 
-      // Get user data
-      const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+      // Validate user data
       if (!userData?.id) {
         throw new Error('User data not found');
       }
 
       // Create FormData with all required fields
       const formData = new FormData();
-      const slug = generateSlug(title);
+      const generatedSlug = generateSlug(title);
       const currentDate = new Date().toISOString();
 
       // Required fields
       formData.append('title', title);
-      formData.append('slug', slug);
+      formData.append('slug', generatedSlug);
       formData.append('category', category);
       formData.append('excerpt', excerpt);
       formData.append('content', content);
@@ -230,8 +229,8 @@ export default function WritePage() {
       });
 
       if (!response.ok) {
-        const responseData = await response.json();
-        throw new Error(responseData.message || `Failed to ${isEditMode ? 'update' : 'publish'} article`);
+        const errorData = await response.json().catch(() => ({ message: 'Failed to process request' }));
+        throw new Error(errorData.message || `Failed to ${isEditMode ? 'update' : 'publish'} article`);
       }
 
       // Reset form
@@ -248,9 +247,6 @@ export default function WritePage() {
       // Reset file input and editor
       const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
       if (fileInput) fileInput.value = '';
-      
-      const editor = document.querySelector('.ProseMirror');
-      if (editor) editor.innerHTML = '';
 
       // Refresh articles list
       await fetchArticles();
