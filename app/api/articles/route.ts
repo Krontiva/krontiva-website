@@ -66,7 +66,7 @@ export async function POST(request: Request) {
     const response = await fetch(`${apiUrl}/krontiva_articles`, {
       method: 'POST',
       headers: {
-        'Authorization': token, // Don't add 'Bearer ' prefix - the token should already be in the correct format
+        'Authorization': token,
       },
       body: formData
     });
