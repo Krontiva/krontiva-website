@@ -27,7 +27,7 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    const token = request.headers.get('Authorization');
+    const token = request.headers.get('Authorization')?.replace('Bearer ', '');
     if (!token) {
       return NextResponse.json(
         { message: 'Unauthorized' },
@@ -35,31 +35,31 @@ export async function POST(request: Request) {
       );
     }
 
+    // Forward the request body as is
     const response = await fetch(`${process.env.API_URL}/krontiva_articles`, {
       method: 'POST',
       headers: {
         'Authorization': token,
-        ...request.headers
       },
-      body: await request.blob()
+      body: await request.formData()
     });
 
-    const responseData = await response.json();
     if (!response.ok) {
       return NextResponse.json(
-        { message: 'Failed to publish article' },
+        { message: 'Failed to create article' },
         { status: response.status }
       );
     }
 
-    return NextResponse.json(responseData);
+    const article = await response.json();
+    return NextResponse.json(article);
   } catch (error) {
     // Log error details in development
     if (process.env.NODE_ENV === 'development') {
       console.error('[Dev] Article creation error:', error);
     }
     return NextResponse.json(
-      { message: 'Unable to publish article at this time' },
+      { message: 'Unable to create article at this time' },
       { status: 500 }
     );
   }

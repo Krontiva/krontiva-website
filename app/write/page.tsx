@@ -167,36 +167,28 @@ export default function WritePage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setSubmitError('');
+    setIsSubmitting(true);
 
     try {
       const token = localStorage.getItem('authToken');
       if (!token) {
-        throw new Error('No authentication token found');
+        throw new Error('Authentication required');
       }
 
-      // Format tags as objects
-      const formattedTags = tags.map(tag => ({ tag }));
-
+      // Create FormData
       const formData = new FormData();
       formData.append('title', title);
-      formData.append('slug', slug);
       formData.append('category', category);
       formData.append('excerpt', excerpt);
       formData.append('content', content);
-      formData.append('date', new Date().toISOString());
-      formData.append('tags', JSON.stringify(formattedTags));
-      
-      if (userData?.id) {
-        formData.append('authors_id', userData.id.toString());
-      }
+      formData.append('tags', JSON.stringify(tags.map(tag => ({ tag }))));
       
       if (image) {
-        formData.append('photo', image);
+        formData.append('image', image);
       }
 
-      const url = isEditMode && selectedArticle 
+      const url = isEditMode && selectedArticle
         ? `/api/articles/${selectedArticle.id}`
         : '/api/articles';
 
@@ -210,9 +202,8 @@ export default function WritePage() {
         body: formData,
       });
 
-      const responseData = await response.json();
-
       if (!response.ok) {
+        const responseData = await response.json();
         throw new Error(responseData.message || `Failed to ${isEditMode ? 'update' : 'publish'} article`);
       }
 
