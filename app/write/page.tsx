@@ -6,6 +6,7 @@ import Header from "../components/layout/Header";
 import { Lock, Mail, Eye, EyeOff, Pencil, Trash2 } from "lucide-react";
 import ArticleEditor from '../components/editor/ArticleEditor';
 import Image from "next/image";
+import Modal from '../components/ui/Modal';
 
 // Update the Article interface to match the API response
 interface Article {
@@ -59,6 +60,8 @@ export default function WritePage() {
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   const [fetchError, setFetchError] = useState('');
   const [isEditMode, setIsEditMode] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState({ title: '', message: '' });
 
   const fetchUserDetails = useCallback(async (token: string) => {
     try {
@@ -140,9 +143,21 @@ export default function WritePage() {
   }, [fetchUserDetails]);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setImage(e.target.files[0]);
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Check file size (2MB = 2 * 1024 * 1024 bytes)
+    if (file.size > 2 * 1024 * 1024) {
+      setModalContent({
+        title: 'File Too Large',
+        message: 'The selected file exceeds the maximum size limit of 2MB. Please choose a smaller file.'
+      });
+      setIsModalOpen(true);
+      e.target.value = ''; // Reset the input
+      return;
     }
+
+    setImage(file);
   };
 
   const generateSlug = (title: string) => {
@@ -226,14 +241,6 @@ export default function WritePage() {
         formData.append('image', JSON.stringify({ url: '', name: '' }));
       }
 
-      // Log FormData contents in development
-      if (process.env.NODE_ENV === 'development') {
-        console.log('FormData contents:');
-        for (const [key, value] of formData.entries()) {
-          console.log(`${key}:`, value instanceof File ? `File: ${value.name}` : value);
-        }
-      }
-
       const url = isEditMode && selectedArticle
         ? `/api/articles/${selectedArticle.id}`
         : '/api/articles';
@@ -271,10 +278,20 @@ export default function WritePage() {
       // Refresh articles list
       await fetchArticles();
 
-      alert(`Article ${isEditMode ? 'updated' : 'published'} successfully!`);
+      // Show success message in modal
+      setModalContent({
+        title: 'Success',
+        message: `Article ${isEditMode ? 'updated' : 'published'} successfully!`
+      });
+      setIsModalOpen(true);
 
     } catch (err) {
-      setSubmitError(err instanceof Error ? err.message : `Failed to ${isEditMode ? 'update' : 'publish'} article`);
+      // Show error message in modal
+      setModalContent({
+        title: 'Error',
+        message: err instanceof Error ? err.message : `Failed to ${isEditMode ? 'update' : 'publish'} article`
+      });
+      setIsModalOpen(true);
       
       if (err instanceof Error && err.message.includes('authentication')) {
         handleSignOut();
@@ -319,33 +336,55 @@ export default function WritePage() {
   };
 
   const handleDeleteArticle = async (id: string) => {
-    if (!window.confirm('Are you sure you want to delete this article?')) return;
-    
-    setIsDeleting(true);
-    try {
-      const token = localStorage.getItem('authToken');
-      const response = await fetch(`/api/articles/${id}`, {
-        method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      });
+    setModalContent({
+      title: 'Confirm Delete',
+      message: 'Are you sure you want to delete this article? This action cannot be undone.'
+    });
+    setIsModalOpen(true);
 
-      if (response.ok) {
-        await fetchArticles();
-      } else {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to delete article');
+    const handleConfirmDelete = async () => {
+      setIsDeleting(true);
+      try {
+        const token = localStorage.getItem('authToken');
+        const response = await fetch(`/api/articles/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+
+        if (response.ok) {
+          await fetchArticles();
+          setModalContent({
+            title: 'Success',
+            message: 'Article deleted successfully!'
+          });
+          setIsModalOpen(true);
+        } else {
+          const errorData = await response.json();
+          throw new Error(errorData.message || 'Failed to delete article');
+        }
+      } catch (error) {
+        setSubmitError('Failed to delete article. Please try again.');
+        if (process.env.NODE_ENV === 'development') {
+          console.error('Development mode - Error deleting article:', error);
+        }
+      } finally {
+        setIsDeleting(false);
       }
-    } catch (error) {
-      setSubmitError('Failed to delete article. Please try again.');
-      // Log error only in development
-      if (process.env.NODE_ENV === 'development') {
-        console.error('Development mode - Error deleting article:', error);
-      }
-    } finally {
-      setIsDeleting(false);
-    }
+    };
+
+    // Add event listener for modal confirmation
+    const handleModalConfirm = () => {
+      handleConfirmDelete();
+      setIsModalOpen(false);
+    };
+
+    // Update modal content with confirmation buttons
+    setModalContent(prev => ({
+      ...prev,
+      onConfirm: handleModalConfirm
+    }));
   };
 
   // Add useEffect to fetch articles on mount
@@ -581,6 +620,9 @@ export default function WritePage() {
                 <p className="mt-1 text-sm text-gray-500">
                   {image ? `Selected file: ${image.name}` : 'No file selected'}
                 </p>
+                <p className="mt-1 text-sm text-red-500">
+                  Maximum file size: 2MB. Supported formats: JPG, PNG, GIF
+                </p>
               </div>
 
               <div>
@@ -746,6 +788,17 @@ export default function WritePage() {
           </div>
         </div>
       </div>
+
+      {/* Modal for success/error messages */}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title={modalContent.title}
+      >
+        <div className="space-y-4">
+          <p className="text-gray-600">{modalContent.message}</p>
+        </div>
+      </Modal>
     </main>
   );
 } 
